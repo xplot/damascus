@@ -34,8 +34,8 @@ namespace Damascus.MessageChannel
 
             container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()
             {
-                Username = "javi830810",
-                Password = "2205ja02",
+                Username = "xxxxxxx",
+                Password = "xxxxxxx",
                 Port =587,
                 SmtpServer = "smtp.sendgrid.net",
             }));
