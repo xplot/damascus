@@ -1,6 +1,6 @@
 #damascus
 
-Named after damascus, important trade center in the past. Damascus will be your silk road, when setting up Voice and SMS workflows. 
+Named after damascus, important trade center in the past. Damascus will be your friend, when setting up Voice and SMS workflows. 
 Say you want to setup and automated voice system for your company. 
 Say you want to implement complicated marketing logics, thru SMS. 
 Say you want to go thru a set of steps for a user using callback urls.
