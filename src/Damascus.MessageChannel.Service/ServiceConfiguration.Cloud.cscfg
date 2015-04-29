@@ -3,16 +3,16 @@
   <Role name="Damascus.MessageChannel">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="AzureQueueConfig.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=voiceflows;AccountKey=8OW6L8yFqt39LDGWTDbudgSLmJTd9Zz7T+30R1QE+VcqWLotp5cs40R/BlhbaQ0H5ueRnuRRmELWxemfFY4UTg==" />
-      <Setting name="AzureSagaPersisterConfig.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=voiceflows;AccountKey=8OW6L8yFqt39LDGWTDbudgSLmJTd9Zz7T+30R1QE+VcqWLotp5cs40R/BlhbaQ0H5ueRnuRRmELWxemfFY4UTg==" />
-      <Setting name="AzureTimeoutPersisterConfig.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=voiceflows;AccountKey=8OW6L8yFqt39LDGWTDbudgSLmJTd9Zz7T+30R1QE+VcqWLotp5cs40R/BlhbaQ0H5ueRnuRRmELWxemfFY4UTg==" />
+      <Setting name="AzureQueueConfig.ConnectionString" value="" />
+      <Setting name="AzureSagaPersisterConfig.ConnectionString" value="" />
+      <Setting name="AzureTimeoutPersisterConfig.ConnectionString" value="" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="" />
 
-      <Setting name="TwillioAccountSid" value="ACca775b6d44d34b80a1632effeddbcedd" />
-      <Setting name="TwillioAuthToken" value="238e98899d2fc49efb559fd9f841e8c6" />
-      <Setting name="TwillioSmsOutPhone" value="786-465-2251" />
-      <Setting name="TwillioCallPhone" value="786-465-2251" />
-      <Setting name="TwillioBaseUrl" value="http://www.voiceflows.com/workflow" />
+      <Setting name="TwillioAccountSid" value="AC....." />
+      <Setting name="TwillioAuthToken" value="23...." />
+      <Setting name="TwillioSmsOutPhone" value="786-222-222" />
+      <Setting name="TwillioCallPhone" value="786-222-2222" />
+      <Setting name="TwillioBaseUrl" value="http://example.com/workflow" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
