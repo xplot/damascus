@@ -1,9 +1,12 @@
 #damascus
 
-Named after damascus, important trade center in the past. Damascus will be your friend, when setting up Voice and SMS workflows. 
-Say you want to setup and automated voice system for your company. 
-Say you want to implement complicated marketing logics, thru SMS. 
-Say you want to go thru a set of steps for a user using callback urls.
+Code named after Damascus, Siria, important trade center in the past. 
+
+Damascus will be your friend, when setting up Voice and SMS workflows. 
+
+ - Say you want to setup and automated voice system for your company. 
+ - Say you want to implement complicated marketing logics, thru SMS. 
+ - Say you want to go thru a set of steps for a user using callback urls.
 
 Damascus it's designed thinking into Workflows and Steps, each Step having names for which they will be called, and every input from the outside is passed right into the step, for the step to make decissions.
 
@@ -27,14 +30,14 @@ Damascus it's designed thinking into Workflows and Steps, each Step having names
         	return "Hello";
         }
         
-        private string Hello(IStepInput input)
+        private string World(IStepInput input)
         {
         	//Do some stuff with the input
         	return "World";
         }
     }
     
-The following urls will make the workflow execute the steps:
+The following urls will make the workflow execute each of the steps:
 
 `http://www.voiceflows.com/workflow/call?type=hello_world&step=hello`
 
