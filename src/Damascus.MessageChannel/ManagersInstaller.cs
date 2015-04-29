@@ -24,12 +24,12 @@ namespace Damascus.MessageChannel
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
-                AccountSid = SettingManager.Get("TwillioAccountSid"),//"ACca775b6d44d34b80a1632effeddbcedd",
-                AuthToken = SettingManager.Get("TwillioAuthToken"),//"238e98899d2fc49efb559fd9f841e8c6",
-                SmsOutPhone = SettingManager.Get("TwillioSmsOutPhone"),//"786-465-2251",
-                CallPhone = SettingManager.Get("TwillioCallPhone"),//"786-465-2251",
-                VoiceCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/call", //www.voiceflows.com
-                EmailCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/email", //www.voiceflows.com
+                AccountSid = SettingManager.Get("TwillioAccountSid"),
+                AuthToken = SettingManager.Get("TwillioAuthToken"),
+                SmsOutPhone = SettingManager.Get("TwillioSmsOutPhone"),
+                CallPhone = SettingManager.Get("TwillioCallPhone"),
+                VoiceCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/call", 
+                EmailCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/email",
             }));
 
             container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()
