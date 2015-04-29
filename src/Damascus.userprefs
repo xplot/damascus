@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Damascus.Web\Controllers\WorkflowController.cs">
+    <Files>
+      <File FileName="Damascus.Web\Controllers\HomeController.cs" Line="1" Column="1" />
+      <File FileName="Damascus.Web\Controllers\WorkflowController.cs" Line="22" Column="22" />
+      <File FileName="Damascus.MessageChannel\MessageChannelHandler.cs" Line="1" Column="1" />
+      <File FileName="Damascus.Core\IMessageChannel.cs" Line="1" Column="1" />
+      <File FileName="Damascus.Core\Ivr\PhoneCall.cs" Line="25" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
