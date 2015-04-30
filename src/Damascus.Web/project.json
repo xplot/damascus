@@ -1,0 +1,61 @@
+{
+    "webroot": "wwwroot",
+    "version": "1.0.0-*",
+
+    "dependencies": {
+        "Damascus.Core": "1.0.0-*",
+        "Damascus.Message": "1.0.0-*",
+        
+        "Microsoft.AspNet.Mvc": "6.0.0-beta4",
+        "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
+        "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
+        
+        //Dependency Injection
+        //"Microsoft.Framework.DependencyInjection.Windsor": "1.0.0-*",
+        
+        //Logging
+        "Microsoft.Framework.Logging": "1.0.0-*",
+        "Microsoft.Framework.Logging.Console": "1.0.0-*",
+        "Kestrel": "1.0.0-beta4"
+    },
+
+    "commands": {
+        "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
+        "kestrel": "Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5001"
+    },
+
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {
+                "Microsoft.Framework.DependencyInjection.Windsor": "1.0.0-*",
+            },
+            
+            "frameworkAssemblies": {
+                "System.Net.Http": "",
+            }
+        },
+        "dnxcore50": {
+            "dependencies": {
+                "System.Net.Http": "4.0.0-beta-*",
+                
+                //Logging
+                "System.Console": "4.0.0-beta-*"
+            }
+        }
+
+    },
+
+    "exclude": [
+    "wwwroot",
+    "node_modules",
+    "bower_components"
+  ],
+    "publishExclude": [
+    "node_modules",
+    "bower_components",
+    "**.xproj",
+    "**.user",
+    "**.vspscc"
+  ]
+}

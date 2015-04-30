@@ -1,0 +1,43 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "Damascus.Message": "1.0.0-*",
+        
+        //AutoMapper
+        "AutoMapper": "3.3.0",
+        
+        //Castle
+        "Castle.Core": "3.3.0",
+        "Castle.Windsor": "3.3.0",
+        
+        //JSON.NET
+        "Newtonsoft.Json": "6.0.1",
+        "RestSharp": "105.0.1",
+        
+        //Redis
+        "StackExchange.Redis": "1.0.414",
+        
+        //Facebook
+        "Facebook": "6.8.0",
+        
+        //NServiceBus
+        "NServiceBus": "4.6.5",
+        "NServiceBus.Interfaces": "4.6.5",
+        
+        //Twilio
+        "Twilio": "4.0.0",
+        "Twilio.TwiML": "3.3.6",
+    },
+
+
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {}
+        },
+        "dnxcore50": {
+            "dependencies": {
+                "System.Runtime": "4.0.20-*"
+            }
+        }
+    }
+}

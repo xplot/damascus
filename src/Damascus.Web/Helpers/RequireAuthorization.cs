@@ -1,29 +1,25 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Http;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web.Http.Controllers;
-using System.Web.Http.Filters;
 
 namespace Damascus.Web.Helpers
 {
     public class RequireAuthorization : ActionFilterAttribute
     {
         private readonly byte[] privateKey = {56,12,55,95,1,9,47,123,67,41,54,86,96,28,33};
-
-        public override void OnActionExecuting(HttpActionContext actionContext)
+        
+        public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
-            if(true || actionContext.Request.IsLocal())
-                return;
-
-            var httpDate = actionContext.Request.Headers.Date ??
-                           DateTime.Parse(GetHeader("Date", actionContext.Request.Headers));
-
-            var authorizationHeader = GetHeader("Authorization", actionContext.Request.Headers);
+            
+            var httpDate = DateTime.Parse(GetHeader("Date", actionContext.HttpContext.Request.Headers));
+            var authorizationHeader = GetHeader("Authorization", actionContext.HttpContext.Request.Headers);
 
             var response = ValidateDateHeader(httpDate);
             if (response != null)
@@ -39,7 +35,7 @@ namespace Damascus.Web.Helpers
                 return;
             }
 
-            var httpDateHeader = GetHeader("Date", actionContext.Request.Headers);
+            var httpDateHeader = GetHeader("Date", actionContext.HttpContext.Request.Headers);
             using (var hmacsha256 = new HMACSHA256(privateKey))
             {
                 var hash = Convert.ToBase64String(hmacsha256.ComputeHash(Encoding.UTF8.GetBytes(httpDateHeader)));
@@ -82,3 +78,5 @@ namespace Damascus.Web.Helpers
         }
     }
 }
+
+*/

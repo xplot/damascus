@@ -1,23 +1,35 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Web.Http;
+using Microsoft.AspNet.Mvc;
 using Damascus.Core;
 using Damascus.Message;
-using Damascus.Web.Helpers;
-using Damascus.Workflow;
+using Microsoft.Framework.Logging;
+using ILogger = Microsoft.Framework.Logging.ILogger;
 
 namespace Damascus.Web.Controllers
 {
-    [RequireAuthorization]
-    public class InviteController : ApiController
+    //[RequireAuthorization]
+    public class XXX{
+        public string Y{get;set;}
+        public int Z{get;set;}
+    }
+    public class InviteController : Controller
     {
         public WorkflowEngine WorkflowEngine { get; set; }
         public IDataSerializer DataSerializer { get; set; }
-
-        public string CreateInvite(InviteInput input)
+        public ILogger Logger { get; set; }
+        
+        public InviteController(ILoggerFactory loggerFactory)
+        {   	
+            Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+        }
+        
+        [Route("api/invite")]
+        public XXX CreateInvite(InviteInput input)
         {
+            /*
             if (input == null)
-                this.InternalServerError();
+                throw new Exception("Invite format is not valid");
 
             Trace.WriteLine("New invite is posted: " + input.InviteId);
 
@@ -38,13 +50,21 @@ namespace Damascus.Web.Controllers
             };
 
             return WorkflowEngine.Process(workflowContext);
+            */
+            
+            Logger.LogInformation("invite executed");
+            return new XXX(){
+                Y = "hello world",
+                Z = 18
+            };
         }
-
+    	[Route("api/invite/attendees")]
         public string InviteAttendees(InviteAttendeesInput input)
         {
-            
+         
+            /*   
             if (input == null)
-                this.InternalServerError();
+                throw new Exception("Invite format is not valid");
 
             Trace.WriteLine("Contacts are going to be invited for invite: " + input.InviteId);
 
@@ -58,12 +78,16 @@ namespace Damascus.Web.Controllers
             };
 
             return WorkflowEngine.Process(workflowContext);
+            */
+            return "attendees";
         }
-
+        
+        [Route("api/invite/cancel")]
         public string CancelInvite(InviteAttendeesInput input)
         {
+            /*
             if (input == null)
-                this.InternalServerError();
+                throw new Exception("Invite format is not valid");
 
             Trace.WriteLine("Invite is Cancelled: " + input.InviteId);
 
@@ -77,6 +101,8 @@ namespace Damascus.Web.Controllers
             };
 
             return WorkflowEngine.Process(workflowContext);
+            */
+            return "cancel";
         }
     }
 }

@@ -1,15 +1,10 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Dependencies;
-using System.Web.Http.Dispatcher;
-using System.Web.Mvc;
-using System.Web.Routing;
 using System.Globalization;
+using Microsoft.AspNet.Mvc;
 using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 using NServiceBus.ObjectBuilder;
@@ -17,19 +12,20 @@ using IDependencyResolver = System.Web.Http.Dependencies.IDependencyResolver;
 
 namespace Damascus.Web
 {
-    public class NServiceBusControllerActivator : IControllerActivator, IHttpControllerActivator
+    public class NServiceBusControllerActivator : IControllerActivator //, IHttpControllerActivator
     {
-        public IController Create(RequestContext requestContext, Type controllerType)
+        public IController Create(ActionContext context, Type controllerType)
         {
             return DependencyResolver.Current
                  .GetService(controllerType) as IController;
         }
-
+        
         public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
         {
             return DependencyResolver.Current
                  .GetService(controllerType) as IHttpController;
         }
+        
     }
 
     public class NServiceBusScopeContainer : IDependencyScope
@@ -81,3 +77,5 @@ namespace Damascus.Web
         }
     }
 }
+
+*/

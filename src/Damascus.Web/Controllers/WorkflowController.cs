@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Http;
-using System.Web.Mvc;
+using Microsoft.AspNet.Mvc;
 using Damascus.Core;
 using Damascus.Message;
-using Damascus.Workflow;
 using System.Collections.Generic;
-using Twilio.TwiML.Mvc;
 
 namespace Damascus.Web.Controllers
 {
@@ -15,8 +12,9 @@ namespace Damascus.Web.Controllers
         public WorkflowEngine WorkflowEngine { get; set; }
         public IReplyStore ReplyStore { get; set; }
 
-        public ActionResult Call()
+        public string Call()
         {
+            /*
             var parameters = FillParametersDict();
 
             if (!parameters.ContainsKey("type") || !parameters.ContainsKey("step"))
@@ -33,10 +31,13 @@ namespace Damascus.Web.Controllers
             };
  
             return Content(WorkflowEngine.Process(workflowContext), "text/xml");
+            */
+            return null;
         }
 
-        public ActionResult Sms()
+        public string Sms()
         {
+            /*
             var parameters = FillParametersDict();
             var workflowInfo = ReplyStore.GetWorkflowConfigFromReply(Body);
 
@@ -49,10 +50,13 @@ namespace Damascus.Web.Controllers
             };
 
             return Content(WorkflowEngine.Process(workflowContext), "text/xml");
+            */
+            return null;
         }
 
-        public ActionResult Email()
+        public string Email()
         {
+            /*
             var parameters = FillParametersDict();
 
             var workflowContext = new WorkflowContext()
@@ -67,10 +71,13 @@ namespace Damascus.Web.Controllers
             if (response.StartsWith("http"))
                 return this.Redirect(response);
             return Content(response, "text/xml");
+            */
+            return null;
         }
 
         private StepInput FillParametersDict()
         {
+            /*
             var result = new Dictionary<string, string>();
 
             foreach (var queryVar in this.Request.QueryString.AllKeys)
@@ -86,6 +93,8 @@ namespace Damascus.Web.Controllers
             result["Email"] = result.ContainsKey("email")? result["email"]:null;
 
             return new StepInput(){Input = result};
+            */
+            return null;
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Twilio.TwiML.Mvc;
+using Microsoft.AspNet.Mvc;
 
 namespace Damascus.Web.Controllers
 {
-    public class BaseController : TwilioController
+    
+        
+    public class BaseController : Controller
     {
         public string CallSid { get; set; }
         public string To { get; set; }
@@ -27,8 +27,9 @@ namespace Damascus.Web.Controllers
         public string Body { get; set; }
         public string Direction { get; set; }
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            /*
             CallSid = filterContext.HttpContext.Request.Params["CallSid"];
             To = filterContext.HttpContext.Request.Params["To"];
             From = filterContext.HttpContext.Request.Params["From"];
@@ -46,7 +47,7 @@ namespace Damascus.Web.Controllers
             SmsSid = filterContext.HttpContext.Request.Params["SmsSid"];
             Body = filterContext.HttpContext.Request.Params["Body"];
             Direction = filterContext.HttpContext.Request.Params["Direction"];
-
+            */
             base.OnActionExecuting(filterContext);
         }
     }

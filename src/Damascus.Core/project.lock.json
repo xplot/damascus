@@ -1,0 +1,427 @@
+{
+  "locked": false,
+  "version": -9997,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "AutoMapper/3.3.0": {
+        "compile": [
+          "lib/net40/AutoMapper.Net4.dll",
+          "lib/net40/AutoMapper.dll"
+        ],
+        "runtime": [
+          "lib/net40/AutoMapper.Net4.dll",
+          "lib/net40/AutoMapper.dll"
+        ]
+      },
+      "Castle.Core/3.3.0": {
+        "compile": [
+          "lib/net45/Castle.Core.dll"
+        ],
+        "runtime": [
+          "lib/net45/Castle.Core.dll"
+        ]
+      },
+      "Castle.Windsor/3.3.0": {
+        "dependencies": {
+          "Castle.Core": "3.3.0"
+        },
+        "frameworkAssemblies": [
+          "System.Core",
+          "System.Xml"
+        ],
+        "compile": [
+          "lib/net45/Castle.Windsor.dll"
+        ],
+        "runtime": [
+          "lib/net45/Castle.Windsor.dll"
+        ]
+      },
+      "Facebook/6.8.0": {
+        "compile": [
+          "lib/net45/Facebook.dll"
+        ],
+        "runtime": [
+          "lib/net45/Facebook.dll"
+        ]
+      },
+      "Newtonsoft.Json/6.0.1": {
+        "compile": [
+          "lib/net45/Newtonsoft.Json.dll"
+        ],
+        "runtime": [
+          "lib/net45/Newtonsoft.Json.dll"
+        ]
+      },
+      "NServiceBus/4.6.5": {
+        "dependencies": {
+          "NServiceBus.Interfaces": "4.6.5"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": [
+          "lib/net40/NServiceBus.Core.dll"
+        ],
+        "runtime": [
+          "lib/net40/NServiceBus.Core.dll"
+        ]
+      },
+      "NServiceBus.Interfaces/4.6.5": {
+        "compile": [
+          "lib/net40/NServiceBus.dll"
+        ],
+        "runtime": [
+          "lib/net40/NServiceBus.dll"
+        ]
+      },
+      "RestSharp/105.0.1": {
+        "compile": [
+          "lib/net4/RestSharp.dll"
+        ],
+        "runtime": [
+          "lib/net4/RestSharp.dll"
+        ]
+      },
+      "StackExchange.Redis/1.0.414": {
+        "compile": [
+          "lib/net45/StackExchange.Redis.dll"
+        ],
+        "runtime": [
+          "lib/net45/StackExchange.Redis.dll"
+        ]
+      },
+      "Twilio/4.0.0": {
+        "dependencies": {
+          "RestSharp": "105.0.1"
+        },
+        "compile": [
+          "lib/3.5/Twilio.Api.dll"
+        ],
+        "runtime": [
+          "lib/3.5/Twilio.Api.dll"
+        ]
+      },
+      "Twilio.TwiML/3.3.6": {
+        "compile": [
+          "lib/3.5/Twilio.Twiml.dll"
+        ],
+        "runtime": [
+          "lib/3.5/Twilio.Twiml.dll"
+        ]
+      }
+    },
+    "DNXCore,Version=v5.0": {
+      "AutoMapper/3.3.0": {},
+      "Castle.Core/3.3.0": {},
+      "Castle.Windsor/3.3.0": {
+        "dependencies": {
+          "Castle.Core": "3.3.0"
+        }
+      },
+      "Facebook/6.8.0": {},
+      "Newtonsoft.Json/6.0.1": {
+        "compile": [
+          "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll"
+        ],
+        "runtime": [
+          "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll"
+        ]
+      },
+      "NServiceBus/4.6.5": {
+        "dependencies": {
+          "NServiceBus.Interfaces": "4.6.5"
+        }
+      },
+      "NServiceBus.Interfaces/4.6.5": {},
+      "RestSharp/105.0.1": {},
+      "StackExchange.Redis/1.0.414": {},
+      "System.Runtime/4.0.20-beta-22816": {
+        "compile": [
+          "lib/contract/System.Runtime.dll"
+        ],
+        "runtime": [
+          "lib/aspnetcore50/System.Runtime.dll"
+        ]
+      },
+      "Twilio/4.0.0": {
+        "dependencies": {
+          "RestSharp": "105.0.1"
+        }
+      },
+      "Twilio.TwiML/3.3.6": {}
+    }
+  },
+  "libraries": {
+    "AutoMapper/3.3.0": {
+      "sha512": "3zf51TOV9sRBVapTDqciVZAZ8SHYIDQzeRdj7ANy1G5kprymvjQynbDSfjcVVlj1QBPyP01RD59C6g6cDmj/eA==",
+      "files": [
+        "AutoMapper.3.3.0.nupkg",
+        "AutoMapper.3.3.0.nupkg.sha512",
+        "AutoMapper.nuspec",
+        "lib/MonoAndroid/AutoMapper.Android.dll",
+        "lib/MonoAndroid/AutoMapper.dll",
+        "lib/MonoAndroid/AutoMapper.xml",
+        "lib/MonoTouch/AutoMapper.dll",
+        "lib/MonoTouch/AutoMapper.iOS.dll",
+        "lib/MonoTouch/AutoMapper.xml",
+        "lib/net40/AutoMapper.Net4.dll",
+        "lib/net40/AutoMapper.dll",
+        "lib/net40/AutoMapper.xml",
+        "lib/portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch/AutoMapper.dll",
+        "lib/portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch/AutoMapper.xml",
+        "lib/portable-windows8+net40+wp8+wpa81+sl5+MonoAndroid+MonoTouch/AutoMapper.dll",
+        "lib/portable-windows8+net40+wp8+wpa81+sl5+MonoAndroid+MonoTouch/AutoMapper.xml",
+        "lib/sl5/AutoMapper.SL5.dll",
+        "lib/sl5/AutoMapper.dll",
+        "lib/sl5/AutoMapper.xml",
+        "lib/windows8/AutoMapper.WinRT.dll",
+        "lib/windows8/AutoMapper.dll",
+        "lib/windows8/AutoMapper.xml",
+        "lib/wp8/AutoMapper.WP8.dll",
+        "lib/wp8/AutoMapper.dll",
+        "lib/wp8/AutoMapper.xml",
+        "lib/wpa81/AutoMapper.WPA81.dll",
+        "lib/wpa81/AutoMapper.dll",
+        "lib/wpa81/AutoMapper.xml",
+        "tools/AutoMapper.targets",
+        "tools/MonoAndroid/Install.ps1",
+        "tools/MonoAndroid/uninstall.ps1",
+        "tools/MonoTouch/Install.ps1",
+        "tools/MonoTouch/uninstall.ps1",
+        "tools/net40/Install.ps1",
+        "tools/net40/uninstall.ps1",
+        "tools/sl5/Install.ps1",
+        "tools/sl5/uninstall.ps1",
+        "tools/windows8/Install.ps1",
+        "tools/windows8/uninstall.ps1",
+        "tools/wp8/Install.ps1",
+        "tools/wp8/uninstall.ps1",
+        "tools/wpa81/Install.ps1",
+        "tools/wpa81/uninstall.ps1"
+      ]
+    },
+    "Castle.Core/3.3.0": {
+      "sha512": "wvlF47qlxKXurxSUWAnX79stVrnkuUPe5lHq26OiXUtMEngPaBcJ+5j+yVdFJ70hjUZpqg7qQK5hCZSex14ekQ==",
+      "files": [
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Core.3.3.0.nupkg",
+        "Castle.Core.3.3.0.nupkg.sha512",
+        "Castle.Core.nuspec",
+        "Changes.txt",
+        "License.txt",
+        "readme.txt",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/sl4/Castle.Core.dll",
+        "lib/sl4/Castle.Core.xml",
+        "lib/sl5/Castle.Core.dll",
+        "lib/sl5/Castle.Core.xml"
+      ]
+    },
+    "Castle.Windsor/3.3.0": {
+      "sha512": "5QiDI4DPLkIM7N9mTBaFlmh2GlWFZe+tF0tOzx0QdNE+pGWAm3gFrmKi4LnOIKIhGcocqW0zptMMIxidVMWqEQ==",
+      "files": [
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Windsor.3.3.0.nupkg",
+        "Castle.Windsor.3.3.0.nupkg.sha512",
+        "Castle.Windsor.nuspec",
+        "Changes.txt",
+        "License.txt",
+        "readme.txt",
+        "lib/net35/Castle.Windsor.dll",
+        "lib/net35/Castle.Windsor.xml",
+        "lib/net40/Castle.Windsor.dll",
+        "lib/net40/Castle.Windsor.xml",
+        "lib/net40-client/Castle.Windsor.dll",
+        "lib/net40-client/Castle.Windsor.xml",
+        "lib/net45/Castle.Windsor.dll",
+        "lib/net45/Castle.Windsor.xml",
+        "lib/sl4/Castle.Windsor.dll",
+        "lib/sl4/Castle.Windsor.xml",
+        "lib/sl5/Castle.Windsor.dll",
+        "lib/sl5/Castle.Windsor.xml"
+      ]
+    },
+    "Facebook/6.8.0": {
+      "sha512": "ZxkOacMFH3kIQPbthh8olls+mPAP2qSrNVQ7B79U2Js55cZtO1W1YlckiW50QAzyarQlIobW5N5mfYLJ4S+7Xg==",
+      "files": [
+        "Facebook.6.8.0.nupkg",
+        "Facebook.6.8.0.nupkg.sha512",
+        "Facebook.nuspec",
+        "LICENSE.txt",
+        "readme.txt",
+        "lib/net35-client/Facebook.dll",
+        "lib/net35-client/Facebook.xml",
+        "lib/net40-client/Facebook.dll",
+        "lib/net40-client/Facebook.xml",
+        "lib/net45/Facebook.dll",
+        "lib/net45/Facebook.xml",
+        "lib/portable-win81+wpa81/Facebook.dll",
+        "lib/portable-win81+wpa81/Facebook.xml",
+        "lib/sl5/Facebook.dll",
+        "lib/sl5/Facebook.xml",
+        "lib/win8/Facebook.dll",
+        "lib/win8/Facebook.xml",
+        "lib/wp71/Facebook.dll",
+        "lib/wp71/Facebook.xml",
+        "lib/wp8/Facebook.dll",
+        "lib/wp8/Facebook.xml",
+        "lib/wp81/Facebook.dll",
+        "lib/wp81/Facebook.xml",
+        "serializers/JsonNetSerializer.cs"
+      ]
+    },
+    "Newtonsoft.Json/6.0.1": {
+      "sha512": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
+      "files": [
+        "Newtonsoft.Json.6.0.1.nupkg",
+        "Newtonsoft.Json.6.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netcore45/Newtonsoft.Json.dll",
+        "lib/netcore45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.xml",
+        "tools/install.ps1"
+      ]
+    },
+    "NServiceBus/4.6.5": {
+      "sha512": "Wcx8Y+6bqQ2ZywyyRnJFmtQZlCKRzvw/U0Fmgqg/6oCfJbaslMZmsdvSHcIMtSvJTtlDzvhypE52fE2FrD2bsQ==",
+      "files": [
+        "NServiceBus.4.6.5.nupkg",
+        "NServiceBus.4.6.5.nupkg.sha512",
+        "NServiceBus.nuspec",
+        "lib/net40/NServiceBus.Core.dll",
+        "lib/net40/NServiceBus.Core.pdb",
+        "lib/net40/NServiceBus.Core.xml",
+        "tools/NServiceBus.PowerShell.Development.dll",
+        "tools/about_NServiceBus.help.txt",
+        "tools/init.ps1"
+      ]
+    },
+    "NServiceBus.Interfaces/4.6.5": {
+      "sha512": "fE9YG+niX3qoN5spQ5FcH8m4dHPlmgkykdFS5hY/HAszFCitF8SzARu+MCfeyjUz/pBkV0b0D4xZdfnMjPHcUQ==",
+      "files": [
+        "NServiceBus.Interfaces.4.6.5.nupkg",
+        "NServiceBus.Interfaces.4.6.5.nupkg.sha512",
+        "NServiceBus.Interfaces.nuspec",
+        "lib/net40/NServiceBus.XML",
+        "lib/net40/NServiceBus.dll",
+        "lib/net40/NServiceBus.pdb"
+      ]
+    },
+    "RestSharp/105.0.1": {
+      "sha512": "2jEivNmSZFsK/iyoOu0l9+pEM2hXLQCvOQdLgQcr92cdnirl2xm+Wddy7lP6JTwZSLjAQ1ogHlal1tLu5hfZPw==",
+      "files": [
+        "RestSharp.105.0.1.nupkg",
+        "RestSharp.105.0.1.nupkg.sha512",
+        "RestSharp.nuspec",
+        "readme.txt",
+        "lib/net35/RestSharp.dll",
+        "lib/net35/RestSharp.xml",
+        "lib/net35-client/RestSharp.dll",
+        "lib/net35-client/RestSharp.xml",
+        "lib/net4/RestSharp.dll",
+        "lib/net4/RestSharp.xml",
+        "lib/net4-client/RestSharp.dll",
+        "lib/net4-client/RestSharp.xml",
+        "lib/sl4/RestSharp.Silverlight.dll",
+        "lib/sl4/RestSharp.Silverlight.xml",
+        "lib/sl4-wp71/RestSharp.WindowsPhone.dll",
+        "lib/sl4-wp71/RestSharp.WindowsPhone.xml"
+      ]
+    },
+    "StackExchange.Redis/1.0.414": {
+      "sha512": "GbMBODy6iZf1fR6tQeqV9OHoYW7xCgdvMcOJiUyxFjE2NRSrxO87RShXusvv/sMTuTOjDtV77B5mvRcYGNt6pw==",
+      "files": [
+        "StackExchange.Redis.1.0.414.nupkg",
+        "StackExchange.Redis.1.0.414.nupkg.sha512",
+        "StackExchange.Redis.nuspec",
+        "lib/net40/StackExchange.Redis.dll",
+        "lib/net40/StackExchange.Redis.dll.config",
+        "lib/net40/StackExchange.Redis.pdb",
+        "lib/net40/StackExchange.Redis.xml",
+        "lib/net45/StackExchange.Redis.dll",
+        "lib/net45/StackExchange.Redis.pdb",
+        "lib/net45/StackExchange.Redis.xml"
+      ]
+    },
+    "System.Runtime/4.0.20-beta-22816": {
+      "sha512": "BEN6F4aNjbBdDxM8Xhb/MCSDhYmtvA29c1HUBvn0aNAVXaIJECLy2w5YkcscdklIieZCrcYeG2UzIgWlr4+GeQ==",
+      "files": [
+        "License.rtf",
+        "System.Runtime.4.0.20-beta-22816.nupkg",
+        "System.Runtime.4.0.20-beta-22816.nupkg.sha512",
+        "System.Runtime.nuspec",
+        "lib/aspnetcore50/System.Runtime.dll",
+        "lib/contract/System.Runtime.dll",
+        "lib/net45/System.Runtime.dll",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Runtime.dll"
+      ]
+    },
+    "Twilio/4.0.0": {
+      "sha512": "y69ywY09bK2CV63SSV5w2zIPgsqeHUb/ktlZ5BdnXEiFLaUuNdY1ez6LLFdF5dxgK/Sim/+Q1x8okyogZoXrMw==",
+      "files": [
+        "Twilio.4.0.0.nupkg",
+        "Twilio.4.0.0.nupkg.sha512",
+        "Twilio.nuspec",
+        "lib/3.5/Twilio.Api.dll",
+        "lib/3.5/Twilio.Api.pdb",
+        "lib/3.5/Twilio.Api.xml",
+        "lib/SL5/Twilio.Api.Silverlight.dll",
+        "lib/SL5/Twilio.Api.Silverlight.pdb",
+        "lib/SL5/Twilio.Api.Silverlight.xml",
+        "lib/WINDOWSPHONE8/Twilio.Api.WindowsPhone.dll",
+        "lib/WINDOWSPHONE8/Twilio.Api.WindowsPhone.pdb",
+        "lib/WINDOWSPHONE8/Twilio.Api.WindowsPhone.xml"
+      ]
+    },
+    "Twilio.TwiML/3.3.6": {
+      "sha512": "Ztw51vqnsLJWoRcyGi54cN3BXYex+c1G48RXSktd2x3qbFzazrt7yRjLHQLkXi80Mp6Jfr60aoVUX2UExod+kA==",
+      "files": [
+        "Twilio.TwiML.3.3.6.nupkg",
+        "Twilio.TwiML.3.3.6.nupkg.sha512",
+        "Twilio.TwiML.nuspec",
+        "lib/3.5/Twilio.Twiml.dll",
+        "lib/3.5/Twilio.Twiml.pdb",
+        "lib/3.5/Twilio.Twiml.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Damascus.Message >= 1.0.0-*",
+      "AutoMapper >= 3.3.0",
+      "Castle.Core >= 3.3.0",
+      "Castle.Windsor >= 3.3.0",
+      "Newtonsoft.Json >= 6.0.1",
+      "RestSharp >= 105.0.1",
+      "StackExchange.Redis >= 1.0.414",
+      "Facebook >= 6.8.0",
+      "NServiceBus >= 4.6.5",
+      "NServiceBus.Interfaces >= 4.6.5",
+      "Twilio >= 4.0.0",
+      "Twilio.TwiML >= 3.3.6"
+    ],
+    "DNX,Version=v4.5.1": [],
+    "DNXCore,Version=v5.0": [
+      "System.Runtime >= 4.0.20-*"
+    ]
+  }
+}

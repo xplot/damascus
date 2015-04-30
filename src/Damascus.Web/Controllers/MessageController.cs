@@ -1,14 +1,13 @@
 ﻿using System.Diagnostics;
-using System.Web.Http;
+using Microsoft.AspNet.Mvc;
 using Damascus.Core;
 using Damascus.Message;
-using Damascus.Web.Helpers;
 using NServiceBus;
 
 namespace Damascus.Web.Controllers
 {
-    [RequireAuthorization]
-    public class MessageController : ApiController
+    //[RequireAuthorization]
+    public class MessageController : Controller
     {
         public IBus Bus { get; set; }
         

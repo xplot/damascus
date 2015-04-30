@@ -1,0 +1,29 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        //Solution Dependencies
+        "Damascus.Core": "1.0.0-*",
+        "Damascus.Message": "1.0.0-*",
+        
+        //AutoMapper
+        "AutoMapper": "3.3.0",
+       
+        //JSON.NET
+        "Newtonsoft.Json": "6.0.1",
+        
+        //NServiceBus
+        "NServiceBus": "4.6.5",
+        "NServiceBus.Interfaces": "4.6.5",
+    },
+
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {}
+        },
+        "dnxcore50": {
+            "dependencies": {
+                "System.Runtime": "4.0.20-*"
+            }
+        }
+    }
+}
