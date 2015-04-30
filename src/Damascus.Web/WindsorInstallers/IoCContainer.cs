@@ -8,16 +8,17 @@ using Microsoft.AspNet.Mvc;
 using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 using NServiceBus.ObjectBuilder;
-using IDependencyResolver = System.Web.Http.Dependencies.IDependencyResolver;
+using Microsoft.Framework.DependencyInjection;
+//using Microsoft.Framework.DependencyInjection.Windsor;
 
 namespace Damascus.Web
 {
     public class NServiceBusControllerActivator : IControllerActivator //, IHttpControllerActivator
     {
-        public IController Create(ActionContext context, Type controllerType)
+        public object Create(ActionContext context, Type controllerType)
         {
             return DependencyResolver.Current
-                 .GetService(controllerType) as IController;
+                 .GetService(controllerType);
         }
         
         public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
@@ -77,5 +78,4 @@ namespace Damascus.Web
         }
     }
 }
-
 */
