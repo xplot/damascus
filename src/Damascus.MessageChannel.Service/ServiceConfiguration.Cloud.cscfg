@@ -6,8 +6,6 @@
       <Setting name="AzureQueueConfig.ConnectionString" value="" />
       <Setting name="AzureSagaPersisterConfig.ConnectionString" value="" />
       <Setting name="AzureTimeoutPersisterConfig.ConnectionString" value="" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="" />
-
       <Setting name="TwillioAccountSid" value="AC....." />
       <Setting name="TwillioAuthToken" value="23...." />
       <Setting name="TwillioSmsOutPhone" value="786-222-222" />

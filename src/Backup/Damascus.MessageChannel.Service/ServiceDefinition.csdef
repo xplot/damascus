@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="Damascus.MessageWorker" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WorkerRole name="Damascus.MessageChannel" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="AzureQueueConfig.ConnectionString"/>
+      <Setting name="AzureSagaPersisterConfig.ConnectionString"/>
+      <Setting name="AzureTimeoutPersisterConfig.ConnectionString"/>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString"/>
+
+      <Setting name="TwillioAccountSid" />
+      <Setting name="TwillioAuthToken" />
+      <Setting name="TwillioSmsOutPhone"/>
+      <Setting name="TwillioCallPhone" />
+      <Setting name="TwillioBaseUrl" />
+    </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>

@@ -9,7 +9,7 @@
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="" />
 
       <Setting name="TwillioAccountSid" value="AC..." />
-      <Setting name="TwillioAuthToken" value="23.........
+      <Setting name="TwillioAuthToken" value="23........."/>
       <Setting name="TwillioSmsOutPhone" value="786-222-2222" />
       <Setting name="TwillioCallPhone" value="786-222-2222" />
       <Setting name="TwillioBaseUrl" value="http://example.com/workflow" />
