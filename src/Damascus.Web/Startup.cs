@@ -8,6 +8,8 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
+using Microsoft.Framework.OptionsModel;
+using Microsoft.AspNet.Authorization;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using DI = Microsoft.Framework.DependencyInjection;
 using Damascus.Core;
@@ -15,10 +17,15 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.MicroKernel.Lifestyle;
 
+using Castle.MicroKernel.Resolvers;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+
 namespace Damascus.Web
 {
     public class Startup
     {
+        private WindsorContainer container;
+
         public Startup(IHostingEnvironment env)
         {
         }
@@ -28,11 +35,26 @@ namespace Damascus.Web
         public void ConfigureServices(DI.IServiceCollection services)
         {   
             services.AddMvc();
+            services.AddOptions();
+
+            //Please do not remove this line, it breaks Injection if not included
+            services.Configure<AuthorizationOptions>(options =>
+            {
+            });
+
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
-            // services.AddWebApiConventions();
-            //services.AddTransient<IXXX,XXX>();
-            
+            //services.AddWebApiConventions();
+            //services.AddInstance(typeof(TwillioConfig),new TwillioConfig()
+            //{
+            //    AccountSid = "1111",
+            //    AuthToken = "1111",
+            //    SmsOutPhone = "2222",
+            //    CallPhone = "3333",
+            //    VoiceCallbackUrl = "4444",
+            //    EmailCallbackUrl = "5555"
+            //});
+
             ConfigureContainer(services);
         }
 
@@ -49,8 +71,8 @@ namespace Damascus.Web
             app.UseMvc();
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
-            
-            ConfigureLogging(loggerfactory);
+
+            app.ApplicationServices =  container.Resolve<IServiceProvider>();
         }
         
         private void ConfigureLogging(ILoggerFactory loggerfactory )
@@ -61,7 +83,7 @@ namespace Damascus.Web
         
         private void ConfigureContainer(DI.IServiceCollection services)
         {
-            var container = new WindsorContainer();
+            this.container = new WindsorContainer();
             
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
@@ -73,7 +95,15 @@ namespace Damascus.Web
                 EmailCallbackUrl = "5555" 
             }));
             
-            container.Populate(services); 
+            container.Populate(services);
+
+            //Huge Patch do not remove until we find out what's happenning here
+            container.Register(
+                Component.For(typeof(IEnumerable<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
+                        .ImplementedBy(typeof(List<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
+            );
+
+            container.BeginScope();
         }
     }
     

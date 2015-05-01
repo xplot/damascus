@@ -22,7 +22,7 @@ namespace Damascus.Web
         container.Register(Component.For<IServiceProvider>().ImplementedBy<WindsorServiceProvider>());
         container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
 
-        container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
+        container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel, true));
 
         Register(container, descriptors);
     }
@@ -106,7 +106,15 @@ namespace Damascus.Web
 
         public object GetService(Type serviceType)
         {
-            return _container.Resolve(serviceType);
+                try
+                {
+                    return _container.Resolve(serviceType);
+                }
+                catch { 
+                    int i = 0;
+                    return null;
+                }
+            
         }
     }
 

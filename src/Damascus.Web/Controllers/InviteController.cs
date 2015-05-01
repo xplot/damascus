@@ -15,10 +15,10 @@ namespace Damascus.Web.Controllers
         public IDataSerializer DataSerializer { get; set; }
         public ILogger Logger { get; set; }
         
-        public InviteController(ILoggerFactory loggerFactory, TwillioConfig xxx)
+        
+        public InviteController(ILoggerFactory loggerFactory)
         {   	
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
-            var a = xxx;
         }
         
         [Route("api/invite")]

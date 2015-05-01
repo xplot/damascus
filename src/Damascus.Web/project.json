@@ -5,8 +5,9 @@
     "dependencies": {
         "Damascus.Core": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
-        
+
         "Microsoft.AspNet.Mvc": "6.0.0-beta4",
+        "Microsoft.AspNet.Authorization": "1.0.0-beta4",
         "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
         "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
         "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
@@ -25,7 +26,6 @@
 
     "frameworks": {
         "dnx451": {},
-        "dnxcore50": {}
     },
 
     "exclude": [
