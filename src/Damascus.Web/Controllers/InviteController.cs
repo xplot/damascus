@@ -8,24 +8,21 @@ using ILogger = Microsoft.Framework.Logging.ILogger;
 
 namespace Damascus.Web.Controllers
 {
-    //[RequireAuthorization]
-    public class XXX{
-        public string Y{get;set;}
-        public int Z{get;set;}
-    }
+    
     public class InviteController : Controller
     {
         public WorkflowEngine WorkflowEngine { get; set; }
         public IDataSerializer DataSerializer { get; set; }
         public ILogger Logger { get; set; }
         
-        public InviteController(ILoggerFactory loggerFactory)
+        public InviteController(ILoggerFactory loggerFactory, TwillioConfig xxx)
         {   	
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            var a = xxx;
         }
         
         [Route("api/invite")]
-        public XXX CreateInvite(InviteInput input)
+        public string CreateInvite(InviteInput input)
         {
             /*
             if (input == null)
@@ -53,10 +50,7 @@ namespace Damascus.Web.Controllers
             */
             
             Logger.LogInformation("invite executed");
-            return new XXX(){
-                Y = "hello world",
-                Z = 18
-            };
+            return "hello";
         }
     	[Route("api/invite/attendees")]
         public string InviteAttendees(InviteAttendeesInput input)

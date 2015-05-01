@@ -6,18 +6,15 @@
         "Damascus.Core": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
         
-        "Microsoft.AspNet.Mvc": "6.0.0-*",
-        "Microsoft.AspNet.Server.IIS": "1.0.0-*",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
-        "Microsoft.AspNet.StaticFiles": "1.0.0-*",
+        "Microsoft.AspNet.Mvc": "6.0.0-beta4",
+        "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
+        "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
         
         //Dependency Injection
-        "Castle.Windsor": "3.2.1",
+        "Castle.Windsor": "3.3.0",
         "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-beta4",
         
-        //Logging
-        "Microsoft.Framework.Logging": "1.0.0-*",
-        "Microsoft.Framework.Logging.Console": "1.0.0-*",
         "Kestrel": "1.0.0-beta4"
     },
 
@@ -27,15 +24,8 @@
     },
 
     "frameworks": {
-        "dnx451": {
-            "dependencies": {
-            },
-            
-            "frameworkAssemblies": {
-                "System.Net.Http": "",
-            }
-        }
-
+        "dnx451": {},
+        "dnxcore50": {}
     },
 
     "exclude": [

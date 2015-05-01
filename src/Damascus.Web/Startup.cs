@@ -10,7 +10,8 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using DI = Microsoft.Framework.DependencyInjection;
-
+using Damascus.Core;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.MicroKernel.Lifestyle;
 
@@ -54,14 +55,25 @@ namespace Damascus.Web
         
         private void ConfigureLogging(ILoggerFactory loggerfactory )
         {
-            loggerfactory.AddConsole();
-            loggerfactory.AddConsole((category, logLevel) => logLevel >= LogLevel.Critical && category.Equals(typeof(Program).FullName));   
+//             loggerfactory.AddConsole();
+//             loggerfactory.AddConsole((category, logLevel) => logLevel >= LogLevel.Critical && category.Equals(typeof(Program).FullName));   
         }
         
         private void ConfigureContainer(DI.IServiceCollection services)
         {
-            //var container = new WindsorContainer();
-            //container.Populate(services); 
+            var container = new WindsorContainer();
+            
+            container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
+            {
+                AccountSid = "1111",
+                AuthToken = "1111",
+                SmsOutPhone = "2222",
+                CallPhone = "3333",
+                VoiceCallbackUrl = "4444", 
+                EmailCallbackUrl = "5555" 
+            }));
+            
+            container.Populate(services); 
         }
     }
     
