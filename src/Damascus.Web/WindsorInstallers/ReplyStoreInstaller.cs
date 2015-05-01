@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -11,7 +10,7 @@ using Damascus.Core.Serialization;
 using Damascus.Workflow;
 using StackExchange.Redis;
 
-namespace Damascus.Web.WindsorInstallers
+namespace Damascus.Web
 {
     public class ReplyStoreInstaller : IWindsorInstaller
     {
@@ -29,4 +28,3 @@ namespace Damascus.Web.WindsorInstallers
         }
     }
 }
-*/

@@ -4,6 +4,7 @@
 
     "dependencies": {
         "Damascus.Core": "1.0.0-*",
+        "Damascus.Workflow": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
 
         "Microsoft.AspNet.Mvc": "6.0.0-beta4",

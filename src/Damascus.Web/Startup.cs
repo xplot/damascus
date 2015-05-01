@@ -84,16 +84,11 @@ namespace Damascus.Web
         private void ConfigureContainer(DI.IServiceCollection services)
         {
             this.container = new WindsorContainer();
-            
-            container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
-            {
-                AccountSid = "1111",
-                AuthToken = "1111",
-                SmsOutPhone = "2222",
-                CallPhone = "3333",
-                VoiceCallbackUrl = "4444", 
-                EmailCallbackUrl = "5555" 
-            }));
+            this.container.Install(
+                new ManagersInstaller(),
+                new ReplyStoreInstaller(),
+                new WorkflowEngineInstaller()
+            );
             
             container.Populate(services);
 

@@ -14,11 +14,12 @@ namespace Damascus.Web.Controllers
         public WorkflowEngine WorkflowEngine { get; set; }
         public IDataSerializer DataSerializer { get; set; }
         public ILogger Logger { get; set; }
+        public ITemplateManager TemplateManager { get; set; }
         
-        
-        public InviteController(ILoggerFactory loggerFactory)
+        public InviteController(ILoggerFactory loggerFactory, ITemplateManager templateManager)
         {   	
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            this.TemplateManager = templateManager;
         }
         
         [Route("api/invite")]
@@ -50,7 +51,7 @@ namespace Damascus.Web.Controllers
             */
             
             Logger.LogInformation("invite executed");
-            return "hello";
+            return TemplateManager.GetHashCode().ToString();
         }
     	[Route("api/invite/attendees")]
         public string InviteAttendees(InviteAttendeesInput input)

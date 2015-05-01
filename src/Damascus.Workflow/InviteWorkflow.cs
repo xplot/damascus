@@ -11,7 +11,7 @@ using System.Diagnostics;
 namespace Damascus.Workflow
 {
     [WorkflowName("invite")]
-    public class InviteWorkflow : Damascus.Core.Workflow
+        public class InviteWorkflow : Damascus.Core.Workflow
     {
         public IIvrXmlWriter XmlWriter { get; set; }
         public IBus Bus { get; set; }

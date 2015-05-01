@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -11,7 +10,7 @@ using Damascus.Core.Serialization;
 using Damascus.Workflow;
 using StackExchange.Redis;
 
-namespace Damascus.Web.WindsorInstallers
+namespace Damascus.Web
 {
     public class WorkflowEngineInstaller : IWindsorInstaller
     {
@@ -21,17 +20,17 @@ namespace Damascus.Web.WindsorInstallers
                 throw new ArgumentNullException("container");
 
             IDataSerializer serializer;
-            if (ConfigurationManager.AppSettings["serializer"] != null &&
+            /*if (ConfigurationManager.AppSettings["serializer"] != null &&
                 ConfigurationManager.AppSettings["serializer"] == "redis")
             {
                 var connection = ConnectionMultiplexer.Connect("voiceflows.redis.cache.windows.net, password=0DF8T+8zJ77KWJYar33aqSFgeG/NTjtqMo5oJU1b3n4=");
                 serializer = new RedisSerializer { Cache = connection.GetDatabase() };
             }
-            else
+            else*/
                 serializer = new MemorySerializer();
             
             container.Register(Component.For<WorkflowEngine>()
-                     .Instance(WorkflowSetup.Configure(typeof(JaviCustomWorkflow).Assembly)
+                     .Instance(WorkflowSetup.Configure(typeof(InviteWorkflow).Assembly)
                      .WithSerializer(serializer)
                      .WithCastleWindsor(container).WorkflowEngine));
 
@@ -39,4 +38,3 @@ namespace Damascus.Web.WindsorInstallers
         }
     }
 }
-*/

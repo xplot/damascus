@@ -1,5 +1,4 @@
-﻿/*
-using System.IO;
+﻿using System.IO;
 using System.Web;
 using Castle.MicroKernel.Registration;
 using System;
@@ -34,14 +33,13 @@ namespace Damascus.Web
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
-                AccountSid = ConfigurationManager.AppSettings["TwillioAccountSid"],,
-                AuthToken = ConfigurationManager.AppSettings["TwillioAuthToken"],,
-                SmsOutPhone = ConfigurationManager.AppSettings["TwillioSmsOutPhone"],,
-                CallPhone = ConfigurationManager.AppSettings["TwillioCallPhone"],,
-                VoiceCallbackUrl = ConfigurationManager.AppSettings["TwillioBaseUrl"]+"/call", 
-                EmailCallbackUrl = ConfigurationManager.AppSettings["TwillioBaseUrl"] + "/email", 
+                AccountSid = "1111",
+                AuthToken = "1111",
+                SmsOutPhone = "2222",
+                CallPhone = "3333",
+                VoiceCallbackUrl = "4444", 
+                EmailCallbackUrl = "5555" 
             }));
         }
     }
 }
-*/
