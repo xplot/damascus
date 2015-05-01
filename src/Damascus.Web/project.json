@@ -34,13 +34,6 @@
             "frameworkAssemblies": {
                 "System.Net.Http": "",
             }
-        },
-        "dnxcore50": {
-            "dependencies": {
-                "System.Net.Http": "4.0.0-beta-*",
-                //Logging
-                "System.Console": "4.0.0-beta-*"
-            }
         }
 
     },
