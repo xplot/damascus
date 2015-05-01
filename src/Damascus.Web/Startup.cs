@@ -11,6 +11,9 @@ using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using DI = Microsoft.Framework.DependencyInjection;
 
+using Castle.Windsor;
+using Castle.MicroKernel.Lifestyle;
+
 namespace Damascus.Web
 {
     public class Startup
@@ -28,6 +31,8 @@ namespace Damascus.Web
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
             //services.AddTransient<IXXX,XXX>();
+            
+            ConfigureContainer(services);
         }
 
         // Configure is called after ConfigureServices is called.
@@ -50,8 +55,13 @@ namespace Damascus.Web
         private void ConfigureLogging(ILoggerFactory loggerfactory )
         {
             loggerfactory.AddConsole();
-            loggerfactory.AddConsole((category, logLevel) => logLevel >= LogLevel.Critical && category.Equals(typeof(Program).FullName));
-            
+            loggerfactory.AddConsole((category, logLevel) => logLevel >= LogLevel.Critical && category.Equals(typeof(Program).FullName));   
+        }
+        
+        private void ConfigureContainer(DI.IServiceCollection services)
+        {
+            //var container = new WindsorContainer();
+            //container.Populate(services); 
         }
     }
     
