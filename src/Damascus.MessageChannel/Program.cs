@@ -11,19 +11,18 @@ namespace Damascus.MessageChannel
     {
         public void Main(string[] args)
         {
-            //var container = ConfigureContainer();
-            //var configuration = ConfigureNSB(container);
+            var container = ConfigureContainer();
+            var configuration = ConfigureNSB(container);
 
-            //using (IStartableBus bus = Bus.Create(configuration))
-            //{
-            //    bus.Start();
-            //}
+            using (IStartableBus bus = Bus.Create(configuration))
+            {
+                bus.Start();
+            }
 
             System.Console.WriteLine(" Hello world");
         }
 
         private IWindsorContainer container;
-
 
         private IWindsorContainer ConfigureContainer()
         {
@@ -45,7 +44,7 @@ namespace Damascus.MessageChannel
             conventionsBuilder.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Commands"));
             conventionsBuilder.DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Events"));
 
-            configuration.EndpointName("Damascus.Web");
+            configuration.EndpointName("Damascus.MessageChannel");
             configuration.UseSerialization<JsonSerializer>();
             configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
             configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);

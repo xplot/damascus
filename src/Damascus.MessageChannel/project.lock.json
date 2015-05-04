@@ -1,39 +1,215 @@
 {
   "locked": false,
-  "version": -9998,
-  "projectFileDependencyGroups": {
-    "": [
-      "Damascus.Core >= 1.0.0-*",
-      "Damascus.Workflow >= 1.0.0-*",
-      "Damascus.Message >= 1.0.0-*",
-      "Castle.Windsor >= 3.3.0",
-      "Microsoft.Framework.DependencyInjection.Interfaces >= 1.0.0-beta4",
-      "Microsoft.Framework.ConfigurationModel.Json >= 1.0.0-beta4",
-      "NServiceBus >= 5.2.0",
-      "NServiceBus.Host >= 5.2.0",
-      "NServiceBus.SqlServer >= 2.1.2",
-      "NServiceBus.CastleWindsor >= 5.0.0"
-    ],
-    "DNX,Version=v4.5.1": []
+  "version": -9997,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "AutoMapper/3.3.0": {
+        "compile": [
+          "lib/net40/AutoMapper.Net4.dll",
+          "lib/net40/AutoMapper.dll"
+        ],
+        "runtime": [
+          "lib/net40/AutoMapper.Net4.dll",
+          "lib/net40/AutoMapper.dll"
+        ]
+      },
+      "Castle.Core/3.3.0": {
+        "compile": [
+          "lib/net45/Castle.Core.dll"
+        ],
+        "runtime": [
+          "lib/net45/Castle.Core.dll"
+        ]
+      },
+      "Castle.Windsor/3.3.0": {
+        "dependencies": {
+          "Castle.Core": "3.3.0"
+        },
+        "frameworkAssemblies": [
+          "System.Core",
+          "System.Xml"
+        ],
+        "compile": [
+          "lib/net45/Castle.Windsor.dll"
+        ],
+        "runtime": [
+          "lib/net45/Castle.Windsor.dll"
+        ]
+      },
+      "Facebook/6.8.0": {
+        "compile": [
+          "lib/net45/Facebook.dll"
+        ],
+        "runtime": [
+          "lib/net45/Facebook.dll"
+        ]
+      },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
+        },
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
+        ],
+        "runtime": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
+        ]
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
+        ],
+        "runtime": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
+        ]
+      },
+      "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta4": {
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.6",
+          "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4"
+        },
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+        ],
+        "runtime": [
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+        ]
+      },
+      "Microsoft.Framework.DependencyInjection.Interfaces/1.0.0-beta4": {
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": [
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
+        ],
+        "runtime": [
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
+        ]
+      },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": [
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+        ],
+        "runtime": [
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+        ]
+      },
+      "Newtonsoft.Json/6.0.1": {
+        "compile": [
+          "lib/net45/Newtonsoft.Json.dll"
+        ],
+        "runtime": [
+          "lib/net45/Newtonsoft.Json.dll"
+        ]
+      },
+      "NServiceBus/5.2.0": {
+        "frameworkAssemblies": [
+          "System",
+          "System.Core"
+        ],
+        "compile": [
+          "lib/net45/NServiceBus.Core.dll"
+        ],
+        "runtime": [
+          "lib/net45/NServiceBus.Core.dll"
+        ]
+      },
+      "NServiceBus.CastleWindsor/5.0.0": {
+        "dependencies": {
+          "NServiceBus": "[5.0.0, 6.0.0)",
+          "Castle.Windsor": "[3.3.0, 4.0.0)"
+        },
+        "compile": [
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
+        ],
+        "runtime": [
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
+        ]
+      },
+      "NServiceBus.Host/6.0.0": {
+        "dependencies": {
+          "NServiceBus": "[5.0.0, 6.0.0)"
+        }
+      },
+      "NServiceBus.SqlServer/2.1.2": {
+        "dependencies": {
+          "NServiceBus": "[5.0.0, 6.0.0)"
+        },
+        "compile": [
+          "lib/net45/NServiceBus.Transports.SQLServer.dll"
+        ],
+        "runtime": [
+          "lib/net45/NServiceBus.Transports.SQLServer.dll"
+        ]
+      },
+      "RestSharp/105.0.1": {
+        "compile": [
+          "lib/net4/RestSharp.dll"
+        ],
+        "runtime": [
+          "lib/net4/RestSharp.dll"
+        ]
+      },
+      "StackExchange.Redis/1.0.414": {
+        "compile": [
+          "lib/net45/StackExchange.Redis.dll"
+        ],
+        "runtime": [
+          "lib/net45/StackExchange.Redis.dll"
+        ]
+      },
+      "Twilio/4.0.0": {
+        "dependencies": {
+          "RestSharp": "105.0.1"
+        },
+        "compile": [
+          "lib/3.5/Twilio.Api.dll"
+        ],
+        "runtime": [
+          "lib/3.5/Twilio.Api.dll"
+        ]
+      },
+      "Twilio.TwiML/3.3.6": {
+        "compile": [
+          "lib/3.5/Twilio.Twiml.dll"
+        ],
+        "runtime": [
+          "lib/3.5/Twilio.Twiml.dll"
+        ]
+      }
+    }
   },
   "libraries": {
     "AutoMapper/3.3.0": {
-      "serviceable": false,
-      "sha": "3zf51TOV9sRBVapTDqciVZAZ8SHYIDQzeRdj7ANy1G5kprymvjQynbDSfjcVVlj1QBPyP01RD59C6g6cDmj/eA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net40/AutoMapper.dll",
-            "lib/net40/AutoMapper.Net4.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net40/AutoMapper.dll",
-            "lib/net40/AutoMapper.Net4.dll"
-          ]
-        }
-      },
+      "sha512": "3zf51TOV9sRBVapTDqciVZAZ8SHYIDQzeRdj7ANy1G5kprymvjQynbDSfjcVVlj1QBPyP01RD59C6g6cDmj/eA==",
       "files": [
         "AutoMapper.3.3.0.nupkg",
         "AutoMapper.3.3.0.nupkg.sha512",
@@ -44,24 +220,24 @@
         "lib/MonoTouch/AutoMapper.dll",
         "lib/MonoTouch/AutoMapper.iOS.dll",
         "lib/MonoTouch/AutoMapper.xml",
-        "lib/net40/AutoMapper.dll",
         "lib/net40/AutoMapper.Net4.dll",
+        "lib/net40/AutoMapper.dll",
         "lib/net40/AutoMapper.xml",
         "lib/portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch/AutoMapper.dll",
         "lib/portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch/AutoMapper.xml",
         "lib/portable-windows8+net40+wp8+wpa81+sl5+MonoAndroid+MonoTouch/AutoMapper.dll",
         "lib/portable-windows8+net40+wp8+wpa81+sl5+MonoAndroid+MonoTouch/AutoMapper.xml",
-        "lib/sl5/AutoMapper.dll",
         "lib/sl5/AutoMapper.SL5.dll",
+        "lib/sl5/AutoMapper.dll",
         "lib/sl5/AutoMapper.xml",
-        "lib/windows8/AutoMapper.dll",
         "lib/windows8/AutoMapper.WinRT.dll",
+        "lib/windows8/AutoMapper.dll",
         "lib/windows8/AutoMapper.xml",
-        "lib/wp8/AutoMapper.dll",
         "lib/wp8/AutoMapper.WP8.dll",
+        "lib/wp8/AutoMapper.dll",
         "lib/wp8/AutoMapper.xml",
-        "lib/wpa81/AutoMapper.dll",
         "lib/wpa81/AutoMapper.WPA81.dll",
+        "lib/wpa81/AutoMapper.dll",
         "lib/wpa81/AutoMapper.xml",
         "tools/AutoMapper.targets",
         "tools/MonoAndroid/Install.ps1",
@@ -81,20 +257,7 @@
       ]
     },
     "Castle.Core/3.3.0": {
-      "serviceable": false,
-      "sha": "wvlF47qlxKXurxSUWAnX79stVrnkuUPe5lHq26OiXUtMEngPaBcJ+5j+yVdFJ70hjUZpqg7qQK5hCZSex14ekQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/Castle.Core.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/Castle.Core.dll"
-          ]
-        }
-      },
+      "sha512": "wvlF47qlxKXurxSUWAnX79stVrnkuUPe5lHq26OiXUtMEngPaBcJ+5j+yVdFJ70hjUZpqg7qQK5hCZSex14ekQ==",
       "files": [
         "ASL - Apache Software Foundation License.txt",
         "BreakingChanges.txt",
@@ -117,25 +280,7 @@
       ]
     },
     "Castle.Windsor/3.3.0": {
-      "serviceable": false,
-      "sha": "5QiDI4DPLkIM7N9mTBaFlmh2GlWFZe+tF0tOzx0QdNE+pGWAm3gFrmKi4LnOIKIhGcocqW0zptMMIxidVMWqEQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Castle.Core": "3.3.0"
-          },
-          "frameworkAssemblies": [
-            "System.Core",
-            "System.Xml"
-          ],
-          "runtimeAssemblies": [
-            "lib/net45/Castle.Windsor.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/Castle.Windsor.dll"
-          ]
-        }
-      },
+      "sha512": "5QiDI4DPLkIM7N9mTBaFlmh2GlWFZe+tF0tOzx0QdNE+pGWAm3gFrmKi4LnOIKIhGcocqW0zptMMIxidVMWqEQ==",
       "files": [
         "ASL - Apache Software Foundation License.txt",
         "BreakingChanges.txt",
@@ -160,20 +305,7 @@
       ]
     },
     "Facebook/6.8.0": {
-      "serviceable": false,
-      "sha": "ZxkOacMFH3kIQPbthh8olls+mPAP2qSrNVQ7B79U2Js55cZtO1W1YlckiW50QAzyarQlIobW5N5mfYLJ4S+7Xg==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/Facebook.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/Facebook.dll"
-          ]
-        }
-      },
+      "sha512": "ZxkOacMFH3kIQPbthh8olls+mPAP2qSrNVQ7B79U2Js55cZtO1W1YlckiW50QAzyarQlIobW5N5mfYLJ4S+7Xg==",
       "files": [
         "Facebook.6.8.0.nupkg",
         "Facebook.6.8.0.nupkg.sha512",
@@ -203,27 +335,7 @@
     },
     "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
       "serviceable": true,
-      "sha": "VD5MhmQRhYVfxyDs1fyruPTj3pYwLMV5dXJkPUVg1KKbJ9qr/tEn3frJA1NN1jdeVBt1RrW5FXr+wWG9YoO9Yg==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
-            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-          ]
-        }
-      },
+      "sha512": "VD5MhmQRhYVfxyDs1fyruPTj3pYwLMV5dXJkPUVg1KKbJ9qr/tEn3frJA1NN1jdeVBt1RrW5FXr+wWG9YoO9Yg==",
       "files": [
         "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg",
         "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg.sha512",
@@ -240,24 +352,7 @@
     },
     "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
       "serviceable": true,
-      "sha": "lU9+gyEz+jSeR+QsZxZtDf0U2DS/pl3I8/m7YeKjHMnjqoxUKFbSOpzegll7bhq0Alw7/8gF2Byrcy+PlzRc/g==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
-          ]
-        }
-      },
+      "sha512": "lU9+gyEz+jSeR+QsZxZtDf0U2DS/pl3I8/m7YeKjHMnjqoxUKFbSOpzegll7bhq0Alw7/8gF2Byrcy+PlzRc/g==",
       "files": [
         "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg",
         "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg.sha512",
@@ -274,27 +369,7 @@
     },
     "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta4": {
       "serviceable": true,
-      "sha": "ygdShf5lzRsqe7/pMNSaiq6AcAy0eIhp8WFUtYfqQnsxhMJFcw/VlIFvie8+DkYhacdmGkXTF4OGopjjwfg02A==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Newtonsoft.Json": "6.0.6",
-            "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-          ]
-        }
-      },
+      "sha512": "ygdShf5lzRsqe7/pMNSaiq6AcAy0eIhp8WFUtYfqQnsxhMJFcw/VlIFvie8+DkYhacdmGkXTF4OGopjjwfg02A==",
       "files": [
         "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg",
         "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg.sha512",
@@ -309,24 +384,7 @@
     },
     "Microsoft.Framework.DependencyInjection.Interfaces/1.0.0-beta4": {
       "serviceable": true,
-      "sha": "qbBGymgVdlrJZhJFg+35JaA0Tp8DYeFrDwv1Q3Di9hRWLZ3rAE7bvsnP+fmuo0XGlZDVXfGjINvtryFPyoQ58g==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
-          ]
-        }
-      },
+      "sha512": "qbBGymgVdlrJZhJFg+35JaA0Tp8DYeFrDwv1Q3Di9hRWLZ3rAE7bvsnP+fmuo0XGlZDVXfGjINvtryFPyoQ58g==",
       "files": [
         "Microsoft.Framework.DependencyInjection.Interfaces.1.0.0-beta4.nupkg",
         "Microsoft.Framework.DependencyInjection.Interfaces.1.0.0-beta4.nupkg.sha512",
@@ -343,24 +401,7 @@
     },
     "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
       "serviceable": true,
-      "sha": "RrZdqvUm8QbgxnZQuafYGo6NezoKx7VqAfAtHVzoKBm3GSV8xlPh90u1fsGhNCv37xJNk5PuRCa4Mq27ko7pLw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ]
-        }
-      },
+      "sha512": "RrZdqvUm8QbgxnZQuafYGo6NezoKx7VqAfAtHVzoKBm3GSV8xlPh90u1fsGhNCv37xJNk5PuRCa4Mq27ko7pLw==",
       "files": [
         "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg",
         "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg.sha512",
@@ -371,24 +412,11 @@
         "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml"
       ]
     },
-    "Newtonsoft.Json/6.0.6": {
-      "serviceable": false,
-      "sha": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/Newtonsoft.Json.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/Newtonsoft.Json.dll"
-          ]
-        }
-      },
+    "Newtonsoft.Json/6.0.1": {
+      "sha512": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
       "files": [
-        "Newtonsoft.Json.6.0.6.nupkg",
-        "Newtonsoft.Json.6.0.6.nupkg.sha512",
+        "Newtonsoft.Json.6.0.1.nupkg",
+        "Newtonsoft.Json.6.0.1.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -400,31 +428,15 @@
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netcore45/Newtonsoft.Json.dll",
         "lib/netcore45/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.xml",
         "tools/install.ps1"
       ]
     },
     "NServiceBus/5.2.0": {
-      "serviceable": false,
-      "sha": "2Hx4r0wXqizhJO9J/USAldYuMt2wuMjSc+BXIJTwE5e6T8tKd+q6IxsMHOhe3racjPYgmGgCB+prX7NT9S6aBg==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "System",
-            "System.Core"
-          ],
-          "runtimeAssemblies": [
-            "lib/net45/NServiceBus.Core.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/NServiceBus.Core.dll"
-          ]
-        }
-      },
+      "sha512": "2Hx4r0wXqizhJO9J/USAldYuMt2wuMjSc+BXIJTwE5e6T8tKd+q6IxsMHOhe3racjPYgmGgCB+prX7NT9S6aBg==",
       "files": [
         "NServiceBus.5.2.0.nupkg",
         "NServiceBus.5.2.0.nupkg.sha512",
@@ -432,29 +444,13 @@
         "lib/net45/NServiceBus.Core.dll",
         "lib/net45/NServiceBus.Core.pdb",
         "lib/net45/NServiceBus.Core.xml",
+        "tools/NServiceBus.PowerShell.Development.dll",
         "tools/about_NServiceBus.help.txt",
-        "tools/init.ps1",
-        "tools/NServiceBus.PowerShell.Development.dll"
+        "tools/init.ps1"
       ]
     },
     "NServiceBus.CastleWindsor/5.0.0": {
-      "serviceable": false,
-      "sha": "axxj9BH0RTLCzkXAITCBcnEokiwXIQXB/UBbVccKZRgocW+lNlebMX+WPW3K1ar5hBPACgDxjoM427jaucvS6g==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "NServiceBus": "[5.0.0, 6.0.0)",
-            "Castle.Windsor": "[3.3.0, 4.0.0)"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-          ]
-        }
-      },
+      "sha512": "axxj9BH0RTLCzkXAITCBcnEokiwXIQXB/UBbVccKZRgocW+lNlebMX+WPW3K1ar5hBPACgDxjoM427jaucvS6g==",
       "files": [
         "NServiceBus.CastleWindsor.5.0.0.nupkg",
         "NServiceBus.CastleWindsor.5.0.0.nupkg.sha512",
@@ -465,18 +461,7 @@
       ]
     },
     "NServiceBus.Host/6.0.0": {
-      "serviceable": false,
-      "sha": "Ka7CcoK888eic3wV+UG1IsKjHx3pVUBRMUFrZVNcOKHO8EnutJ04VNsvs/0PD7p0NldE5UVFuzMlqeG6HJZW/A==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "NServiceBus": "[5.0.0, 6.0.0)"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [],
-          "compileAssemblies": []
-        }
-      },
+      "sha512": "Ka7CcoK888eic3wV+UG1IsKjHx3pVUBRMUFrZVNcOKHO8EnutJ04VNsvs/0PD7p0NldE5UVFuzMlqeG6HJZW/A==",
       "files": [
         "NServiceBus.Host.6.0.0.nupkg",
         "NServiceBus.Host.6.0.0.nupkg.sha512",
@@ -489,22 +474,7 @@
       ]
     },
     "NServiceBus.SqlServer/2.1.2": {
-      "serviceable": false,
-      "sha": "AuzIAm+QjW95lAsGXxSBqdnukt6DB/pL81wKrReMEP/k52mSkUXBaBEHwN7jmmB7PKyTKzim+DGlE5oMM2Bjsw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "NServiceBus": "[5.0.0, 6.0.0)"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/NServiceBus.Transports.SQLServer.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/NServiceBus.Transports.SQLServer.dll"
-          ]
-        }
-      },
+      "sha512": "AuzIAm+QjW95lAsGXxSBqdnukt6DB/pL81wKrReMEP/k52mSkUXBaBEHwN7jmmB7PKyTKzim+DGlE5oMM2Bjsw==",
       "files": [
         "NServiceBus.SqlServer.2.1.2.nupkg",
         "NServiceBus.SqlServer.2.1.2.nupkg.sha512",
@@ -516,25 +486,12 @@
       ]
     },
     "RestSharp/105.0.1": {
-      "serviceable": false,
-      "sha": "2jEivNmSZFsK/iyoOu0l9+pEM2hXLQCvOQdLgQcr92cdnirl2xm+Wddy7lP6JTwZSLjAQ1ogHlal1tLu5hfZPw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net4/RestSharp.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net4/RestSharp.dll"
-          ]
-        }
-      },
+      "sha512": "2jEivNmSZFsK/iyoOu0l9+pEM2hXLQCvOQdLgQcr92cdnirl2xm+Wddy7lP6JTwZSLjAQ1ogHlal1tLu5hfZPw==",
       "files": [
-        "readme.txt",
         "RestSharp.105.0.1.nupkg",
         "RestSharp.105.0.1.nupkg.sha512",
         "RestSharp.nuspec",
+        "readme.txt",
         "lib/net35/RestSharp.dll",
         "lib/net35/RestSharp.xml",
         "lib/net35-client/RestSharp.dll",
@@ -550,20 +507,7 @@
       ]
     },
     "StackExchange.Redis/1.0.414": {
-      "serviceable": false,
-      "sha": "GbMBODy6iZf1fR6tQeqV9OHoYW7xCgdvMcOJiUyxFjE2NRSrxO87RShXusvv/sMTuTOjDtV77B5mvRcYGNt6pw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/StackExchange.Redis.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/StackExchange.Redis.dll"
-          ]
-        }
-      },
+      "sha512": "GbMBODy6iZf1fR6tQeqV9OHoYW7xCgdvMcOJiUyxFjE2NRSrxO87RShXusvv/sMTuTOjDtV77B5mvRcYGNt6pw==",
       "files": [
         "StackExchange.Redis.1.0.414.nupkg",
         "StackExchange.Redis.1.0.414.nupkg.sha512",
@@ -578,22 +522,7 @@
       ]
     },
     "Twilio/4.0.0": {
-      "serviceable": false,
-      "sha": "y69ywY09bK2CV63SSV5w2zIPgsqeHUb/ktlZ5BdnXEiFLaUuNdY1ez6LLFdF5dxgK/Sim/+Q1x8okyogZoXrMw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "RestSharp": "105.0.1"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/3.5/Twilio.Api.dll"
-          ],
-          "compileAssemblies": [
-            "lib/3.5/Twilio.Api.dll"
-          ]
-        }
-      },
+      "sha512": "y69ywY09bK2CV63SSV5w2zIPgsqeHUb/ktlZ5BdnXEiFLaUuNdY1ez6LLFdF5dxgK/Sim/+Q1x8okyogZoXrMw==",
       "files": [
         "Twilio.4.0.0.nupkg",
         "Twilio.4.0.0.nupkg.sha512",
@@ -610,20 +539,7 @@
       ]
     },
     "Twilio.TwiML/3.3.6": {
-      "serviceable": false,
-      "sha": "Ztw51vqnsLJWoRcyGi54cN3BXYex+c1G48RXSktd2x3qbFzazrt7yRjLHQLkXi80Mp6Jfr60aoVUX2UExod+kA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/3.5/Twilio.Twiml.dll"
-          ],
-          "compileAssemblies": [
-            "lib/3.5/Twilio.Twiml.dll"
-          ]
-        }
-      },
+      "sha512": "Ztw51vqnsLJWoRcyGi54cN3BXYex+c1G48RXSktd2x3qbFzazrt7yRjLHQLkXi80Mp6Jfr60aoVUX2UExod+kA==",
       "files": [
         "Twilio.TwiML.3.3.6.nupkg",
         "Twilio.TwiML.3.3.6.nupkg.sha512",
@@ -633,5 +549,24 @@
         "lib/3.5/Twilio.Twiml.xml"
       ]
     }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Damascus.Core >= 1.0.0-*",
+      "Damascus.Workflow >= 1.0.0-*",
+      "Damascus.Message >= 1.0.0-*",
+      "Castle.Windsor >= 3.3.0",
+      "Newtonsoft.Json >= 6.0.1",
+      "RestSharp >= 105.0.1",
+      "Microsoft.Framework.DependencyInjection.Interfaces >= 1.0.0-beta4",
+      "Microsoft.Framework.ConfigurationModel.Json >= 1.0.0-beta4",
+      "NServiceBus >= 5.2.0",
+      "NServiceBus.Host >= 5.2.0",
+      "NServiceBus.SqlServer >= 2.1.2",
+      "NServiceBus.CastleWindsor >= 5.0.0",
+      "Twilio >= 4.0.0",
+      "Twilio.TwiML >= 3.3.6"
+    ],
+    "DNX,Version=v4.5.1": []
   }
 }

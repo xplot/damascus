@@ -14,6 +14,10 @@
         //Dependency Injection
         "Castle.Windsor": "3.3.0",
         
+        //JSON.NET
+        "Newtonsoft.Json": "6.0.1",
+        "RestSharp": "105.0.1",
+        
         //Framework
         "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-beta4",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
@@ -23,6 +27,10 @@
         "NServiceBus.Host": "5.2.0",
         "NServiceBus.SqlServer": "2.1.2",
         "NServiceBus.CastleWindsor": "5.0.0",
+        
+        //Twilio
+        "Twilio": "4.0.0",
+        "Twilio.TwiML": "3.3.6",
   },
 
   "frameworks" : {
