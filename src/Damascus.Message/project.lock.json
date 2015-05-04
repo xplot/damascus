@@ -1,44 +1,29 @@
 {
   "locked": false,
-  "version": -9997,
-  "targets": {
-    "DNX,Version=v4.5.1": {
-      "Newtonsoft.Json/6.0.1": {
-        "compile": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ],
-        "runtime": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ]
-      },
-      "NServiceBus/4.6.5": {
-        "dependencies": {
-          "NServiceBus.Interfaces": "4.6.5"
-        },
-        "frameworkAssemblies": [
-          "System",
-          "System.Core"
-        ],
-        "compile": [
-          "lib/net40/NServiceBus.Core.dll"
-        ],
-        "runtime": [
-          "lib/net40/NServiceBus.Core.dll"
-        ]
-      },
-      "NServiceBus.Interfaces/4.6.5": {
-        "compile": [
-          "lib/net40/NServiceBus.dll"
-        ],
-        "runtime": [
-          "lib/net40/NServiceBus.dll"
-        ]
-      }
-    }
+  "version": -9998,
+  "projectFileDependencyGroups": {
+    "": [
+      "Newtonsoft.Json >= 6.0.1",
+      "NServiceBus >= 5.2.0"
+    ],
+    "DNX,Version=v4.5.1": []
   },
   "libraries": {
     "Newtonsoft.Json/6.0.1": {
-      "sha512": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
+      "serviceable": false,
+      "sha": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ]
+        }
+      },
       "files": [
         "Newtonsoft.Json.6.0.1.nupkg",
         "Newtonsoft.Json.6.0.1.nupkg.sha512",
@@ -60,38 +45,35 @@
         "tools/install.ps1"
       ]
     },
-    "NServiceBus/4.6.5": {
-      "sha512": "Wcx8Y+6bqQ2ZywyyRnJFmtQZlCKRzvw/U0Fmgqg/6oCfJbaslMZmsdvSHcIMtSvJTtlDzvhypE52fE2FrD2bsQ==",
+    "NServiceBus/5.2.0": {
+      "serviceable": false,
+      "sha": "2Hx4r0wXqizhJO9J/USAldYuMt2wuMjSc+BXIJTwE5e6T8tKd+q6IxsMHOhe3racjPYgmGgCB+prX7NT9S6aBg==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [
+            "System",
+            "System.Core"
+          ],
+          "runtimeAssemblies": [
+            "lib/net45/NServiceBus.Core.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/NServiceBus.Core.dll"
+          ]
+        }
+      },
       "files": [
-        "NServiceBus.4.6.5.nupkg",
-        "NServiceBus.4.6.5.nupkg.sha512",
+        "NServiceBus.5.2.0.nupkg",
+        "NServiceBus.5.2.0.nupkg.sha512",
         "NServiceBus.nuspec",
-        "lib/net40/NServiceBus.Core.dll",
-        "lib/net40/NServiceBus.Core.pdb",
-        "lib/net40/NServiceBus.Core.xml",
-        "tools/NServiceBus.PowerShell.Development.dll",
+        "lib/net45/NServiceBus.Core.dll",
+        "lib/net45/NServiceBus.Core.pdb",
+        "lib/net45/NServiceBus.Core.xml",
         "tools/about_NServiceBus.help.txt",
-        "tools/init.ps1"
-      ]
-    },
-    "NServiceBus.Interfaces/4.6.5": {
-      "sha512": "fE9YG+niX3qoN5spQ5FcH8m4dHPlmgkykdFS5hY/HAszFCitF8SzARu+MCfeyjUz/pBkV0b0D4xZdfnMjPHcUQ==",
-      "files": [
-        "NServiceBus.Interfaces.4.6.5.nupkg",
-        "NServiceBus.Interfaces.4.6.5.nupkg.sha512",
-        "NServiceBus.Interfaces.nuspec",
-        "lib/net40/NServiceBus.XML",
-        "lib/net40/NServiceBus.dll",
-        "lib/net40/NServiceBus.pdb"
+        "tools/init.ps1",
+        "tools/NServiceBus.PowerShell.Development.dll"
       ]
     }
-  },
-  "projectFileDependencyGroups": {
-    "": [
-      "Newtonsoft.Json >= 6.0.1",
-      "NServiceBus >= 4.6.5",
-      "NServiceBus.Interfaces >= 4.6.5"
-    ],
-    "DNX,Version=v4.5.1": []
   }
 }

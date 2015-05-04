@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Damascus.Message.Command;
 
 namespace Damascus.Message
 {
@@ -58,7 +59,7 @@ namespace Damascus.Message
         [JsonProperty(PropertyName = "uniquecall_id")]
         public string UniqueCallId { get; set; }
 
-        [JsonProperty(PropertyName = "unique_id")]
+        [JsonProperty(PropertyName = "invite_unique_id")]
         public string InviteId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -157,5 +158,69 @@ namespace Damascus.Message
         public string FacebookAccessToken { get; set; }
         public string TwitterAccessToken { get; set; }
 
+    }
+
+    public class BodyTemplate
+    {
+        public string Body { get; set; }
+        public string Url { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "{0};_;{1}",
+                this.Body,
+                this.Url
+            );
+        }
+
+        public static BodyTemplate FromString(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return new EmailTemplate();
+
+            var args = value.Split(new string[] { ";_;" }, StringSplitOptions.None);
+
+            return new BodyTemplate()
+            {
+                Body = args[0],
+                Url = args[1],
+            };
+        }
+    }
+
+    public class EmailTemplate : BodyTemplate
+    {
+        public string Subject { get; set; }
+
+        [JsonProperty(PropertyName = "redirect_url")]
+        public string RedirectUrl { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "{0};_;{1};_;{2};_;{3}",
+                this.Subject,
+                this.Body,
+                this.Url,
+                this.RedirectUrl
+                );
+        }
+
+        public static EmailTemplate FromString(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return new EmailTemplate();
+
+            var args = value.Split(new string[] { ";_;" }, StringSplitOptions.None);
+
+            return new EmailTemplate()
+            {
+                Subject = args[0],
+                Body = args[1],
+                Url = args[2],
+                RedirectUrl = args[3]
+            };
+        }
     }
 }

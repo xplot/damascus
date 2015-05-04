@@ -5,6 +5,7 @@ using Damascus.Core;
 using Damascus.Message;
 using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
+using NServiceBus;
 
 namespace Damascus.Web.Controllers
 {
@@ -14,18 +15,22 @@ namespace Damascus.Web.Controllers
         public WorkflowEngine WorkflowEngine { get; set; }
         public IDataSerializer DataSerializer { get; set; }
         public ILogger Logger { get; set; }
-        public ITemplateManager TemplateManager { get; set; }
-        
-        public InviteController(ILoggerFactory loggerFactory, ITemplateManager templateManager)
+
+        public InviteController(
+                                ILoggerFactory loggerFactory,
+                                WorkflowEngine engine,
+                                IDataSerializer serializer
+                                )
         {   	
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
-            this.TemplateManager = templateManager;
+            DataSerializer = serializer;
+            WorkflowEngine = engine;
+
         }
         
         [Route("api/invite")]
-        public string CreateInvite(InviteInput input)
+        public string CreateInvite([FromBody]InviteInput input)
         {
-            /*
             if (input == null)
                 throw new Exception("Invite format is not valid");
 
@@ -48,16 +53,12 @@ namespace Damascus.Web.Controllers
             };
 
             return WorkflowEngine.Process(workflowContext);
-            */
             
-            Logger.LogInformation("invite executed");
-            return TemplateManager.GetHashCode().ToString();
         }
     	[Route("api/invite/attendees")]
-        public string InviteAttendees(InviteAttendeesInput input)
+        public string InviteAttendees([FromBody]InviteAttendeesInput input)
         {
          
-            /*   
             if (input == null)
                 throw new Exception("Invite format is not valid");
 
@@ -73,8 +74,6 @@ namespace Damascus.Web.Controllers
             };
 
             return WorkflowEngine.Process(workflowContext);
-            */
-            return "attendees";
         }
         
         [Route("api/invite/cancel")]

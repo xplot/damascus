@@ -3,17 +3,16 @@
   "version": -9998,
   "projectFileDependencyGroups": {
     "": [
+      "Damascus.Core >= 1.0.0-*",
+      "Damascus.Workflow >= 1.0.0-*",
       "Damascus.Message >= 1.0.0-*",
-      "AutoMapper >= 3.3.0",
-      "Castle.Core >= 3.3.0",
       "Castle.Windsor >= 3.3.0",
-      "Newtonsoft.Json >= 6.0.1",
-      "RestSharp >= 105.0.1",
-      "StackExchange.Redis >= 1.0.414",
-      "Facebook >= 6.8.0",
+      "Microsoft.Framework.DependencyInjection.Interfaces >= 1.0.0-beta4",
+      "Microsoft.Framework.ConfigurationModel.Json >= 1.0.0-beta4",
       "NServiceBus >= 5.2.0",
-      "Twilio >= 4.0.0",
-      "Twilio.TwiML >= 3.3.6"
+      "NServiceBus.Host >= 5.2.0",
+      "NServiceBus.SqlServer >= 2.1.2",
+      "NServiceBus.CastleWindsor >= 5.0.0"
     ],
     "DNX,Version=v4.5.1": []
   },
@@ -202,9 +201,179 @@
         "serializers/JsonNetSerializer.cs"
       ]
     },
-    "Newtonsoft.Json/6.0.1": {
+    "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "VD5MhmQRhYVfxyDs1fyruPTj3pYwLMV5dXJkPUVg1KKbJ9qr/tEn3frJA1NN1jdeVBt1RrW5FXr+wWG9YoO9Yg==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.nuspec",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.xml"
+      ]
+    },
+    "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "lU9+gyEz+jSeR+QsZxZtDf0U2DS/pl3I8/m7YeKjHMnjqoxUKFbSOpzegll7bhq0Alw7/8gF2Byrcy+PlzRc/g==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Interfaces.nuspec",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.Interfaces.xml"
+      ]
+    },
+    "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "ygdShf5lzRsqe7/pMNSaiq6AcAy0eIhp8WFUtYfqQnsxhMJFcw/VlIFvie8+DkYhacdmGkXTF4OGopjjwfg02A==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Newtonsoft.Json": "6.0.6",
+            "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Json.nuspec",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Json.xml"
+      ]
+    },
+    "Microsoft.Framework.DependencyInjection.Interfaces/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "qbBGymgVdlrJZhJFg+35JaA0Tp8DYeFrDwv1Q3Di9hRWLZ3rAE7bvsnP+fmuo0XGlZDVXfGjINvtryFPyoQ58g==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.DependencyInjection.Interfaces.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.DependencyInjection.Interfaces.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.DependencyInjection.Interfaces.nuspec",
+        "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.DependencyInjection.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.DependencyInjection.Interfaces.xml",
+        "lib/net45/Microsoft.Framework.DependencyInjection.Interfaces.dll",
+        "lib/net45/Microsoft.Framework.DependencyInjection.Interfaces.xml",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.DependencyInjection.Interfaces.dll",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.DependencyInjection.Interfaces.xml"
+      ]
+    },
+    "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "RrZdqvUm8QbgxnZQuafYGo6NezoKx7VqAfAtHVzoKBm3GSV8xlPh90u1fsGhNCv37xJNk5PuRCa4Mq27ko7pLw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Interfaces.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml"
+      ]
+    },
+    "Newtonsoft.Json/6.0.6": {
       "serviceable": false,
-      "sha": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
+      "sha": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {},
@@ -218,8 +387,8 @@
         }
       },
       "files": [
-        "Newtonsoft.Json.6.0.1.nupkg",
-        "Newtonsoft.Json.6.0.1.nupkg.sha512",
+        "Newtonsoft.Json.6.0.6.nupkg",
+        "Newtonsoft.Json.6.0.6.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -231,10 +400,10 @@
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netcore45/Newtonsoft.Json.dll",
         "lib/netcore45/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
         "tools/install.ps1"
       ]
     },
@@ -266,6 +435,84 @@
         "tools/about_NServiceBus.help.txt",
         "tools/init.ps1",
         "tools/NServiceBus.PowerShell.Development.dll"
+      ]
+    },
+    "NServiceBus.CastleWindsor/5.0.0": {
+      "serviceable": false,
+      "sha": "axxj9BH0RTLCzkXAITCBcnEokiwXIQXB/UBbVccKZRgocW+lNlebMX+WPW3K1ar5hBPACgDxjoM427jaucvS6g==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "NServiceBus": "[5.0.0, 6.0.0)",
+            "Castle.Windsor": "[3.3.0, 4.0.0)"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
+          ]
+        }
+      },
+      "files": [
+        "NServiceBus.CastleWindsor.5.0.0.nupkg",
+        "NServiceBus.CastleWindsor.5.0.0.nupkg.sha512",
+        "NServiceBus.CastleWindsor.nuspec",
+        "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll",
+        "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.pdb",
+        "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.xml"
+      ]
+    },
+    "NServiceBus.Host/6.0.0": {
+      "serviceable": false,
+      "sha": "Ka7CcoK888eic3wV+UG1IsKjHx3pVUBRMUFrZVNcOKHO8EnutJ04VNsvs/0PD7p0NldE5UVFuzMlqeG6HJZW/A==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "NServiceBus": "[5.0.0, 6.0.0)"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "NServiceBus.Host.6.0.0.nupkg",
+        "NServiceBus.Host.6.0.0.nupkg.sha512",
+        "NServiceBus.Host.nuspec",
+        "lib/net45/NServiceBus.Host.exe",
+        "lib/net45/NServiceBus.Host.pdb",
+        "lib/net45/NServiceBus.Host.xml",
+        "tools/EndpointConfig.cs",
+        "tools/install.ps1"
+      ]
+    },
+    "NServiceBus.SqlServer/2.1.2": {
+      "serviceable": false,
+      "sha": "AuzIAm+QjW95lAsGXxSBqdnukt6DB/pL81wKrReMEP/k52mSkUXBaBEHwN7jmmB7PKyTKzim+DGlE5oMM2Bjsw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "NServiceBus": "[5.0.0, 6.0.0)"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/NServiceBus.Transports.SQLServer.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/NServiceBus.Transports.SQLServer.dll"
+          ]
+        }
+      },
+      "files": [
+        "NServiceBus.SqlServer.2.1.2.nupkg",
+        "NServiceBus.SqlServer.2.1.2.nupkg.sha512",
+        "NServiceBus.SqlServer.nuspec",
+        "lib/net45/NServiceBus.Transports.SQLServer.dll",
+        "lib/net45/NServiceBus.Transports.SQLServer.pdb",
+        "lib/net45/NServiceBus.Transports.SQLServer.xml",
+        "tools/install.ps1"
       ]
     },
     "RestSharp/105.0.1": {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NServiceBus;
 
-namespace Damascus.Message
+namespace Damascus.Message.Command
 {
     public class CreateCallMessage:IdMessage
     {

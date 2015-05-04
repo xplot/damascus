@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Damascus.Message;
+using Damascus.Message.Command;
 using Facebook;
 
 namespace Damascus.Core

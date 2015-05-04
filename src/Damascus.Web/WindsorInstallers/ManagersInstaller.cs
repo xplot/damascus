@@ -5,7 +5,6 @@ using System;
 using System.Configuration;
 using Damascus.Core;
 using Damascus.Message;
-using log4net;
 
 namespace Damascus.Web
 {

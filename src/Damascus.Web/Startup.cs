@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
@@ -10,6 +11,8 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.OptionsModel;
 using Microsoft.AspNet.Authorization;
+using Microsoft.Framework.ConfigurationModel.Json;
+using Microsoft.Framework.ConfigurationModel;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using DI = Microsoft.Framework.DependencyInjection;
 using Damascus.Core;
@@ -17,8 +20,9 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.MicroKernel.Lifestyle;
 
-using Castle.MicroKernel.Resolvers;
-using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+using NServiceBus;
+using NServiceBus.Config.ConfigurationSource;
+using NServiceBus.Config;
 
 namespace Damascus.Web
 {
@@ -28,6 +32,21 @@ namespace Damascus.Web
 
         public Startup(IHostingEnvironment env)
         {
+        }
+
+        private static Configuration _config;
+        public static Configuration Configuration
+        {
+            get
+            {
+                if (_config == null)
+                {
+                    _config = new Configuration();
+                    _config.AddJsonFile("Config/local.json");//Parametize this....for Prod
+
+                }
+                return _config;
+            }
         }
 
         // This method gets called by a runtime.
@@ -61,6 +80,8 @@ namespace Damascus.Web
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
+            
+
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
             
@@ -73,6 +94,8 @@ namespace Damascus.Web
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
 
             app.ApplicationServices =  container.Resolve<IServiceProvider>();
+
+            ConfigureBus();
         }
         
         private void ConfigureLogging(ILoggerFactory loggerfactory )
@@ -98,8 +121,38 @@ namespace Damascus.Web
                         .ImplementedBy(typeof(List<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
             );
 
+
             container.BeginScope();
         }
+
+        private void ConfigureBus()
+        {
+            var configuration = new BusConfiguration();
+            var conventionsBuilder = configuration.Conventions();
+
+            conventionsBuilder.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Commands"));
+            conventionsBuilder.DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Events"));
+
+            configuration.EndpointName("Damascus.Web");
+            configuration.UseSerialization<JsonSerializer>();
+            configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
+            configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);
+            configuration.Transactions().Disable();
+
+            configuration.UsePersistence<InMemoryPersistence>();
+
+            configuration.EnableInstallers();
+
+            // Castle with a container instance
+            configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(this.container));
+
+            var bus = Bus.Create(configuration);
+            bus.Start();
+
+        }
+
     }
+
     
+
 }

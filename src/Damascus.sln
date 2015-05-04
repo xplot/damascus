@@ -11,6 +11,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Damascus.Core", "Damascus.C
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Damascus.Web", "Damascus.Web\Damascus.Web.xproj", "{48BCF914-CDA6-4F57-BC77-8BC539E5ED29}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Damascus.MessageChannel", "Damascus.MessageChannel\Damascus.MessageChannel.xproj", "{FCFF7D0A-3EC0-431C-9DB1-2E3741D64ABD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{48BCF914-CDA6-4F57-BC77-8BC539E5ED29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48BCF914-CDA6-4F57-BC77-8BC539E5ED29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48BCF914-CDA6-4F57-BC77-8BC539E5ED29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFF7D0A-3EC0-431C-9DB1-2E3741D64ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFF7D0A-3EC0-431C-9DB1-2E3741D64ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFF7D0A-3EC0-431C-9DB1-2E3741D64ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFF7D0A-3EC0-431C-9DB1-2E3741D64ABD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

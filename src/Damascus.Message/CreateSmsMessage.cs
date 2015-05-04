@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Damascus.Message
+namespace Damascus.Message.Command
 {
     public class CreateSmsMessage:IdMessage
     {

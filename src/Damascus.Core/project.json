@@ -21,8 +21,7 @@
         "Facebook": "6.8.0",
         
         //NServiceBus
-        "NServiceBus": "4.6.5",
-        "NServiceBus.Interfaces": "4.6.5",
+        "NServiceBus": "5.2.0",
         
         //Twilio
         "Twilio": "4.0.0",

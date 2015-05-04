@@ -4,6 +4,7 @@ using AutoMapper;
 using Damascus.Core;
 using Damascus.Core.AutoMapper;
 using Damascus.Message;
+using Damascus.Message.Command;
 using Newtonsoft.Json;
 using NServiceBus;
 using System.Diagnostics;

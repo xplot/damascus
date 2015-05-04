@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Damascus.Core;
 using Damascus.Message;
+using Damascus.Message.Command;
 using NServiceBus;
 
 namespace Damascus.Workflow

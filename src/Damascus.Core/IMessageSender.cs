@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using Damascus.Message;
+using Damascus.Message.Command;
 using RestSharp;
 using Twilio;
 

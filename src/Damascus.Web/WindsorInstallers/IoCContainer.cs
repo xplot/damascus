@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using Castle.Windsor;
@@ -106,7 +107,15 @@ namespace Damascus.Web
 
         public object GetService(Type serviceType)
         {
-            return _container.Resolve(serviceType);
+            //if(IsIEnumerableOfT(serviceType))
+            //    return _container.ResolveAll(serviceType);
+            //else
+                return _container.Resolve(serviceType);
+        }
+
+        public static bool IsIEnumerableOfT(Type type)
+        {
+            return type.GetInterfaces().Any(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>));
         }
     }
 

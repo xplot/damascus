@@ -12,8 +12,8 @@
         "Newtonsoft.Json": "6.0.1",
         
         //NServiceBus
-        "NServiceBus": "4.6.5",
-        "NServiceBus.Interfaces": "4.6.5",
+        "NServiceBus": "5.2.0",
+        
     },
 
     "frameworks": {
