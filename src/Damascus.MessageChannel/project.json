@@ -27,10 +27,14 @@
         "NServiceBus.Host": "5.2.0",
         "NServiceBus.SqlServer": "2.1.2",
         "NServiceBus.CastleWindsor": "5.0.0",
+        "NServiceBus.NLog": "1.0.0",
         
         //Twilio
         "Twilio": "4.0.0",
         "Twilio.TwiML": "3.3.6",
+        
+        //Logging
+        "NLog": "3.2.1",
   },
 
   "frameworks" : {

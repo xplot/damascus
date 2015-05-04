@@ -24,6 +24,10 @@ using NServiceBus;
 using NServiceBus.Config.ConfigurationSource;
 using NServiceBus.Config;
 
+using NLog;
+using NLog.Targets;
+using NLog.Config;
+
 namespace Damascus.Web
 {
     public class Startup
@@ -80,7 +84,7 @@ namespace Damascus.Web
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
-            
+            ConfigureLogging();
 
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
@@ -96,12 +100,6 @@ namespace Damascus.Web
             app.ApplicationServices =  container.Resolve<IServiceProvider>();
 
             ConfigureBus();
-        }
-        
-        private void ConfigureLogging(ILoggerFactory loggerfactory )
-        {
-//             loggerfactory.AddConsole();
-//             loggerfactory.AddConsole((category, logLevel) => logLevel >= LogLevel.Critical && category.Equals(typeof(Program).FullName));   
         }
         
         private void ConfigureContainer(DI.IServiceCollection services)
@@ -149,6 +147,21 @@ namespace Damascus.Web
             var bus = Bus.Create(configuration);
             bus.Start();
 
+        }
+        
+        private void ConfigureLogging()
+        {
+            LoggingConfiguration config = new LoggingConfiguration();
+            ColoredConsoleTarget consoleTarget = new ColoredConsoleTarget
+            {
+                Layout = "${level}|${logger}|${message}${onexception:${newline}${exception:format=tostring}}"
+            };
+            config.AddTarget("console", consoleTarget);
+            config.LoggingRules.Add(new LoggingRule("*", NLog.LogLevel.Debug, consoleTarget));
+
+            
+            LogManager.Configuration = config;
+            NServiceBus.Logging.LogManager.Use<NLogFactory>();
         }
 
     }

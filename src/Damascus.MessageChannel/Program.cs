@@ -4,6 +4,9 @@ using NServiceBus;
 using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
 using Config = Microsoft.Framework.ConfigurationModel;
+using NLog;
+using NLog.Targets;
+using NLog.Config;
 
 namespace Damascus.MessageChannel
 {
@@ -11,18 +14,23 @@ namespace Damascus.MessageChannel
     {
         public void Main(string[] args)
         {
+            ConfigureLogging();
+            
             var container = ConfigureContainer();
             var configuration = ConfigureNSB(container);
-
+            
             using (IStartableBus bus = Bus.Create(configuration))
             {
                 bus.Start();
+                
+                var key = "1";
+
+                while(key != "x"){
+                    System.Console.WriteLine("Press x to exit ");
+                    key = System.Console.ReadLine();
+                }
             }
-
-            System.Console.WriteLine(" Hello world");
         }
-
-        private IWindsorContainer container;
 
         private IWindsorContainer ConfigureContainer()
         {
@@ -33,7 +41,6 @@ namespace Damascus.MessageChannel
 
             return container;
         }
-
 
         public BusConfiguration ConfigureNSB(IWindsorContainer container)
         {
@@ -48,6 +55,8 @@ namespace Damascus.MessageChannel
             configuration.UseSerialization<JsonSerializer>();
             configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
             configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);
+            configuration.DisableFeature<NServiceBus.Features.TimeoutManager>();
+            
             configuration.Transactions().Disable();
 
             configuration.UsePersistence<InMemoryPersistence>();
@@ -55,10 +64,25 @@ namespace Damascus.MessageChannel
             configuration.EnableInstallers();
 
             // Castle with a container instance
-            configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(this.container));
+            configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
             return configuration;
 
+        }
+        
+        private void ConfigureLogging()
+        {
+            LoggingConfiguration config = new LoggingConfiguration();
+            ColoredConsoleTarget consoleTarget = new ColoredConsoleTarget
+            {
+                Layout = "${level}|${logger}|${message}${onexception:${newline}${exception:format=tostring}}"
+            };
+            config.AddTarget("console", consoleTarget);
+            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, consoleTarget));
+
+            
+            LogManager.Configuration = config;
+            NServiceBus.Logging.LogManager.Use<NLogFactory>();
         }
 
         private static Config.Configuration _config;

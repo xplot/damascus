@@ -1038,6 +1038,14 @@
           "lib/net45/Newtonsoft.Json.dll"
         ]
       },
+      "NLog/3.2.1": {
+        "compile": [
+          "lib/net45/NLog.dll"
+        ],
+        "runtime": [
+          "lib/net45/NLog.dll"
+        ]
+      },
       "NServiceBus/5.2.0": {
         "frameworkAssemblies": [
           "System",
@@ -1060,6 +1068,18 @@
         ],
         "runtime": [
           "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
+        ]
+      },
+      "NServiceBus.NLog/1.0.0": {
+        "dependencies": {
+          "NServiceBus": "[5.0.0, 6.0.0)",
+          "NLog": "[3.0.0, 4.0.0)"
+        },
+        "compile": [
+          "lib/net45/NServiceBus.NLog.dll"
+        ],
+        "runtime": [
+          "lib/net45/NServiceBus.NLog.dll"
         ]
       },
       "NServiceBus.SqlServer/2.1.2": {
@@ -2076,6 +2096,24 @@
         "tools/install.ps1"
       ]
     },
+    "NLog/3.2.1": {
+      "sha512": "zCgXfp1oSdXr1fNvsyYCZwFr9dkODq1mid1bGR99WBsyzWUgyZGDXM9sjL8nyUswJeXjWBCupC9QRItrT5MH6w==",
+      "files": [
+        "NLog.3.2.1.nupkg",
+        "NLog.3.2.1.nupkg.sha512",
+        "NLog.nuspec",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40/NLog.dll",
+        "lib/net40/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml"
+      ]
+    },
     "NServiceBus/5.2.0": {
       "sha512": "2Hx4r0wXqizhJO9J/USAldYuMt2wuMjSc+BXIJTwE5e6T8tKd+q6IxsMHOhe3racjPYgmGgCB+prX7NT9S6aBg==",
       "files": [
@@ -2093,12 +2131,26 @@
     "NServiceBus.CastleWindsor/5.0.0": {
       "sha512": "axxj9BH0RTLCzkXAITCBcnEokiwXIQXB/UBbVccKZRgocW+lNlebMX+WPW3K1ar5hBPACgDxjoM427jaucvS6g==",
       "files": [
+        ".DS_Store",
         "NServiceBus.CastleWindsor.5.0.0.nupkg",
         "NServiceBus.CastleWindsor.5.0.0.nupkg.sha512",
         "NServiceBus.CastleWindsor.nuspec",
+        "lib/.DS_Store",
+        "lib/net45/.DS_Store",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.pdb",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.xml"
+      ]
+    },
+    "NServiceBus.NLog/1.0.0": {
+      "sha512": "gQ2j8ZEMDEPzbAXk7IttvZEWJ6MJ+VSHJeELOYqDr367LTblUXxqKyQY1rs+2amABnkIGbR8nLF0F+0tWW8pmA==",
+      "files": [
+        "NServiceBus.NLog.1.0.0.nupkg",
+        "NServiceBus.NLog.1.0.0.nupkg.sha512",
+        "NServiceBus.NLog.nuspec",
+        "lib/net45/NServiceBus.NLog.dll",
+        "lib/net45/NServiceBus.NLog.pdb",
+        "lib/net45/NServiceBus.NLog.xml"
       ]
     },
     "NServiceBus.SqlServer/2.1.2": {
@@ -2218,7 +2270,9 @@
       "NServiceBus >= 5.2.0",
       "NServiceBus.SqlServer >= 2.1.2",
       "NServiceBus.CastleWindsor >= 5.0.0",
-      "Kestrel >= 1.0.0-beta4"
+      "NServiceBus.NLog >= 1.0.0",
+      "Kestrel >= 1.0.0-beta4",
+      "NLog >= 3.2.1"
     ],
     "DNX,Version=v4.5.1": []
   }

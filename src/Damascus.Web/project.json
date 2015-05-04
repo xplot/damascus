@@ -23,8 +23,12 @@
         "NServiceBus": "5.2.0",
         "NServiceBus.SqlServer": "2.1.2",
         "NServiceBus.CastleWindsor": "5.0.0",
+        "NServiceBus.NLog": "1.0.0",
 
-        "Kestrel": "1.0.0-beta4"
+        "Kestrel": "1.0.0-beta4",
+        
+        //Logging
+        "NLog": "3.2.1",
 
     },
 
