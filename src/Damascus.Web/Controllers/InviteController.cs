@@ -22,58 +22,79 @@ namespace Damascus.Web.Controllers
                                 IDataSerializer serializer
                                 )
         {   	
+            
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
             DataSerializer = serializer;
             WorkflowEngine = engine;
-
         }
         
         [Route("api/invite")]
         public string CreateInvite([FromBody]InviteInput input)
         {
-            if (input == null)
-                throw new Exception("Invite format is not valid");
-
-            Trace.WriteLine("New invite is posted: " + input.InviteId);
-
-            var previous_invite = DataSerializer.DeserializeData(
-                WorkflowEngine.GetDataKey("multi_invite", input.InviteId)
-            );
-
-            if (previous_invite != null)
-                return "This invitation has been already sent";
-
-            var workflowContext = new WorkflowContext()
+            Logger.LogInformation("Invite Create method");
+            try
             {
-                WorkflowStep = "create",
-                DataKey = input.InviteId,
-                WorkflowType = "multi_invite",
-                WorkflowId = input.InviteId,
-                Parameters = input,
-            };
-
-            return WorkflowEngine.Process(workflowContext);
-            
+                
+                if (input == null)
+                    throw new Exception("Invite format is not valid");
+    
+                var previous_invite = DataSerializer.DeserializeData(
+                    WorkflowEngine.GetDataKey("multi_invite", input.InviteId)
+                );
+    
+                if (previous_invite != null)
+                    return "This invitation has been already sent";
+    
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowStep = "create",
+                    DataKey = input.InviteId,
+                    WorkflowType = "multi_invite",
+                    WorkflowId = input.InviteId,
+                    Parameters = input,
+                };
+    
+                return WorkflowEngine.Process(workflowContext);
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                Logger.LogError(ex.StackTrace);
+                
+                throw ex;
+            }    
         }
+        
     	[Route("api/invite/attendees")]
         public string InviteAttendees([FromBody]InviteAttendeesInput input)
         {
-         
-            if (input == null)
-                throw new Exception("Invite format is not valid");
-
-            Trace.WriteLine("Contacts are going to be invited for invite: " + input.InviteId);
-
-            var workflowContext = new WorkflowContext()
+            Logger.LogInformation("Invite Attendees are posted");
+            try
             {
-                WorkflowStep = "invite_contacts",
-                DataKey = input.InviteId,
-                WorkflowType = "multi_invite",
-                WorkflowId = input.InviteId,
-                Parameters = input,
-            };
-
-            return WorkflowEngine.Process(workflowContext);
+                
+                if (input == null)
+                    throw new Exception("Invite attendees format is not valid");
+    
+                Logger.LogInformation("Invite " + input.InviteId);
+    
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowStep = "invite_contacts",
+                    DataKey = input.InviteId,
+                    WorkflowType = "multi_invite",
+                    WorkflowId = input.InviteId,
+                    Parameters = input,
+                };
+    
+                return WorkflowEngine.Process(workflowContext);
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                Logger.LogError(ex.StackTrace);
+                
+                throw ex;
+            }    
         }
         
         [Route("api/invite/cancel")]

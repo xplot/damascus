@@ -16,7 +16,6 @@ namespace Damascus.Web.Controllers
         public IEnumerable<string> Get()
         {
             //var core = new CoreClass();
-            
             return new string[] { /*core.Run(),*/ "value2" };
         }
 

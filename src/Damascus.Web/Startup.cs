@@ -65,26 +65,13 @@ namespace Damascus.Web
             {
             });
 
-            // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
-            // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
-            //services.AddWebApiConventions();
-            //services.AddInstance(typeof(TwillioConfig),new TwillioConfig()
-            //{
-            //    AccountSid = "1111",
-            //    AuthToken = "1111",
-            //    SmsOutPhone = "2222",
-            //    CallPhone = "3333",
-            //    VoiceCallbackUrl = "4444",
-            //    EmailCallbackUrl = "5555"
-            //});
-
             ConfigureContainer(services);
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
-            ConfigureLogging();
+            ConfigureLogging(container);
 
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
@@ -119,7 +106,6 @@ namespace Damascus.Web
                         .ImplementedBy(typeof(List<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
             );
 
-
             container.BeginScope();
         }
 
@@ -149,7 +135,7 @@ namespace Damascus.Web
 
         }
         
-        private void ConfigureLogging()
+        private void ConfigureLogging(IWindsorContainer container)
         {
             LoggingConfiguration config = new LoggingConfiguration();
             ColoredConsoleTarget consoleTarget = new ColoredConsoleTarget
@@ -157,11 +143,14 @@ namespace Damascus.Web
                 Layout = "${level}|${logger}|${message}${onexception:${newline}${exception:format=tostring}}"
             };
             config.AddTarget("console", consoleTarget);
-            config.LoggingRules.Add(new LoggingRule("*", NLog.LogLevel.Debug, consoleTarget));
+            config.LoggingRules.Add(new LoggingRule("*", NLog.LogLevel.Info, consoleTarget));
 
             
             LogManager.Configuration = config;
             NServiceBus.Logging.LogManager.Use<NLogFactory>();
+            
+            var factory = container.Resolve<ILoggerFactory>();
+            factory.AddNLog(new NLog.LogFactory(config));
         }
 
     }

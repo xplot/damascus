@@ -44,14 +44,14 @@ namespace Damascus.Workflow
 
                 var phoneNumber = input["Phone"].NormalizePhone();
 
-                Bus.Send(new CreateSmsMessage()
+                Bus.Send( "Damascus.MessageChannel", new CreateSmsMessage()
                 {
                     PhoneNumber = phoneNumber,
                     Message = message,
                     Id = Guid.NewGuid().ToString()
                 });
 
-                Bus.Send(GetApiCall("sms",input["Body"]));
+                Bus.Send( "Damascus.MessageChannel", GetApiCall("sms",input["Body"]));
 
                 return "<response>Response To Confirmation sent succesfully</response>";
             }
@@ -99,7 +99,7 @@ namespace Damascus.Workflow
             var message = string.Empty;
             message = input["Body"] == "1" ? "I'm glad you comming!" : "I'm dissapointed";
 
-            Bus.Send(GetApiCall("voice", (input["Body"] == "1")?"yes":"no"));
+            Bus.Send( "Damascus.MessageChannel", GetApiCall("voice", (input["Body"] == "1")?"yes":"no"));
 
             XmlWriter.SayMessage(message);
             return XmlWriter.ToString();
@@ -112,7 +112,7 @@ namespace Damascus.Workflow
                 var invite = InviteInput.FromDict(this.Data);
                 var contact = Contact.FromDict(this.Data);
 
-                Bus.Send(new CreateEmailMessage()
+                Bus.Send( "Damascus.MessageChannel", new CreateEmailMessage()
                 {
                     Id = Guid.NewGuid().ToString(),
                     Address = contact.Email,
@@ -121,7 +121,7 @@ namespace Damascus.Workflow
                     BodyTemplate = invite.ResponseEmailTemplate
                 });
 
-                Bus.Send(GetApiCall("email", "yes"));
+                Bus.Send( "Damascus.MessageChannel", GetApiCall("email", "yes"));
 
                 if (invite.ResponseEmailTemplate != null && !string.IsNullOrEmpty(invite.ResponseEmailTemplate.RedirectUrl))
                 {

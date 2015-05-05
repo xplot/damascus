@@ -35,6 +35,7 @@
         
         //Logging
         "NLog": "3.2.1",
+        "Microsoft.Framework.Logging": "1.0.0-beta4",
   },
 
   "frameworks" : {

@@ -1,12 +1,19 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Castle.MicroKernel.Registration;
+
 using NServiceBus;
+
 using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Logging;
 using Config = Microsoft.Framework.ConfigurationModel;
+
 using NLog;
 using NLog.Targets;
 using NLog.Config;
+
+using Damascus.Message.Command;
 
 namespace Damascus.MessageChannel
 {
@@ -14,18 +21,30 @@ namespace Damascus.MessageChannel
     {
         public void Main(string[] args)
         {
-            ConfigureLogging();
             
             var container = ConfigureContainer();
+            
+            ConfigureLogging(container);
             var configuration = ConfigureNSB(container);
             
-            using (IStartableBus bus = Bus.Create(configuration))
+            using (IStartableBus startableBus = Bus.Create(configuration))
             {
-                bus.Start();
+                IBus bus = startableBus.Start();
                 
                 var key = "1";
 
                 while(key != "x"){
+                    
+                    if(key == "email"){
+                        bus.SendLocal(new CreateEmailMessage());
+                    }
+                    else if(key == "sms"){
+                        bus.SendLocal(new CreateSmsMessage());
+                    }
+                    else if(key == "phone"){
+                        bus.SendLocal(new CreateCallMessage());
+                    }
+                    
                     System.Console.WriteLine("Press x to exit ");
                     key = System.Console.ReadLine();
                 }
@@ -56,7 +75,6 @@ namespace Damascus.MessageChannel
             configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
             configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);
             configuration.DisableFeature<NServiceBus.Features.TimeoutManager>();
-            
             configuration.Transactions().Disable();
 
             configuration.UsePersistence<InMemoryPersistence>();
@@ -70,7 +88,7 @@ namespace Damascus.MessageChannel
 
         }
         
-        private void ConfigureLogging()
+        private void ConfigureLogging(IWindsorContainer container)
         {
             LoggingConfiguration config = new LoggingConfiguration();
             ColoredConsoleTarget consoleTarget = new ColoredConsoleTarget
@@ -78,11 +96,17 @@ namespace Damascus.MessageChannel
                 Layout = "${level}|${logger}|${message}${onexception:${newline}${exception:format=tostring}}"
             };
             config.AddTarget("console", consoleTarget);
-            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, consoleTarget));
+            config.LoggingRules.Add(new LoggingRule("*", NLog.LogLevel.Info, consoleTarget));
 
-            
             LogManager.Configuration = config;
             NServiceBus.Logging.LogManager.Use<NLogFactory>();
+            
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddNLog(new NLog.LogFactory(config));
+            
+            container.Register(
+                Component.For<ILoggerFactory>().Instance(loggerFactory)
+            );
         }
 
         private static Config.Configuration _config;

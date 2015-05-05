@@ -101,7 +101,7 @@ namespace Damascus.Workflow
             var templateManager = new MemoryTemplateManager();
             var bodyData = GetTemplateContextData(invite, contact);
 
-            Bus.Send(new CreateEmailMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateEmailMessage()
             {
                 Id = Guid.NewGuid().ToString(),
                 Address = contact.Email,
@@ -120,7 +120,7 @@ namespace Damascus.Workflow
             var templateManager = new MemoryTemplateManager();
             var bodyData = GetTemplateContextData(invite, contact);
 
-            Bus.Send(new CreateEmailMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateEmailMessage()
             {
                 Id = Guid.NewGuid().ToString(),
                 Address = contact.Email,
@@ -140,7 +140,7 @@ namespace Damascus.Workflow
             if (invite.End != null)
                 date += "to " + invite.End.ToString();
 
-            Bus.Send(new CreateSmsMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateSmsMessage()
             {
                 PhoneNumber = contact.Phone,
                 Message = string.Format("You are hereby invited to {0} event on {1}, want to go? YES/NO", invite.Title, date),
@@ -152,7 +152,7 @@ namespace Damascus.Workflow
         {
             if (string.IsNullOrEmpty(contact.Phone))
                 return;
-            Bus.Send(new CreateSmsMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateSmsMessage()
             {
                 PhoneNumber = contact.Phone,
                 Message = string.Format("The event {0} on {1}, have been cancelled by the host", invite.Title, invite.Start.ToString()),
@@ -165,7 +165,7 @@ namespace Damascus.Workflow
             if (string.IsNullOrEmpty(contact.Phone))
                 return;
 
-            Bus.Send(new CreateCallMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateCallMessage()
             {
                 PhoneNumber = contact.Phone,
                 Id = Guid.NewGuid().ToString(),
@@ -181,7 +181,7 @@ namespace Damascus.Workflow
             if (string.IsNullOrEmpty(contact.Phone))
                 return;
 
-            Bus.Send(new CreateCallMessage()
+            Bus.Send( "Damascus.MessageChannel", new CreateCallMessage()
             {
                 PhoneNumber = contact.Phone,
                 Id = Guid.NewGuid().ToString(),
@@ -239,7 +239,7 @@ namespace Damascus.Workflow
             if (!string.IsNullOrEmpty(invite.SharingOptions.FacebookAccessToken))
             {
                 Trace.WriteLine("Sharing to Facebook");
-                Bus.Send(new FacebookEventMessage()
+                Bus.Send( "Damascus.MessageChannel", new FacebookEventMessage()
                 {
                     Invite = reducedInvite,
                     AccessToken = invite.SharingOptions.FacebookAccessToken

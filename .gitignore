@@ -1,4 +1,6 @@
-
+node_modules
+.settings
+*.DS_Store*
 local.json
 prod.json
 #ignore thumbnails created by windows
