@@ -12,6 +12,16 @@ Damascus it's designed thinking into Workflows and Steps, each Step having names
 
 ###Workflows:
 
+*Workflows* are created in Damascus.Workflow, they are classes implementing Damascus.Core.Workflow, and they provide a Dictionary<string, IStep>, string being the key to resolve the step. 
+
+Workflows can also provide a custom name so they are resolved, when accessed thru an URL. In general for a Workflow to execute an step name and a workflow name needs to be provided as in:
+
+`workflow_name, step_name => Workflows[name].Steps[name]Execute()`
+
+*Steps* are simple execution "steps" that will return an output and will execute a set of instructions. Each steps implement an Execute method, which will receive the user input.
+
+Example:
+
 	[WorkflowName("hello_world")]
     public class HelloWorldWorkflow : Damascus.Core.Workflow
     {
@@ -128,6 +138,62 @@ In both Web.config and app.config a few settings have to be provided too:
 	<add key="TwillioBaseUrl" value="http://example.com/workflow" />
 
 
+
+###setup
+
+Damascus is an AspNet vNext project, that uses NServiceBus (<http://particular.net>). The setup for this project is a bit difficult and requires some knowledge of AspNet vNext and NServiceBus
+
+1 - Download DNX or VS 2015. For specific instructions on OSX and Windows go here: <http://github.com/aspnet/home>
+
+2 - Restore Dependencies, "dnu restore" on src or Build with Visual Studio.
+
+3 - Damascus uses SQL for it's Messaging Queues, so make sure to have a running SQL instance. 
+
+Create the following two files with the json body:
+
+ - $ src/Damascus.Web/Config/local.json 
+ - $ src/Damascus.MessageChannel/Config/local.json
+
+
+		{
+  			"connection":  "<SQL_CONNECTION_STRING>"
+		}
+
+
+###Damascus.Web
+
+***OSX***
+
+		$ cd src/Damascus.Web
+		$ dnu restore
+		$ dnx . kestrel
+		
+***Windows***
+
+		$ cd src/Damascus.Web
+		$ dnu restore
+		$ dnx . web
+
+***Visual Studio***
+
+	Run the project Damascus.Web
+	
+###Damascus.MessageChannel
+***OSX***
+
+		$ cd src/Damascus.MessageChannel
+		$ dnu restore
+		$ dnx . run
+		
+***Windows***
+
+		$ cd src/Damascus.MessageChannel
+		$ dnu restore
+		$ dnx . run
+
+***Visual Studio***
+
+not yet tested....
 
 #contact
 Any question or specific request, please contact the owners via Github, we are actively working on this project and we're also working into using it as our communications provider for http://imeet.io
