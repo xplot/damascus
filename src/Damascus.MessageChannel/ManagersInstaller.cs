@@ -39,6 +39,8 @@ namespace Damascus.MessageChannel
                 Password = Settings.Get("Smtp.Password"),
                 Port = int.Parse(Settings.Get("Smtp.Port")),
                 SmtpServer = Settings.Get("Smtp.Host"),
+                
+                SenderAddress = Settings.Get("Smtp.SenderAddress"),
             }));
 
         }

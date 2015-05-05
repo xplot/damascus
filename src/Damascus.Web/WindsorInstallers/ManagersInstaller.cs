@@ -41,6 +41,16 @@ namespace Damascus.Web
                 EmailCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/email", 
                 
             }));
+            
+            container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()
+            {
+                Username = Settings.Get("Smtp.Username"),
+                Password = Settings.Get("Smtp.Password"),
+                Port = int.Parse(Settings.Get("Smtp.Port")),
+                SmtpServer = Settings.Get("Smtp.Host"),
+                
+                SenderAddress = Settings.Get("Smtp.SenderAddress"),
+            }));
         }
     }
 }

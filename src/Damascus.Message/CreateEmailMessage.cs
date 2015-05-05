@@ -23,6 +23,19 @@ namespace Damascus.Message.Command
         public Dictionary<string,string> BodyData { get; set; }
 
         public BodyTemplate BodyTemplate { get; set; }
+        
+        public override string ToString()
+        {
+            var result = string.Empty;
+            if(!string.IsNullOrEmpty(Sender))
+                result += " Sender: " + Sender;
+            if(!string.IsNullOrEmpty(Address))
+                result += " Address: " + Address;
+            if(!string.IsNullOrEmpty(Subject))
+                result += " Subject: " + Subject;
+                
+            return result;
+        }
     }
     
 }

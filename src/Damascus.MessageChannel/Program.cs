@@ -40,7 +40,7 @@ namespace Damascus.MessageChannel
                     if(key == "email"){
                         bus.SendLocal(new CreateEmailMessage(){
                             Id = Guid.NewGuid().ToString(),
-                            Address = "invite@voiceflows.com",
+                            Address = "javier@voiceflows.com",
                             Sender = "test2@example.com",
                             Subject = "Hello world",
                             BodyTemplate = new BodyTemplate(){

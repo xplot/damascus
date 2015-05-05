@@ -16,6 +16,7 @@ namespace Damascus.Workflow
     public class MultiInviteWorkflow : Damascus.Core.Workflow
     {
         public TwillioConfig TwillioConfig { get; set; }
+        public SmtpConfig SmtpConfig { get; set; }
         public IDataSerializer DataSerializer { get; set; }
         public IBus Bus { get; set; }
 
@@ -105,7 +106,7 @@ namespace Damascus.Workflow
             {
                 Id = Guid.NewGuid().ToString(),
                 Address = contact.Email,
-                Sender = "invite@voiceflows.com",
+                Sender = SmtpConfig.SenderAddress,
                 Subject = templateManager.Fill(invite.EmailTemplate.Subject, bodyData),
                 BodyTemplate = invite.EmailTemplate,
                 BodyData = bodyData,
@@ -124,7 +125,7 @@ namespace Damascus.Workflow
             {
                 Id = Guid.NewGuid().ToString(),
                 Address = contact.Email,
-                Sender = "invite@voiceflows.com",
+                Sender = SmtpConfig.SenderAddress,
                 Subject = templateManager.Fill(invite.CancelEmailTemplate.Subject, bodyData),
                 BodyTemplate = invite.CancelEmailTemplate,
                 BodyData = bodyData,

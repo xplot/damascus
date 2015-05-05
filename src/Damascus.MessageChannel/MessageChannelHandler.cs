@@ -45,6 +45,8 @@ namespace Damascus.MessageChannel
         public void Handle(CreateEmailMessage message)
         {
             Logger.LogInformation("CreateEmailMessage");
+            Logger.LogInformation(message.ToString());
+            
             EmailSender.SendEmail(message);
         }
 
