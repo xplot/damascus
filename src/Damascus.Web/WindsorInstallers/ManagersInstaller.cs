@@ -32,12 +32,14 @@ namespace Damascus.Web
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
-                AccountSid = "1111",
-                AuthToken = "1111",
-                SmsOutPhone = "2222",
-                CallPhone = "3333",
-                VoiceCallbackUrl = "4444", 
-                EmailCallbackUrl = "5555" 
+                
+                AccountSid = Settings.Get("Twillio.AccountSid"),
+                AuthToken = Settings.Get("Twillio.AuthToken"),
+                SmsOutPhone = Settings.Get("Twillio.SmsOutPhone"),
+                CallPhone = Settings.Get("Twillio.CallPhone"),
+                VoiceCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/call", 
+                EmailCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/email", 
+                
             }));
         }
     }

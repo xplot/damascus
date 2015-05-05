@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NServiceBus;
 
 namespace Damascus.Message.Command
 {
+    
+    [TimeToBeReceived("01:00:00")]
     public class CreateEmailMessage:IdMessage
     {
         public string Id { get; set; }

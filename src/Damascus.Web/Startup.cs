@@ -38,21 +38,6 @@ namespace Damascus.Web
         {
         }
 
-        private static Configuration _config;
-        public static Configuration Configuration
-        {
-            get
-            {
-                if (_config == null)
-                {
-                    _config = new Configuration();
-                    _config.AddJsonFile("Config/local.json");//Parametize this....for Prod
-
-                }
-                return _config;
-            }
-        }
-
         // This method gets called by a runtime.
         // Use this method to add services to the container
         public void ConfigureServices(DI.IServiceCollection services)
@@ -120,7 +105,7 @@ namespace Damascus.Web
             configuration.EndpointName("Damascus.Web");
             configuration.UseSerialization<JsonSerializer>();
             configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
-            configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);
+            configuration.UseTransport<SqlServerTransport>().ConnectionString(Settings.Get("connection"));
             configuration.Transactions().Disable();
 
             configuration.UsePersistence<InMemoryPersistence>();

@@ -1,4 +1,5 @@
-﻿using Castle.Windsor;
+﻿using System;
+using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Castle.MicroKernel.Registration;
 
@@ -13,6 +14,7 @@ using NLog;
 using NLog.Targets;
 using NLog.Config;
 
+using Damascus.Message;
 using Damascus.Message.Command;
 
 namespace Damascus.MessageChannel
@@ -31,21 +33,23 @@ namespace Damascus.MessageChannel
             {
                 IBus bus = startableBus.Start();
                 
-                var key = "1";
+                var key = "";
 
                 while(key != "x"){
                     
                     if(key == "email"){
-                        bus.SendLocal(new CreateEmailMessage());
-                    }
-                    else if(key == "sms"){
-                        bus.SendLocal(new CreateSmsMessage());
-                    }
-                    else if(key == "phone"){
-                        bus.SendLocal(new CreateCallMessage());
+                        bus.SendLocal(new CreateEmailMessage(){
+                            Id = Guid.NewGuid().ToString(),
+                            Address = "invite@voiceflows.com",
+                            Sender = "test2@example.com",
+                            Subject = "Hello world",
+                            BodyTemplate = new BodyTemplate(){
+                                Body = "Hello cruel world"
+                            },
+                        });
                     }
                     
-                    System.Console.WriteLine("Press x to exit ");
+                    System.Console.WriteLine("Press x to exit, you can also type email to send a test email ");
                     key = System.Console.ReadLine();
                 }
             }
@@ -73,7 +77,7 @@ namespace Damascus.MessageChannel
             configuration.EndpointName("Damascus.MessageChannel");
             configuration.UseSerialization<JsonSerializer>();
             configuration.AssembliesToScan(AllAssemblies.Matching("Damascus.Message").And("NServiceBus"));
-            configuration.UseTransport<SqlServerTransport>().ConnectionString(Configuration["connection"]);
+            configuration.UseTransport<SqlServerTransport>().ConnectionString(Settings.Get("connection"));
             configuration.DisableFeature<NServiceBus.Features.TimeoutManager>();
             configuration.Transactions().Disable();
 
@@ -109,19 +113,6 @@ namespace Damascus.MessageChannel
             );
         }
 
-        private static Config.Configuration _config;
-        public static Config.Configuration Configuration
-        {
-            get
-            {
-                if (_config == null)
-                {
-                    _config = new Config.Configuration();
-                    _config.AddJsonFile("Config/local.json");//Parametize this....for Prod
-
-                }
-                return _config;
-            }
-        }
+        
     }
 }

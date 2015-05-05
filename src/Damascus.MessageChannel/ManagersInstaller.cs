@@ -23,22 +23,22 @@ namespace Damascus.MessageChannel
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
-                /*
-                AccountSid = SettingManager.Get("TwillioAccountSid"),
-                AuthToken = SettingManager.Get("TwillioAuthToken"),
-                SmsOutPhone = SettingManager.Get("TwillioSmsOutPhone"),
-                CallPhone = SettingManager.Get("TwillioCallPhone"),
-                VoiceCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/call", 
-                EmailCallbackUrl = SettingManager.Get("TwillioBaseUrl") + "/email", 
-                */
+                
+                AccountSid = Settings.Get("Twillio.AccountSid"),
+                AuthToken = Settings.Get("Twillio.AuthToken"),
+                SmsOutPhone = Settings.Get("Twillio.SmsOutPhone"),
+                CallPhone = Settings.Get("Twillio.CallPhone"),
+                VoiceCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/call", 
+                EmailCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/email", 
+                
             }));
 
             container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()
             {
-                Username = "xxx",
-                Password = "xxx",
-                Port =587,
-                SmtpServer = "smtp.sendgrid.net",
+                Username = Settings.Get("Smtp.Username"),
+                Password = Settings.Get("Smtp.Password"),
+                Port = int.Parse(Settings.Get("Smtp.Port")),
+                SmtpServer = Settings.Get("Smtp.Host"),
             }));
 
         }

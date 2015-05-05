@@ -31,7 +31,7 @@ namespace Damascus.Web.Controllers
         [Route("api/invite")]
         public string CreateInvite([FromBody]InviteInput input)
         {
-            Logger.LogInformation("Invite Create method");
+            Logger.LogInformation("Creating an Invite");
             try
             {
                 
@@ -61,7 +61,8 @@ namespace Damascus.Web.Controllers
                 Logger.LogError(ex.Message);
                 Logger.LogError(ex.StackTrace);
                 
-                throw ex;
+                Context.Response.StatusCode = 500;
+                return ex.Message;
             }    
         }
         
@@ -93,7 +94,8 @@ namespace Damascus.Web.Controllers
                 Logger.LogError(ex.Message);
                 Logger.LogError(ex.StackTrace);
                 
-                throw ex;
+                Context.Response.StatusCode = 500;
+                return ex.Message;
             }    
         }
         

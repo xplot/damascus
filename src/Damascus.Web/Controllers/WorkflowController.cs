@@ -1,100 +1,157 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
+using System.Diagnostics;
+using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using Damascus.Core;
 using Damascus.Message;
-using System.Collections.Generic;
+using Microsoft.Framework.Logging;
+using ILogger = Microsoft.Framework.Logging.ILogger;
+using NServiceBus;
+
 
 namespace Damascus.Web.Controllers
 {
-    public class WorkflowController : BaseController
+    public class WorkflowController : Controller
     {
         public WorkflowEngine WorkflowEngine { get; set; }
         public IReplyStore ReplyStore { get; set; }
-
-        public string Call()
+        public ILogger Logger { get; set; }
+        
+        public WorkflowController(ILoggerFactory loggerFactory,
+                                    IReplyStore replyStore,
+                                    WorkflowEngine workflowEngine)
+        {   	
+            
+            Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            ReplyStore = replyStore;
+            WorkflowEngine = workflowEngine;
+        }
+        
+        [Route("api/workflow/call")]
+        public ContentResult Call(TwillioInput input)
         {
-            /*
-            var parameters = FillParametersDict();
-
-            if (!parameters.ContainsKey("type") || !parameters.ContainsKey("step"))
-                throw new Exception("We could not obtain the type of your workflow from your " +
-                                    "input, try setting the type parameter when posting to this service");
-
-            var workflowContext = new WorkflowContext()
+            try
             {
-                WorkflowId = parameters.ContainsKey("id") ? parameters["id"] : Guid.NewGuid().ToString(),
-                WorkflowType = parameters["type"],
-                WorkflowStep = parameters["step"],
-                DataKey = parameters["Phone"].NormalizePhone(),
-                Parameters = parameters
-            };
- 
-            return Content(WorkflowEngine.Process(workflowContext), "text/xml");
-            */
-            return null;
+                Logger.LogInformation("Received a Phone hit ");
+                
+                var parameters = FillParametersDict(input);
+                
+                if (!parameters.ContainsKey("type") || !parameters.ContainsKey("step"))
+                    throw new Exception("We could not obtain the type of your workflow from your " +
+                                        "input, try setting the type parameter when posting to this service");
+    
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowId = parameters.ContainsKey("id") ? parameters["id"] : Guid.NewGuid().ToString(),
+                    WorkflowType = parameters["type"],
+                    WorkflowStep = parameters["step"],
+                    DataKey = parameters["Phone"].NormalizePhone(),
+                    Parameters = parameters
+                };
+                
+                Logger.LogInformation("Return Phone hit");
+                return Content(WorkflowEngine.Process(workflowContext), "text/xml");
+             }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                Logger.LogError(ex.StackTrace);
+                
+                Context.Response.StatusCode = 500;
+                return Content(ex.Message, "text/xml");
+            }
+        }
+        
+        [Route("api/workflow/sms")]
+        public ContentResult Sms(TwillioInput input)
+        {
+            try
+            {
+                Logger.LogInformation("Received an SMS Call hit ");
+                
+                var parameters = FillParametersDict(input);
+                var workflowInfo = ReplyStore.GetWorkflowConfigFromReply(input.Body);
+    
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowType = workflowInfo.WorkflowType,
+                    WorkflowStep = workflowInfo.WorkflowStep,
+                    DataKey = parameters["Phone"].NormalizePhone(),
+                    Parameters = parameters
+                };
+                
+                Logger.LogInformation("Return SMS hit");
+                return Content(WorkflowEngine.Process(workflowContext), "text/xml");
+             }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                Logger.LogError(ex.StackTrace);
+                
+                Context.Response.StatusCode = 500;
+                return Content(ex.Message, "text/xml");
+            }
+        }
+        
+        [Route("api/workflow/email")]
+        public ContentResult Email(TwillioInput input)
+        {
+            try
+            {
+                var parameters = FillParametersDict(input);
+    
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowType = parameters["type"],
+                    WorkflowStep = parameters["step"],
+                    DataKey = parameters["Email"],
+                    Parameters = parameters
+                };
+                
+                var response = WorkflowEngine.Process(workflowContext);
+    
+        	   //if (response.StartsWith("http"))
+               //   return this.Redirect(response);
+                    
+                return Content(response, "text/xml");
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                Logger.LogError(ex.StackTrace);
+                
+                Context.Response.StatusCode = 500;
+                return Content(ex.Message, "text/xml");
+            }
         }
 
-        public string Sms()
+        private StepInput FillParametersDict(TwillioInput twillioInput)
         {
-            /*
-            var parameters = FillParametersDict();
-            var workflowInfo = ReplyStore.GetWorkflowConfigFromReply(Body);
-
-            var workflowContext = new WorkflowContext()
-            {
-                WorkflowType = workflowInfo.WorkflowType,
-                WorkflowStep = workflowInfo.WorkflowStep,
-                DataKey = parameters["Phone"].NormalizePhone(),
-                Parameters = parameters
-            };
-
-            return Content(WorkflowEngine.Process(workflowContext), "text/xml");
-            */
-            return null;
-        }
-
-        public string Email()
-        {
-            /*
-            var parameters = FillParametersDict();
-
-            var workflowContext = new WorkflowContext()
-            {
-                WorkflowType = parameters["type"],
-                WorkflowStep = parameters["step"],
-                DataKey = parameters["Email"],
-                Parameters = parameters
-            };
-            var response = WorkflowEngine.Process(workflowContext);
-
-            if (response.StartsWith("http"))
-                return this.Redirect(response);
-            return Content(response, "text/xml");
-            */
-            return null;
-        }
-
-        private StepInput FillParametersDict()
-        {
-            /*
             var result = new Dictionary<string, string>();
-
-            foreach (var queryVar in this.Request.QueryString.AllKeys)
+            
+            foreach (var queryVar in this.Request.Form)
             {
-                if (!string.IsNullOrEmpty(queryVar) && Request.QueryString[queryVar] != null)
-                    result[queryVar] = Request.QueryString[queryVar];
-
+                result[queryVar.Key] = (queryVar.Value != null && queryVar.Value.Length > 0 )? queryVar.Value[0]: null ;
+            }
+            
+            foreach (var queryVar in this.Request.Query)
+            {
+                result[queryVar.Key] = (queryVar.Value != null && queryVar.Value.Length > 0 )? queryVar.Value[0]: null ;
             }
 
-            result["Body"] = (SmsSid!= null)?Body:Digits;
-            result["TwilioId"] = SmsSid ?? CallSid;
-            result["Phone"] = (Direction == "inbound" || !string.IsNullOrEmpty(SmsSid)) ? From : To;
+            result["Body"] = (twillioInput.SmsSid!= null)?twillioInput.Body:twillioInput.Digits;
+            result["TwilioId"] = twillioInput.SmsSid ?? twillioInput.CallSid;
+            result["Phone"] = (twillioInput.Direction == "inbound" || !string.IsNullOrEmpty(twillioInput.SmsSid)) ? twillioInput.From : twillioInput.To;
             result["Email"] = result.ContainsKey("email")? result["email"]:null;
-
+            
             return new StepInput(){Input = result};
-            */
-            return null;
+        }
+        
+        private string DictToString(Dictionary<string,string> dict)
+        {
+            return string.Join(";", dict.Select(x => x.Key + "=" + x.Value));
         }
     }
 }

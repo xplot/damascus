@@ -7,7 +7,7 @@ using NServiceBus;
 
 namespace Damascus.Message
 {
-    public interface IdMessage:IMessage
+    public interface IdMessage:ICommand
     {
         string Id { get; set; }
     }

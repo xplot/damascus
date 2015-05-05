@@ -7,6 +7,7 @@ using NServiceBus;
 
 namespace Damascus.Message.Command
 {
+    [TimeToBeReceived("01:00:00")]
     public class CreateCallMessage:IdMessage
     {
         public string Id { get; set; }

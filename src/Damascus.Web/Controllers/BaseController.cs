@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
@@ -29,7 +30,7 @@ namespace Damascus.Web.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            /*
+            
             CallSid = filterContext.HttpContext.Request.Params["CallSid"];
             To = filterContext.HttpContext.Request.Params["To"];
             From = filterContext.HttpContext.Request.Params["From"];
@@ -47,8 +48,9 @@ namespace Damascus.Web.Controllers
             SmsSid = filterContext.HttpContext.Request.Params["SmsSid"];
             Body = filterContext.HttpContext.Request.Params["Body"];
             Direction = filterContext.HttpContext.Request.Params["Direction"];
-            */
+            
             base.OnActionExecuting(filterContext);
         }
     }
 }
+*/
