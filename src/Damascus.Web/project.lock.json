@@ -2131,9 +2131,12 @@
     "NServiceBus.CastleWindsor/5.0.0": {
       "sha512": "axxj9BH0RTLCzkXAITCBcnEokiwXIQXB/UBbVccKZRgocW+lNlebMX+WPW3K1ar5hBPACgDxjoM427jaucvS6g==",
       "files": [
+        ".DS_Store",
         "NServiceBus.CastleWindsor.5.0.0.nupkg",
         "NServiceBus.CastleWindsor.5.0.0.nupkg.sha512",
         "NServiceBus.CastleWindsor.nuspec",
+        "lib/.DS_Store",
+        "lib/net45/.DS_Store",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.pdb",
         "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.xml"
