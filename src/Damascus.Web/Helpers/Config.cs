@@ -16,7 +16,7 @@ namespace Damascus.Web
                 if (_config == null)
                 {
                     _config = new Config.Configuration();
-                    _config.AddJsonFile("Config/local.json");//Parametize this....for Prod
+                    _config.AddJsonFile("config.json");//Parametize this....for Prod
 
                 }
                 return _config;

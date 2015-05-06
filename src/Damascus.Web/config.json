@@ -1,0 +1,17 @@
+{
+    "connection":  "xxxx",
+    
+    //Smtp
+    "Smtp.Host":  "xxx",
+    "Smtp.Port":  "xxx",
+    "Smtp.Username":  "xxx",
+    "Smtp.Password":  "Ixxx",
+    "Smtp.SenderAddress":  "xxx",
+    
+    //Twillio
+    "Twillio.AccountSid":  "xxx",
+    "Twillio.AuthToken":  "xxx",
+    "Twillio.SmsOutPhone":  "xxx",
+    "Twillio.CallPhone":  "xxx",
+    "Twillio.BaseUrl":  "xxx",
+}
