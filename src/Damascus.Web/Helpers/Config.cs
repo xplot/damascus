@@ -3,6 +3,7 @@ using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Config = Microsoft.Framework.ConfigurationModel;
+using System.IO;
 
 namespace Damascus.Web
 {
@@ -16,8 +17,10 @@ namespace Damascus.Web
                 if (_config == null)
                 {
                     _config = new Config.Configuration();
-                    _config.AddJsonFile("config.json");//Parametize this....for Prod
-
+                    if (File.Exists("config.local.json"))
+                        _config.AddJsonFile("config.local.json");    
+                    else    
+                        _config.AddJsonFile("config.json");
                 }
                 return _config;
             }

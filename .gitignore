@@ -1,6 +1,7 @@
 .nuget
 node_modules
 .settings
+config.local.json
 #
 *.DS_Store*
 local.json
