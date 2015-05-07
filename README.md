@@ -1,3 +1,7 @@
+<a href="https://travis-ci.org/xplot/damascus" target="_blank">
+  <img align="right" src="https://travis-ci.org/xplot/damascus.png" alt="Build Status">
+</a>
+
 #damascus
 
 Code named after Damascus, Siria, important trade center in the past. 
