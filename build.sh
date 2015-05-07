@@ -43,6 +43,7 @@ echo "Starting remote deploy"
 
 mkdir -p ~/.ssh
 echo $deployment_key > ~/.ssh/damascus.pk
+chmod 400 ~/.ssh/damascus.pk 
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/damascus.pk
 

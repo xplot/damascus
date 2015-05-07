@@ -1,34 +1,136 @@
 {
 
+
+
+
+
+
+
     "connection":  "x;",
 
+
+
+
+
+
+
     
+
+
+
+
+
+
 
     //Smtp
 
+
+
+
+
+
+
     "Smtp.Host":  "x",
+
+
+
+
+
+
 
     "Smtp.Port":  "x",
 
+
+
+
+
+
+
     "Smtp.Username":  "xx",
+
+
+
+
+
+
 
     "Smtp.Password":  "xx",
 
+
+
+
+
+
+
     "Smtp.SenderAddress":  "xxx",
+
+
+
+
+
+
 
     
 
+
+
+
+
+
+
     //Twillio
+
+
+
+
+
+
 
     "Twillio.AccountSid":  "xxx",
 
+
+
+
+
+
+
     "Twillio.AuthToken":  "xxx",
+
+
+
+
+
+
 
     "Twillio.SmsOutPhone":  "xxx",
 
+
+
+
+
+
+
     "Twillio.CallPhone":  "xxx",
+
+
+
+
+
+
 
     "Twillio.BaseUrl":  "xxx",
 
+
+
+
+
+
+
 }
+
+
+
+
+
+
 
