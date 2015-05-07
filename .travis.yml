@@ -7,7 +7,7 @@ before_script:
 script:
 - ./build.sh --quiet verify
 deploy:
-  provider: s3
+  provider: codedeploy
   access_key_id:
     secure: "NFlK5r6+/kK9m8xJBOGeLJmFywnqfTHGiceSb/o9Qk03+HKiNeRYo2XW++boFkSfzed1tmvNbujPcAFdyxMVQJO9ylD3JkyTDDrAmRlf9JdRyYhQWpB/DWBTY7hbMNZl0GKk05T/6fPFGoG6fQ49na7ANimPLNx9XT/c27JxS1E="
   secret_access_key:
