@@ -8,7 +8,7 @@ script:
 - ./build.sh --quiet verify
 deploy:
   provider: s3
-    access_key_id:
+  access_key_id:
     secure: "NFlK5r6+/kK9m8xJBOGeLJmFywnqfTHGiceSb/o9Qk03+HKiNeRYo2XW++boFkSfzed1tmvNbujPcAFdyxMVQJO9ylD3JkyTDDrAmRlf9JdRyYhQWpB/DWBTY7hbMNZl0GKk05T/6fPFGoG6fQ49na7ANimPLNx9XT/c27JxS1E="
   secret_access_key:
     secure: SvX0bXGWB95dFfnTQg8aD1HRmuIFyR3oY9B+1gPDi9JdcM3tWoJG2PBjF3pEkymv9KM0FqkDqWv4mpovaIMoTaDQH3oZfGcuACvFSEb2aLyyRkSjgH75slhGN1/FD48Vik5Ea2MPw0tqXxr0h45jFiy1iN0TG+IEEF3+hLFcWT4=
