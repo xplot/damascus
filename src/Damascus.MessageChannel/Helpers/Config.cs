@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
@@ -16,8 +17,10 @@ namespace Damascus.MessageChannel
                 if (_config == null)
                 {
                     _config = new Config.Configuration();
-                    _config.AddJsonFile("Config/local.json");//Parametize this....for Prod
-
+                    if (File.Exists("config.local.json"))
+                        _config.AddJsonFile("config.local.json");    
+                    else    
+                        _config.AddJsonFile("config.json");
                 }
                 return _config;
             }
