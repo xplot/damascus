@@ -38,4 +38,14 @@ fi
 
 mono packages/Sake/tools/Sake.exe -I packages/KoreBuild/build -f makefile.shade "$@"
 
-#Docker
+#Start remote deploy
+echo "Starting remote deploy"
+
+mkdir -p ~/.ssh
+echo $deployment_key > ~/.ssh/damascus.pk
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/damascus.pk
+
+ssh -v $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
+
+echo "Finishing deploy"
