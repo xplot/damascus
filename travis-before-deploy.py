@@ -22,7 +22,7 @@ def create_deploy_file(deploy_file, environment_dic):
         
         #Exporting Travis variables to use in remote server
         for damascus_var in environment_dic:
-            f.write('export %s = %s \n' % (pretty_name(damascus_var), os.environ[damascus_var]))
+            f.write('export %s = "%s" \n' % (pretty_name(damascus_var), os.environ[damascus_var]))
         f.write('eval "$(ssh-agent -s)"\n')
         f.write('ssh-add ~/.ssh/id_rsa\n')
         f.write('sudo git clone %s %s\n' %(git_repository, deployment_folder))
