@@ -42,11 +42,10 @@ mono packages/Sake/tools/Sake.exe -I packages/KoreBuild/build -f makefile.shade 
 echo "Starting remote deploy"
 
 mkdir -p ~/.ssh
-echo $deployment_key > ~/.ssh/damascus.pk
-chmod 400 ~/.ssh/damascus.pk 
-eval "$(ssh-agent -s)"
+base64 --decode ~/.ssh/id_rsa_deploy_base64 > ~/.ssh/damascus.pk
+chmod 600 ~/.ssh/damascus.pk
 ssh-add ~/.ssh/damascus.pk
 
-ssh -v $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
+ssh -v -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
 
 echo "Finishing deploy"
