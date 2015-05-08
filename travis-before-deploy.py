@@ -33,12 +33,12 @@ def create_deploy_file(deploy_file, environment_dic):
         f.write('sudo python travis-after-deploy.py\n')
         
         #Preparing Docker for Damascus.Web
-        f.write('echo Preparing Docker for Damascus.Web')
+        f.write('echo Preparing Docker for Damascus.Web\n')
         f.write('cd %s\src\Damascus.Web\n' % deployment_folder)
         f.write('docker build -t damascus.web .\n')
         f.write('docker run -t -d -p 80:5001 damascus.web\n')
         
-        f.write('echo Preparing Docker for Damascus.MessageChannel')
+        f.write('echo Preparing Docker for Damascus.MessageChannel\n')
         f.write('cd %s\src\Damascus.MessageChannel\n' % deployment_folder)
         f.write('docker build -t damascus.messagechannel .\n')
         f.write('docker run -t -d damascus.messagechannel\n')
