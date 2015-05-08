@@ -44,8 +44,9 @@ echo "Starting remote deploy"
 mkdir -p ~/.ssh
 base64 --decode ~/.ssh/id_rsa_deploy_base64 > ~/.ssh/damascus.pk
 chmod 600 ~/.ssh/damascus.pk
+eval `ssh-agent -s`
 ssh-add ~/.ssh/damascus.pk
 
-ssh -v -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
+ssh -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
 
 echo "Finishing deploy"
