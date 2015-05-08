@@ -3,6 +3,7 @@ mono:
 - 3.12.0
 sudo: false
 before_script:
+- echo -e "Host $deploy_box\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - python travis-before-deploy.py
 script:
 - ./build.sh --quiet verify
