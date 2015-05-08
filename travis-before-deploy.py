@@ -30,9 +30,18 @@ def create_deploy_file(deploy_file, environment_dic):
         f.write('git clone %s %s\n' %(git_repository, deployment_folder))
         f.write('cd %s\n' % deployment_folder)
         f.write('git checkout %s\n' % git_branch)
-        f.write('python travis-after-deploy.py\n')
+        f.write('sudo python travis-after-deploy.py\n')
+        
+        #Preparing Docker for Damascus.Web
+        f.write('echo Preparing Docker for Damascus.Web')
+        f.write('cd %s\src\Damascus.Web\n' % deployment_folder)
         f.write('docker build -t damascus.web .\n')
         f.write('docker run -t -d -p 80:5001 damascus.web\n')
+        
+        f.write('echo Preparing Docker for Damascus.MessageChannel')
+        f.write('cd %s\src\Damascus.MessageChannel\n' % deployment_folder)
+        f.write('docker build -t damascus.messagechannel .\n')
+        f.write('docker run -t -d damascus.messagechannel\n')
         
 imeet_dict = environment_dict()
 create_deploy_file('remote-deploy.sh', imeet_dict)
