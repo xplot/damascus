@@ -22,7 +22,7 @@ def replace_file_variables(filename):
     for line in fileinput.input(filename, inplace=True):
         env_variable = get_existing_env_variable_in_line(line, imeet_dict)
         if env_variable:
-            line = "%s:%s," % ( pretty_name(env_variable),  imeet_dict[env_variable])
+            line = "%s:'%s'," % ( pretty_name(env_variable),  imeet_dict[env_variable])
         print line 
 
 imeet_dict = environment_dict(VARIABLES_FILE)
