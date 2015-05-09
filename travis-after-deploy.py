@@ -1,17 +1,15 @@
 import os
 import fileinput
 import shutil
+import json
 
 PREFIX = 'damascus_'
+VARIABLES_FILE = 'config_variables'
 pretty_name = lambda x: x.replace(PREFIX, "").replace('_','.')
 
-def environment_dict():
-    imeet_dict = {}
-    for variable in os.environ.keys():
-        variablel = variable.lower()
-        if PREFIX in variablel:
-            imeet_dict[variable] = os.environ[variable]
-    return imeet_dict
+def environment_dict(config_variables):
+    with open(config_variables, 'r') as content_file:
+        return json.load(content_file)
 
 def get_existing_env_variable_in_line(line, imeet_dict):
     for key in imeet_dict.keys():
@@ -27,7 +25,7 @@ def replace_file_variables(filename):
             line = "%s:%s," % ( pretty_name(env_variable),  imeet_dict[env_variable])
         print line 
 
-imeet_dict = environment_dict()
+imeet_dict = environment_dict(VARIABLES_FILE)
 
 replace_file_variables("src/Damascus.MessageChannel/config.json")
 replace_file_variables("src/Damascus.Web/config.json")
