@@ -52,6 +52,6 @@ ssh-add ~/.ssh/damascus.pk
 echo "Copying sensitive variables to Server"
 scp -i ~/.ssh/damascus.pk config_variables username$deploy_user@$deploy_box:/deployment
 
-ssh -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
+ssh -v -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
 
 echo "Finishing deploy"
