@@ -4,8 +4,6 @@ import shutil
 import json
 
 PREFIX = 'damascus_'
-deployment_folder = '/deployment/'
-
 def environment_dict():
     imeet_dict = {}
     for variable in os.environ.keys():
@@ -19,4 +17,4 @@ def create_variables_file(variables_file, imeet_dict):
     	f.write(json.dumps(imeet_dict))
 
 imeet_dict = environment_dict()
-create_variables_file(deployment_folder + 'config_variables', imeet_dict)
+create_variables_file('~/config_variables', imeet_dict)
