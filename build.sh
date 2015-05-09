@@ -41,15 +41,16 @@ mono packages/Sake/tools/Sake.exe -I packages/KoreBuild/build -f makefile.shade 
 #Start remote deploy
 echo "Starting remote deploy"
 
-echo "Copying sensitive variables to Server"
-scp config_variables username$deploy_user@$deploy_box:/deployment
-
+echo "Creating Login information"
 mkdir -p ~/.ssh
 base64 --decode ./id_rsa_deploy_base64 > ~/.ssh/damascus.pk
 chmod 600 ~/.ssh/damascus.pk
 eval `ssh-agent -s`
 ssh-add ~/.ssh/damascus.pk
 
+
+echo "Copying sensitive variables to Server"
+scp config_variables username$deploy_user@$deploy_box:/deployment
 
 ssh -i ~/.ssh/damascus.pk $deploy_user@$deploy_box 'bash -s' < remote-deploy.sh
 
