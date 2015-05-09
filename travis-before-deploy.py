@@ -13,8 +13,8 @@ def environment_dict():
     return imeet_dict
 
 def create_variables_file(variables_file, imeet_dict):
-    with open(variables_file, 'w+') as f:
+    with open(variables_file, 'w') as f:
     	f.write(json.dumps(imeet_dict))
 
 imeet_dict = environment_dict()
-create_variables_file('~/config_variables', imeet_dict)
+create_variables_file('config_variables', imeet_dict)
