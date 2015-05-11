@@ -77,14 +77,21 @@ namespace Damascus.Web
         private void ConfigureContainer(DI.IServiceCollection services)
         {
             this.container = new WindsorContainer();
+
+            container.Populate(services);
+
+            this.container.Register(
+                Component.For<Settings>()
+                        .ImplementedBy<Settings>()
+            );
+
             this.container.Install(
                 new ManagersInstaller(),
                 new ReplyStoreInstaller(),
                 new WorkflowEngineInstaller()
             );
             
-            container.Populate(services);
-
+            
             //Huge Patch do not remove until we find out what's happenning here
             container.Register(
                 Component.For(typeof(IEnumerable<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
@@ -98,6 +105,7 @@ namespace Damascus.Web
         {
             var configuration = new BusConfiguration();
             var conventionsBuilder = configuration.Conventions();
+            var Settings = container.Resolve<Settings>();
 
             conventionsBuilder.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Commands"));
             conventionsBuilder.DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Events"));

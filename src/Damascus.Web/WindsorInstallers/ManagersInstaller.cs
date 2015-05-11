@@ -14,7 +14,9 @@ namespace Damascus.Web
         {
             if (container == null)
                 throw new ArgumentNullException("container");
-            
+
+            var Settings = container.Resolve<Settings>();
+
             container.Register(AllTypes.FromAssemblyContaining(typeof(IMessageChannelManager))
                 .Pick()
                 .If(Component.IsInNamespace("Damascus.Core"))
