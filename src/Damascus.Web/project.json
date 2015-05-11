@@ -8,16 +8,16 @@
         "Damascus.Message": "1.0.0-*",
 
         //Framework
-        "Microsoft.AspNet.Mvc": "6.0.0-beta4",
-        "Microsoft.AspNet.Authorization": "1.0.0-beta4",
-        "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
-        "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
-        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+        "Microsoft.AspNet.Mvc": "6.0.0-*",
+        "Microsoft.AspNet.Authorization": "1.0.0-*",
+        "Microsoft.AspNet.Server.IIS": "1.0.0-*",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
+        "Microsoft.AspNet.StaticFiles": "1.0.0-*",
+        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
         
         //Dependency Injection
         "Castle.Windsor": "3.3.0",
-        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-beta4",
+        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-*",
 
         //NServiceBus
         "NServiceBus": "5.2.0",
@@ -25,7 +25,7 @@
         "NServiceBus.CastleWindsor": "5.0.0",
         "NServiceBus.NLog": "1.0.0",
 
-        "Kestrel": "1.0.0-beta4",
+        "Kestrel": "1.0.0-*",
         
         //Logging
         "NLog": "3.2.1",

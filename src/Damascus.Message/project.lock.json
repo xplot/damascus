@@ -1,27 +1,27 @@
 {
   "locked": false,
-  "version": -9997,
+  "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
       "Newtonsoft.Json/6.0.1": {
-        "compile": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ],
-        "runtime": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ]
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
       },
       "NServiceBus/5.2.0": {
         "frameworkAssemblies": [
           "System",
           "System.Core"
         ],
-        "compile": [
-          "lib/net45/NServiceBus.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
       }
     }
   },

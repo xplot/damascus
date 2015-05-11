@@ -1,25 +1,25 @@
 {
   "locked": false,
-  "version": -9997,
+  "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
       "AutoMapper/3.3.0": {
-        "compile": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ],
-        "runtime": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ]
+        "compile": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        }
       },
       "Castle.Core/3.3.0": {
-        "compile": [
-          "lib/net45/Castle.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
       },
       "Castle.Windsor/3.3.0": {
         "dependencies": {
@@ -29,20 +29,20 @@
           "System.Core",
           "System.Xml"
         ],
-        "compile": [
-          "lib/net45/Castle.Windsor.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Windsor.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Windsor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Windsor.dll": {}
+        }
       },
       "Facebook/6.8.0": {
-        "compile": [
-          "lib/net45/Facebook.dll"
-        ],
-        "runtime": [
-          "lib/net45/Facebook.dll"
-        ]
+        "compile": {
+          "lib/net45/Facebook.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Facebook.dll": {}
+        }
       },
       "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
         "dependencies": {
@@ -55,12 +55,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
       },
       "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
         "frameworkAssemblies": [
@@ -69,12 +69,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
       },
       "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta4": {
         "dependencies": {
@@ -87,12 +87,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll": {}
+        }
       },
       "Microsoft.Framework.DependencyInjection.Interfaces/1.0.0-beta4": {
         "frameworkAssemblies": [
@@ -101,12 +101,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Interfaces.dll": {}
+        }
       },
       "Microsoft.Framework.Logging/1.0.0-beta4": {
         "dependencies": {
@@ -120,12 +120,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.Logging.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.Logging.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        }
       },
       "Microsoft.Framework.Logging.Interfaces/1.0.0-beta4": {
         "frameworkAssemblies": [
@@ -134,12 +134,12 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.Logging.Interfaces.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.Logging.Interfaces.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.Interfaces.dll": {}
+        }
       },
       "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
         "frameworkAssemblies": [
@@ -148,52 +148,52 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        }
       },
       "Newtonsoft.Json/6.0.1": {
-        "compile": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ],
-        "runtime": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ]
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
       },
       "NLog/3.2.1": {
-        "compile": [
-          "lib/net45/NLog.dll"
-        ],
-        "runtime": [
-          "lib/net45/NLog.dll"
-        ]
+        "compile": {
+          "lib/net45/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        }
       },
       "NServiceBus/5.2.0": {
         "frameworkAssemblies": [
           "System",
           "System.Core"
         ],
-        "compile": [
-          "lib/net45/NServiceBus.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
       },
       "NServiceBus.CastleWindsor/5.0.0": {
         "dependencies": {
           "NServiceBus": "[5.0.0, 6.0.0)",
           "Castle.Windsor": "[3.3.0, 4.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll": {}
+        }
       },
       "NServiceBus.Host/6.0.0": {
         "dependencies": {
@@ -205,58 +205,58 @@
           "NServiceBus": "[5.0.0, 6.0.0)",
           "NLog": "[3.0.0, 4.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.NLog.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.NLog.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NLog.dll": {}
+        }
       },
       "NServiceBus.SqlServer/2.1.2": {
         "dependencies": {
           "NServiceBus": "[5.0.0, 6.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.Transports.SQLServer.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Transports.SQLServer.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Transports.SQLServer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Transports.SQLServer.dll": {}
+        }
       },
       "RestSharp/105.0.1": {
-        "compile": [
-          "lib/net4/RestSharp.dll"
-        ],
-        "runtime": [
-          "lib/net4/RestSharp.dll"
-        ]
+        "compile": {
+          "lib/net4/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net4/RestSharp.dll": {}
+        }
       },
       "StackExchange.Redis/1.0.414": {
-        "compile": [
-          "lib/net45/StackExchange.Redis.dll"
-        ],
-        "runtime": [
-          "lib/net45/StackExchange.Redis.dll"
-        ]
+        "compile": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        }
       },
       "Twilio/4.0.0": {
         "dependencies": {
           "RestSharp": "105.0.1"
         },
-        "compile": [
-          "lib/3.5/Twilio.Api.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Api.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Api.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Api.dll": {}
+        }
       },
       "Twilio.TwiML/3.3.6": {
-        "compile": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        }
       }
     }
   },

@@ -19,8 +19,8 @@
         "RestSharp": "105.0.1",
         
         //Framework
-        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-beta4",
-        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-*",
+        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
 
         //NServiceBus
         "NServiceBus": "5.2.0",
@@ -35,7 +35,7 @@
         
         //Logging
         "NLog": "3.2.1",
-        "Microsoft.Framework.Logging": "1.0.0-beta4",
+        "Microsoft.Framework.Logging": "1.0.0-*",
         
   },
 
