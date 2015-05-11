@@ -68,7 +68,7 @@ namespace Damascus.Web
             app.UseMvc();
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
-
+            
             app.ApplicationServices =  container.Resolve<IServiceProvider>();
 
             ConfigureBus();
@@ -119,7 +119,7 @@ namespace Damascus.Web
             configuration.UsePersistence<InMemoryPersistence>();
 
             configuration.EnableInstallers();
-
+            
             // Castle with a container instance
             configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(this.container));
 

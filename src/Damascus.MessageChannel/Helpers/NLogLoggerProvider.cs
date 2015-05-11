@@ -86,7 +86,7 @@ namespace Damascus.MessageChannel
                 return global::NLog.LogLevel.Debug;
             }
 
-            public IDisposable BeginScope(object state)
+            public IDisposable BeginScopeImpl(object state)
             {
                 return NestedDiagnosticsContext.Push(state.ToString());
             }

@@ -58,6 +58,12 @@ namespace Damascus.MessageChannel
         private IWindsorContainer ConfigureContainer()
         {
             var container = new WindsorContainer();
+            
+            container.Register(
+                Component.For<Settings>()
+                        .ImplementedBy<Settings>()
+            );
+            
             container.Install(
                 new ManagersInstaller()
             );
@@ -68,7 +74,8 @@ namespace Damascus.MessageChannel
         public BusConfiguration ConfigureNSB(IWindsorContainer container)
         {
             var configuration = new BusConfiguration();
-
+            var Settings = container.Resolve<Settings>();
+            
             var conventionsBuilder = configuration.Conventions();
 
             conventionsBuilder.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Commands"));
