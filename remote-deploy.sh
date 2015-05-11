@@ -6,7 +6,7 @@ GIT_BRANCH='new'
 
 sudo rm -rf $DAMASCUS_FOLDER
 
-sudo eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)"
 sudo ssh-add ~/.ssh/id_rsa
 sudo git clone git@github.com:xplot/damascus.git $DAMASCUS_FOLDER
 
