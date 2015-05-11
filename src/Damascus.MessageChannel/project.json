@@ -19,7 +19,6 @@
         "RestSharp": "105.0.1",
         
         //Framework
-        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-*",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
 
         //NServiceBus

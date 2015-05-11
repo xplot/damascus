@@ -11,6 +11,8 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.OptionsModel;
 using Microsoft.AspNet.Authorization;
+
+using Microsoft.Framework.Runtime;
 using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
 using ILogger = Microsoft.Framework.Logging.ILogger;
@@ -33,9 +35,12 @@ namespace Damascus.Web
     public class Startup
     {
         private WindsorContainer container;
-
+        private IHostingEnvironment environment;
+        
         public Startup(IHostingEnvironment env)
         {
+            //var x = 2/0;
+            this.environment = env;
         }
 
         // This method gets called by a runtime.
@@ -77,7 +82,12 @@ namespace Damascus.Web
         private void ConfigureContainer(DI.IServiceCollection services)
         {
             this.container = new WindsorContainer();
-
+            
+             this.container.Register(
+                Component.For<IHostingEnvironment>()
+                        .Instance(this.environment)
+            );
+            
             container.Populate(services);
 
             this.container.Register(

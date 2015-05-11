@@ -4,15 +4,15 @@ using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Config = Microsoft.Framework.ConfigurationModel;
 using System.IO;
-using Microsoft.Framework.Runtime;
 
 namespace Damascus.MessageChannel
 {
 	public class Settings
 	{
         string baseDirectory;
-        public Settings(IApplicationEnvironment appEnvironment) {
-            baseDirectory = appEnvironment.ApplicationBasePath;
+        public Settings() {
+            baseDirectory = Environment.CurrentDirectory + "/";
+            System.Console.WriteLine(baseDirectory);
         }
 
 		private static Config.Configuration _config;
@@ -25,9 +25,9 @@ namespace Damascus.MessageChannel
                     
                     _config = new Config.Configuration();
                     if (File.Exists(baseDirectory + "/config.local.json"))
-                        _config.AddJsonFile("config.local.json");    
+                        _config.AddJsonFile(baseDirectory +"config.local.json");    
                     else    
-                        _config.AddJsonFile("config.json");
+                        _config.AddJsonFile(baseDirectory +"config.json");
                 }
                 return _config;
             }

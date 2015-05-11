@@ -17,7 +17,6 @@
         
         //Dependency Injection
         "Castle.Windsor": "3.3.0",
-        "Microsoft.Framework.DependencyInjection.Interfaces": "1.0.0-*",
 
         //NServiceBus
         "NServiceBus": "5.2.0",
