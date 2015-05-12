@@ -1,4 +1,5 @@
 .nuget
+artifacts
 node_modules
 .settings
 config.local.json
