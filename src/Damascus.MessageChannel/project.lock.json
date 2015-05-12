@@ -1,25 +1,25 @@
 {
   "locked": false,
-  "version": -9997,
+  "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
       "AutoMapper/3.3.0": {
-        "compile": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ],
-        "runtime": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ]
+        "compile": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        }
       },
       "Castle.Core/3.3.0": {
-        "compile": [
-          "lib/net45/Castle.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
       },
       "Castle.Windsor/3.3.0": {
         "dependencies": {
@@ -29,24 +29,24 @@
           "System.Core",
           "System.Xml"
         ],
-        "compile": [
-          "lib/net45/Castle.Windsor.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Windsor.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Windsor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Windsor.dll": {}
+        }
       },
       "Facebook/6.8.0": {
-        "compile": [
-          "lib/net45/Facebook.dll"
-        ],
-        "runtime": [
-          "lib/net45/Facebook.dll"
-        ]
+        "compile": {
+          "lib/net45/Facebook.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Facebook.dll": {}
+        }
       },
-      "Microsoft.Framework.ConfigurationModel/1.0.0-beta5-11320": {
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta5-11327": {
         "dependencies": {
-          "Microsoft.Framework.ConfigurationModel.Abstractions": "1.0.0-beta5-11320"
+          "Microsoft.Framework.ConfigurationModel.Abstractions": "1.0.0-beta5-11327"
         },
         "frameworkAssemblies": [
           "mscorlib",
@@ -54,31 +54,31 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
       },
-      "Microsoft.Framework.ConfigurationModel.Abstractions/1.0.0-beta5-11320": {
+      "Microsoft.Framework.ConfigurationModel.Abstractions/1.0.0-beta5-11327": {
         "frameworkAssemblies": [
           "mscorlib",
           "System",
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.dll": {}
+        }
       },
-      "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta5-11320": {
+      "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta5-11327": {
         "dependencies": {
           "Newtonsoft.Json": "6.0.6",
-          "Microsoft.Framework.ConfigurationModel": "1.0.0-beta5-11320"
+          "Microsoft.Framework.ConfigurationModel": "1.0.0-beta5-11327"
         },
         "frameworkAssemblies": [
           "mscorlib",
@@ -86,31 +86,31 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll": {}
+        }
       },
-      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11351": {
+      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11356": {
         "frameworkAssemblies": [
           "mscorlib",
           "System",
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
+        }
       },
-      "Microsoft.Framework.Logging/1.0.0-beta5-11347": {
+      "Microsoft.Framework.Logging/1.0.0-beta5-11352": {
         "dependencies": {
-          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11351",
-          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta5-11347"
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11356",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta5-11352"
         },
         "frameworkAssemblies": [
           "System.Collections.Concurrent",
@@ -119,66 +119,66 @@
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.Logging.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.Logging.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.dll": {}
+        }
       },
-      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11347": {
+      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11352": {
         "frameworkAssemblies": [
           "mscorlib",
           "System",
           "System.Core",
           "Microsoft.CSharp"
         ],
-        "compile": [
-          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll"
-        ],
-        "runtime": [
-          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll"
-        ]
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll": {}
+        }
       },
       "Newtonsoft.Json/6.0.1": {
-        "compile": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ],
-        "runtime": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ]
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
       },
       "NLog/3.2.1": {
-        "compile": [
-          "lib/net45/NLog.dll"
-        ],
-        "runtime": [
-          "lib/net45/NLog.dll"
-        ]
+        "compile": {
+          "lib/net45/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        }
       },
       "NServiceBus/5.2.0": {
         "frameworkAssemblies": [
           "System",
           "System.Core"
         ],
-        "compile": [
-          "lib/net45/NServiceBus.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
       },
       "NServiceBus.CastleWindsor/5.0.0": {
         "dependencies": {
           "NServiceBus": "[5.0.0, 6.0.0)",
           "Castle.Windsor": "[3.3.0, 4.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.ObjectBuilder.CastleWindsor.dll": {}
+        }
       },
       "NServiceBus.Host/6.0.0": {
         "dependencies": {
@@ -190,58 +190,58 @@
           "NServiceBus": "[5.0.0, 6.0.0)",
           "NLog": "[3.0.0, 4.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.NLog.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.NLog.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.NLog.dll": {}
+        }
       },
       "NServiceBus.SqlServer/2.1.2": {
         "dependencies": {
           "NServiceBus": "[5.0.0, 6.0.0)"
         },
-        "compile": [
-          "lib/net45/NServiceBus.Transports.SQLServer.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Transports.SQLServer.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Transports.SQLServer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Transports.SQLServer.dll": {}
+        }
       },
       "RestSharp/105.0.1": {
-        "compile": [
-          "lib/net4/RestSharp.dll"
-        ],
-        "runtime": [
-          "lib/net4/RestSharp.dll"
-        ]
+        "compile": {
+          "lib/net4/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net4/RestSharp.dll": {}
+        }
       },
       "StackExchange.Redis/1.0.414": {
-        "compile": [
-          "lib/net45/StackExchange.Redis.dll"
-        ],
-        "runtime": [
-          "lib/net45/StackExchange.Redis.dll"
-        ]
+        "compile": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        }
       },
       "Twilio/4.0.0": {
         "dependencies": {
           "RestSharp": "105.0.1"
         },
-        "compile": [
-          "lib/3.5/Twilio.Api.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Api.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Api.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Api.dll": {}
+        }
       },
       "Twilio.TwiML/3.3.6": {
-        "compile": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        }
       }
     }
   },
@@ -371,12 +371,12 @@
         "serializers/JsonNetSerializer.cs"
       ]
     },
-    "Microsoft.Framework.ConfigurationModel/1.0.0-beta5-11320": {
+    "Microsoft.Framework.ConfigurationModel/1.0.0-beta5-11327": {
       "serviceable": true,
-      "sha512": "V8nTVMtEozkUgZfFBXDbgAiMUqgkt/kKV4AHz6FXkpr0oknF8NIPlDT70ssgoen61i1/Tp/KoLrxUtZPYONbnQ==",
+      "sha512": "+k1xeD1TP8hPwIEbQhrsT2Xi+sfexloAe/JO6zMViavGtbAK7vaZlIjtFtPtWZg1QlnKN3/XNqiiTHWvE9yKww==",
       "files": [
-        "Microsoft.Framework.ConfigurationModel.1.0.0-beta5-11320.nupkg",
-        "Microsoft.Framework.ConfigurationModel.1.0.0-beta5-11320.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta5-11327.nupkg",
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta5-11327.nupkg.sha512",
         "Microsoft.Framework.ConfigurationModel.nuspec",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.xml",
@@ -388,12 +388,12 @@
         "lib/portable-net45+win/Microsoft.Framework.ConfigurationModel.xml"
       ]
     },
-    "Microsoft.Framework.ConfigurationModel.Abstractions/1.0.0-beta5-11320": {
+    "Microsoft.Framework.ConfigurationModel.Abstractions/1.0.0-beta5-11327": {
       "serviceable": true,
-      "sha512": "RdOPU9K+nnoBuXhRXcwLeK/NlQFf/0D6YtuPEoBIU5g/JocHiTGiYMosMljLRpwHJKKyffjsTGVKKqIwsYUJug==",
+      "sha512": "8CKxCfTIBciPk9Veh+NQOEDG300wl5S/9Zl8k3jATIVlgkMHVvc/foBJtmtf1uksMan9pSQ4mmW7wv8L25wX9Q==",
       "files": [
-        "Microsoft.Framework.ConfigurationModel.Abstractions.1.0.0-beta5-11320.nupkg",
-        "Microsoft.Framework.ConfigurationModel.Abstractions.1.0.0-beta5-11320.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Abstractions.1.0.0-beta5-11327.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Abstractions.1.0.0-beta5-11327.nupkg.sha512",
         "Microsoft.Framework.ConfigurationModel.Abstractions.nuspec",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.dll",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.Abstractions.xml",
@@ -405,12 +405,12 @@
         "lib/portable-net45+win/Microsoft.Framework.ConfigurationModel.Abstractions.xml"
       ]
     },
-    "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta5-11320": {
+    "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta5-11327": {
       "serviceable": true,
-      "sha512": "hs+IoV6SUUcJ1Y6k6LdgLm7z4qEX9Or9zf1B8o05WLA35lOXoWVSDPg2ean5YgD8zHG6766aUweYu27BTqDhvA==",
+      "sha512": "HmrHSTfxcXn/D4SUFTu5ZQoc3DLC8D+tkseluJigdK7gLzv1ABo+pscNduIRcAlvRkrmpev9VGXxES3gD80Q+A==",
       "files": [
-        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta5-11320.nupkg",
-        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta5-11320.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta5-11327.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta5-11327.nupkg.sha512",
         "Microsoft.Framework.ConfigurationModel.Json.nuspec",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll",
         "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.xml",
@@ -420,12 +420,12 @@
         "lib/net45/Microsoft.Framework.ConfigurationModel.Json.xml"
       ]
     },
-    "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11351": {
+    "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11356": {
       "serviceable": true,
-      "sha512": "7YybMa33gm3FGGO3lrCOTELdZOlUBbM48s7gIzktT0R1Npn7yLQMv/nffIWkQrvULjwc+Iuid2c/jNNPTo7o7Q==",
+      "sha512": "x1Uoe4JHxX7qZGbRnKPZziz/LpUjPXsqxX8FiHKewHiqdkiSbCk8bRwATJKY0YIChUGiI82SmuPALHa5S4iuVw==",
       "files": [
-        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11351.nupkg",
-        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11351.nupkg.sha512",
+        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11356.nupkg",
+        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11356.nupkg.sha512",
         "Microsoft.Framework.DependencyInjection.Abstractions.nuspec",
         "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll",
         "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.xml",
@@ -437,12 +437,12 @@
         "lib/portable-net45+win/Microsoft.Framework.DependencyInjection.Abstractions.xml"
       ]
     },
-    "Microsoft.Framework.Logging/1.0.0-beta5-11347": {
+    "Microsoft.Framework.Logging/1.0.0-beta5-11352": {
       "serviceable": true,
-      "sha512": "xBeUn7iAfVNUea+0vhBQL3MdjfbQNEuV+khodZzwxB3eiFX1TRKVGaxF8C84sv/t31QdS2ChUNxHWljhovIIfw==",
+      "sha512": "hMSbCBU5xcOZyEkxHWU43r3glgWw5JSW6CNNnWpYcLhy5mI/Tb94Sm01qnFGufaaB4LsuM10csp2o9WLgEOfog==",
       "files": [
-        "Microsoft.Framework.Logging.1.0.0-beta5-11347.nupkg",
-        "Microsoft.Framework.Logging.1.0.0-beta5-11347.nupkg.sha512",
+        "Microsoft.Framework.Logging.1.0.0-beta5-11352.nupkg",
+        "Microsoft.Framework.Logging.1.0.0-beta5-11352.nupkg.sha512",
         "Microsoft.Framework.Logging.nuspec",
         "lib/dnx451/Microsoft.Framework.Logging.dll",
         "lib/dnx451/Microsoft.Framework.Logging.xml",
@@ -454,12 +454,12 @@
         "lib/portable-net45+win/Microsoft.Framework.Logging.xml"
       ]
     },
-    "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11347": {
+    "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11352": {
       "serviceable": true,
-      "sha512": "2le//o33jEa7dSpHg4JZeBSqx6z1x5QYrpdoGxqZ4+z57aJHJfK6iAD61eWEUdhORKYoFPN0SRFac+bUd7IeVw==",
+      "sha512": "04ESKT/XIMo3HMbbLGdBwJ5kUF8gJloSWCO4D63nI2gXQ4jkvwkiV2L3nXXk2U9juEi030lx45A/2e/r9tEWgw==",
       "files": [
-        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11347.nupkg",
-        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11347.nupkg.sha512",
+        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11352.nupkg",
+        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11352.nupkg.sha512",
         "Microsoft.Framework.Logging.Abstractions.nuspec",
         "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll",
         "lib/dnx451/Microsoft.Framework.Logging.Abstractions.xml",

@@ -33,25 +33,10 @@ namespace Damascus.MessageChannel
             {
                 IBus bus = startableBus.Start();
                 
-                var key = "";
-
-                while(key != "x"){
-                    
-                    if(key == "email"){
-                        bus.SendLocal(new CreateEmailMessage(){
-                            Id = Guid.NewGuid().ToString(),
-                            Address = "javier@voiceflows.com",
-                            Sender = "test2@example.com",
-                            Subject = "Hello world",
-                            BodyTemplate = new BodyTemplate(){
-                                Body = "Hello cruel world"
-                            },
-                        });
-                    }
-                    
-                    System.Console.WriteLine("Press x to exit, you can also type email to send a test email ");
-                    key = System.Console.ReadLine();
-                }
+                //We will keep the process running using a while(true)
+                //This is in order to not mess with standard input
+                //Process can be started or killed by Ctrl+C
+                while(true){}
             }
         }
 

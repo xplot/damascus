@@ -1,25 +1,25 @@
 {
   "locked": false,
-  "version": -9997,
+  "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
       "AutoMapper/3.3.0": {
-        "compile": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ],
-        "runtime": [
-          "lib/net40/AutoMapper.Net4.dll",
-          "lib/net40/AutoMapper.dll"
-        ]
+        "compile": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/AutoMapper.Net4.dll": {},
+          "lib/net40/AutoMapper.dll": {}
+        }
       },
       "Castle.Core/3.3.0": {
-        "compile": [
-          "lib/net45/Castle.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
       },
       "Castle.Windsor/3.3.0": {
         "dependencies": {
@@ -29,75 +29,75 @@
           "System.Core",
           "System.Xml"
         ],
-        "compile": [
-          "lib/net45/Castle.Windsor.dll"
-        ],
-        "runtime": [
-          "lib/net45/Castle.Windsor.dll"
-        ]
+        "compile": {
+          "lib/net45/Castle.Windsor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Windsor.dll": {}
+        }
       },
       "Facebook/6.8.0": {
-        "compile": [
-          "lib/net45/Facebook.dll"
-        ],
-        "runtime": [
-          "lib/net45/Facebook.dll"
-        ]
+        "compile": {
+          "lib/net45/Facebook.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Facebook.dll": {}
+        }
       },
       "Newtonsoft.Json/6.0.1": {
-        "compile": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ],
-        "runtime": [
-          "lib/net45/Newtonsoft.Json.dll"
-        ]
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
       },
       "NServiceBus/5.2.0": {
         "frameworkAssemblies": [
           "System",
           "System.Core"
         ],
-        "compile": [
-          "lib/net45/NServiceBus.Core.dll"
-        ],
-        "runtime": [
-          "lib/net45/NServiceBus.Core.dll"
-        ]
+        "compile": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NServiceBus.Core.dll": {}
+        }
       },
       "RestSharp/105.0.1": {
-        "compile": [
-          "lib/net4/RestSharp.dll"
-        ],
-        "runtime": [
-          "lib/net4/RestSharp.dll"
-        ]
+        "compile": {
+          "lib/net4/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net4/RestSharp.dll": {}
+        }
       },
       "StackExchange.Redis/1.0.414": {
-        "compile": [
-          "lib/net45/StackExchange.Redis.dll"
-        ],
-        "runtime": [
-          "lib/net45/StackExchange.Redis.dll"
-        ]
+        "compile": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        }
       },
       "Twilio/4.0.0": {
         "dependencies": {
           "RestSharp": "105.0.1"
         },
-        "compile": [
-          "lib/3.5/Twilio.Api.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Api.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Api.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Api.dll": {}
+        }
       },
       "Twilio.TwiML/3.3.6": {
-        "compile": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ],
-        "runtime": [
-          "lib/3.5/Twilio.Twiml.dll"
-        ]
+        "compile": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        },
+        "runtime": {
+          "lib/3.5/Twilio.Twiml.dll": {}
+        }
       }
     }
   },

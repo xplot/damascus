@@ -27,5 +27,9 @@ cp NuGet.Config ~/.config/NuGet/
 cd $DAMASCUS_FOLDER/
 ./build.sh
 
+./stop-all.sh
+
+./start-all.sh
+
 #Permissions in Deployment folder
 chmod 777 $DAMASCUS_FOLDER
