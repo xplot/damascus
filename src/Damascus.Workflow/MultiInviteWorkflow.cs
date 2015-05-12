@@ -17,7 +17,6 @@ namespace Damascus.Workflow
     {
         public TwillioConfig TwillioConfig { get; set; }
         public SmtpConfig SmtpConfig { get; set; }
-        public IDataSerializer DataSerializer { get; set; }
         public IBus Bus { get; set; }
 
         public MultiInviteWorkflow()
