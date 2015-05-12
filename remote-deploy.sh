@@ -25,11 +25,15 @@ python travis-after-deploy.py
 cp NuGet.Config ~/.config/NuGet/
 
 cd $DAMASCUS_FOLDER/
+
+#Permissions in Deployment folder
+chmod -R 777 $DAMASCUS_FOLDER
+
+//Building projects
 ./build.sh
 
+#Starting and stopping services
 ./stop-all.sh
 
 ./start-all.sh
 
-#Permissions in Deployment folder
-chmod 777 $DAMASCUS_FOLDER
