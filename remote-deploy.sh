@@ -25,11 +25,7 @@ python travis-after-deploy.py
 cp NuGet.Config ~/.config/NuGet/
 
 cd $DAMASCUS_FOLDER/
-dnu restore
-
-
-
-
+./build.sh
 
 #Permissions in Deployment folder
 chmod 777 $DAMASCUS_FOLDER

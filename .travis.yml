@@ -9,6 +9,7 @@ before_script:
 - python travis-before-deploy.py
 script:
 - ./build.sh --quiet verify
+- ./start-remote-deploy.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_9d1b6cee9144_key -iv $encrypted_9d1b6cee9144_iv
   -in id_rsa_xplot.enc -out ~/.ssh/damascus.pk -d
