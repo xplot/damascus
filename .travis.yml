@@ -3,7 +3,6 @@ mono:
 - 3.12.0
 sudo: false
 before_script:
-- mkdir ~/.config/NuGet/ ./NuGet.Config
 - cp NuGet.Config ~/.config/NuGet/
 - echo -e "Host $deploy_box\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - python travis-before-deploy.py
