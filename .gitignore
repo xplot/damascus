@@ -2,13 +2,15 @@
 node_modules
 .settings
 config.local.json
+config_variables
 #
 *.DS_Store*
 local.json
 prod.json
-#Test comment in gitignore
+
 #ignore thumbnails created by windows
 Thumbs.db
+
 #Ignore files build by Visual Studio
 *.obj
 *.pdb
