@@ -90,6 +90,13 @@ namespace Damascus.MessageChannel
             {
                 return NestedDiagnosticsContext.Push(state.ToString());
             }
+            
+            /*
+            public IDisposable BeginScope(object state)
+            {
+                return NestedDiagnosticsContext.Push(state.ToString());
+            }
+            */
         }
     }
 }
