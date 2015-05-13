@@ -2,7 +2,7 @@ sudo: false
 before_script:
 - mkdir -p ~/.config/NuGet/
 - cp NuGet.Config ~/.config/NuGet/
-- echo -e "Host $deploy_box\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host $deploy_box\n\tStrictHostKeyChecking no\n\tLogLevel ERROR\n" >> ~/.ssh/config
 - python travis-before-deploy.py
 script:
 - ./start-remote-deploy.sh
