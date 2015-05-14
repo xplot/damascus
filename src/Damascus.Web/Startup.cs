@@ -62,15 +62,14 @@ namespace Damascus.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
             ConfigureLogging(container);
-
+            
+            app.UseDefaultFiles();
+            
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
 
             // Add MVC to the request pipeline.
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
             
