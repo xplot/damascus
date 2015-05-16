@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Castle.MicroKernel.Registration;
@@ -36,7 +37,9 @@ namespace Damascus.MessageChannel
                 //We will keep the process running using a while(true)
                 //This is in order to not mess with standard input
                 //Process can be started or killed by Ctrl+C
-                while(true){}
+                while(true){
+                    Thread.Sleep(6000);
+                }
             }
         }
 

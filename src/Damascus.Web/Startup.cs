@@ -64,12 +64,15 @@ namespace Damascus.Web
             ConfigureLogging(container);
             
             app.UseDefaultFiles();
-            
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
-
+            
+            //To resolve index.html-like files
+            app.UseDefaultFiles();
+            
             // Add MVC to the request pipeline.
             app.UseMvc();
+
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
             
