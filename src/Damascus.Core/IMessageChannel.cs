@@ -25,7 +25,7 @@ namespace Damascus.Core
             if (string.IsNullOrEmpty(call.Id))
                 call.Id = Guid.NewGuid().ToString();
 
-            Bus.Send(call);
+            Bus.Send("Damascus.MessageChannel", call);
             return call.Id;
         }
 
@@ -34,7 +34,7 @@ namespace Damascus.Core
             if (string.IsNullOrEmpty(sms.Id))
                 sms.Id = Guid.NewGuid().ToString();
 
-            Bus.Send(sms);
+            Bus.Send("Damascus.MessageChannel", sms);
             return sms.Id;
         }
 
@@ -43,7 +43,7 @@ namespace Damascus.Core
             if (string.IsNullOrEmpty(email.Id))
                 email.Id = Guid.NewGuid().ToString();
 
-            Bus.Send(email);
+            Bus.Send("Damascus.MessageChannel", email);
             return email.Id;
         }
     }

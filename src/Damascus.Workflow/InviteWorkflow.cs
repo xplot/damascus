@@ -12,7 +12,12 @@ using System.Diagnostics;
 namespace Damascus.Workflow
 {
     [WorkflowName("invite")]
-        public class InviteWorkflow : Damascus.Core.Workflow
+    [SmsReplyConfiguration("invite", new string[]
+        {
+            "smsin - yes,no",        
+        }
+    )]
+    public class InviteWorkflow : Damascus.Core.Workflow
     {
         public IIvrXmlWriter XmlWriter { get; set; }
         public IBus Bus { get; set; }

@@ -32,9 +32,7 @@ namespace Damascus.Core
         }
 
         public Dictionary<string,IStep> Steps { get; set; }
-        
         public DataStorage Data { get; set; }
-
         public IDataSerializer DataSerializer { get; set; }
 
         public virtual string Execute(string step, IStepInput input)

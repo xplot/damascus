@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Reflection;
+﻿using System.IO;
 using System.Web;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using System;
+using System.Configuration;
 using Damascus.Core;
-using Damascus.Core.Serialization;
+using Damascus.Message;
 using Damascus.Workflow;
-using StackExchange.Redis;
 
 namespace Damascus.Web
 {
     public class WorkflowEngineInstaller : IWindsorInstaller
     {
-        public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
+        public void Install(IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
             if (container == null)
                 throw new ArgumentNullException("container");

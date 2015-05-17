@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Damascus.Core.Serialization
+namespace Damascus.Core
 {
     //This is a quick and dirty one. Need to expire items.
     public class MemorySerializer : IDataSerializer

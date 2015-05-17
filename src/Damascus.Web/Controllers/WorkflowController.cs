@@ -73,7 +73,11 @@ namespace Damascus.Web.Controllers
                 
                 var parameters = FillParametersDict(input);
                 var workflowInfo = ReplyStore.GetWorkflowConfigFromReply(input.Body);
-    
+                
+                Logger.LogInformation("Workflow Info: ");
+                Logger.LogInformation("Type: " + workflowInfo.WorkflowType);
+                Logger.LogInformation("Step: " + workflowInfo.WorkflowStep);
+                
                 var workflowContext = new WorkflowContext()
                 {
                     WorkflowType = workflowInfo.WorkflowType,

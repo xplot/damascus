@@ -8,9 +8,7 @@ namespace Damascus.Core
     public interface IWorkflow
     {
         string Id { get; set; }
-
         string Execute(string step, IStepInput input);
-
         DataStorage Data { get; set; }
     }
 }
