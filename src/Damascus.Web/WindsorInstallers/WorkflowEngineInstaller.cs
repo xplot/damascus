@@ -8,6 +8,8 @@ using Damascus.Core;
 using Damascus.Message;
 using Damascus.Workflow;
 
+using StackExchange.Redis;
+
 namespace Damascus.Web
 {
     public class WorkflowEngineInstaller : IWindsorInstaller
@@ -16,15 +18,16 @@ namespace Damascus.Web
         {
             if (container == null)
                 throw new ArgumentNullException("container");
-
+            
+            var Settings = container.Resolve<Settings>();
+            
             IDataSerializer serializer;
-            /*if (ConfigurationManager.AppSettings["serializer"] != null &&
-                ConfigurationManager.AppSettings["serializer"] == "redis")
+            if (Settings.Get("serializer") == "redis")
             {
-                var connection = ConnectionMultiplexer.Connect("voiceflows.redis.cache.windows.net, password=0DF8T+8zJ77KWJYar33aqSFgeG/NTjtqMo5oJU1b3n4=");
+                var connection = ConnectionMultiplexer.Connect("127.0.0.1");
                 serializer = new RedisSerializer { Cache = connection.GetDatabase() };
             }
-            else*/
+            else
                 serializer = new MemorySerializer();
             
             container.Register(Component.For<WorkflowEngine>()

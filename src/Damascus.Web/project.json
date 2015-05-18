@@ -27,6 +27,9 @@
 
         "Kestrel": "1.0.0-*",
         
+        //Redis
+        "StackExchange.Redis": "1.0.414",
+        
         //Logging
         "NLog": "3.2.1",
 

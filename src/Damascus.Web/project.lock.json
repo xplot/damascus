@@ -2297,6 +2297,7 @@
       "NServiceBus.CastleWindsor >= 5.0.0",
       "NServiceBus.NLog >= 1.0.0",
       "Kestrel >= 1.0.0-*",
+      "StackExchange.Redis >= 1.0.414",
       "NLog >= 3.2.1"
     ],
     "DNX,Version=v4.5.1": []
