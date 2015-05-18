@@ -15,7 +15,7 @@
         "RestSharp": "105.0.1",
         
         //Redis
-        "StackExchange.Redis": "1.0.414",
+        "ServiceStack.Redis": "4.0.40",
         
         //Facebook
         "Facebook": "6.8.0",

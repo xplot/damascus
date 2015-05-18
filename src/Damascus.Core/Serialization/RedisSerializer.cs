@@ -1,29 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using Newtonsoft.Json;
-using StackExchange.Redis;
+using ServiceStack.Redis;
 
 namespace Damascus.Core
 {
     public class RedisSerializer: IDataSerializer
     {
-        public IDatabase Cache { get; set; }
+        public IRedisClientsManager ClientManager { get; set; }
 
         public void SerializeData(string key, DataStorage data)
         {
-            string json = JsonConvert.SerializeObject(data);
-            Cache.StringSet(key, json);
+            using(var redis = ClientManager.GetClient())
+            {
+                string json = JsonConvert.SerializeObject(data);
+                redis.SetEntry(key, json);    
+            }
         }
 
         public DataStorage DeserializeData(string key)
         {
-            var redisValue = Cache.StringGet(key);
+            using(var redis = ClientManager.GetClient())
+            {
+                var redisValue = redis.GetEntry(key);
 
-            if (!redisValue.HasValue)
-                return null;
-
-            var json = redisValue.ToString();
-            return JsonConvert.DeserializeObject<DataStorage>(json);
+                if (string.IsNullOrEmpty(redisValue))
+                    return null;
+                
+                var json = redisValue.ToString();
+                return JsonConvert.DeserializeObject<DataStorage>(json);
+            }
         }
     }
 }

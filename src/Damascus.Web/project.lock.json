@@ -1111,12 +1111,43 @@
           "lib/net4/RestSharp.dll": {}
         }
       },
-      "StackExchange.Redis/1.0.414": {
+      "ServiceStack.Common/4.0.40": {
+        "dependencies": {
+          "ServiceStack.Interfaces": "4.0.40",
+          "ServiceStack.Text": "4.0.40"
+        },
         "compile": {
-          "lib/net45/StackExchange.Redis.dll": {}
+          "lib/net40/ServiceStack.Common.dll": {}
         },
         "runtime": {
-          "lib/net45/StackExchange.Redis.dll": {}
+          "lib/net40/ServiceStack.Common.dll": {}
+        }
+      },
+      "ServiceStack.Interfaces/4.0.40": {
+        "compile": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        }
+      },
+      "ServiceStack.Redis/4.0.40": {
+        "dependencies": {
+          "ServiceStack.Common": "4.0.40"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        }
+      },
+      "ServiceStack.Text/4.0.40": {
+        "compile": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Text.dll": {}
         }
       },
       "System.Collections.Immutable/1.1.34-rc": {
@@ -2212,19 +2243,46 @@
         "lib/sl4-wp71/RestSharp.WindowsPhone.xml"
       ]
     },
-    "StackExchange.Redis/1.0.414": {
-      "sha512": "GbMBODy6iZf1fR6tQeqV9OHoYW7xCgdvMcOJiUyxFjE2NRSrxO87RShXusvv/sMTuTOjDtV77B5mvRcYGNt6pw==",
+    "ServiceStack.Common/4.0.40": {
+      "sha512": "9VlHMHhb5wM9GGHjC5UtMrpoeUMslbWHTZjSK6fYb9nGq3kfxsU4HmXTN24R9UKQVfT2lOLhTKVN587kHzgy2g==",
       "files": [
-        "StackExchange.Redis.1.0.414.nupkg",
-        "StackExchange.Redis.1.0.414.nupkg.sha512",
-        "StackExchange.Redis.nuspec",
-        "lib/net40/StackExchange.Redis.dll",
-        "lib/net40/StackExchange.Redis.dll.config",
-        "lib/net40/StackExchange.Redis.pdb",
-        "lib/net40/StackExchange.Redis.xml",
-        "lib/net45/StackExchange.Redis.dll",
-        "lib/net45/StackExchange.Redis.pdb",
-        "lib/net45/StackExchange.Redis.xml"
+        "ServiceStack.Common.4.0.40.nupkg",
+        "ServiceStack.Common.4.0.40.nupkg.sha512",
+        "ServiceStack.Common.nuspec",
+        "lib/net40/ServiceStack.Common.dll",
+        "lib/net40/ServiceStack.Common.xml"
+      ]
+    },
+    "ServiceStack.Interfaces/4.0.40": {
+      "sha512": "ZMnoZN5Ier88rsW29xfFaM8YVI/xI7eJPLOrf1f6XNiHwTMD+X5y0oNZM05iFkWqHzXTegFskCs77i+Iuhti3Q==",
+      "files": [
+        "ServiceStack.Interfaces.4.0.40.nupkg",
+        "ServiceStack.Interfaces.4.0.40.nupkg.sha512",
+        "ServiceStack.Interfaces.nuspec",
+        "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll"
+      ]
+    },
+    "ServiceStack.Redis/4.0.40": {
+      "sha512": "AYrlBBq3RSLUtLaO58RpNOoOa07/2dYcuj2MlHAOnk4RJCkNPZmWvYVvjGEmxEWu59AYoawCwOrT+ZZLavZngg==",
+      "files": [
+        "ServiceStack.Redis.4.0.40.nupkg",
+        "ServiceStack.Redis.4.0.40.nupkg.sha512",
+        "ServiceStack.Redis.nuspec",
+        "lib/net40/ServiceStack.Redis.XML",
+        "lib/net40/ServiceStack.Redis.dll"
+      ]
+    },
+    "ServiceStack.Text/4.0.40": {
+      "sha512": "Zom0gTaHLSVuDpgtnFPI0j/QOi3aci/hj17mYHo9KUB/O4E72arCgCZSQra7yz0ZuhtJf00yyk7SLYA7t2zrxg==",
+      "files": [
+        "ServiceStack.Text.4.0.40.nupkg",
+        "ServiceStack.Text.4.0.40.nupkg.sha512",
+        "ServiceStack.Text.nuspec",
+        "lib/net40/ServiceStack.Text.dll",
+        "lib/net40/ServiceStack.Text.xml",
+        "lib/portable-net45+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Text.dll",
+        "lib/sl5/ServiceStack.Text.dll",
+        "lib/sl5/ServiceStack.Text.xml"
       ]
     },
     "System.Collections.Immutable/1.1.34-rc": {
@@ -2297,7 +2355,7 @@
       "NServiceBus.CastleWindsor >= 5.0.0",
       "NServiceBus.NLog >= 1.0.0",
       "Kestrel >= 1.0.0-*",
-      "StackExchange.Redis >= 1.0.414",
+      "ServiceStack.Redis >= 4.0.40",
       "NLog >= 3.2.1"
     ],
     "DNX,Version=v4.5.1": []

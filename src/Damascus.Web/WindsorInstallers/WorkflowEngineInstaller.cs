@@ -7,8 +7,7 @@ using System.Configuration;
 using Damascus.Core;
 using Damascus.Message;
 using Damascus.Workflow;
-
-using StackExchange.Redis;
+using ServiceStack.Redis;
 
 namespace Damascus.Web
 {
@@ -24,8 +23,7 @@ namespace Damascus.Web
             IDataSerializer serializer;
             if (Settings.Get("serializer") == "redis")
             {
-                var connection = ConnectionMultiplexer.Connect("127.0.0.1");
-                serializer = new RedisSerializer { Cache = connection.GetDatabase() };
+                serializer = new RedisSerializer { ClientManager = new PooledRedisClientManager() };
             }
             else
                 serializer = new MemorySerializer();

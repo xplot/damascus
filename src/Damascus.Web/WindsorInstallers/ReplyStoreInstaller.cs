@@ -8,7 +8,6 @@ using Castle.Windsor;
 using Castle.MicroKernel.Registration;
 using Damascus.Core;
 using Damascus.Workflow;
-using StackExchange.Redis;
 
 namespace Damascus.Web
 {
