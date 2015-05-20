@@ -30,28 +30,24 @@ namespace Damascus.Web.Controllers
         }
         
         [Route("api/workflow/call")]
-        public ContentResult Call(TwillioInput input)
+        public ContentResult Call(string type, string step, TwillioInput input)
         {
             try
             {
-                Logger.LogInformation("Received a Phone hit ");
+                Logger.LogInformation("Received a PhoneCall Workflow");
                 
                 var parameters = FillParametersDict(input);
-                
-                if (!parameters.ContainsKey("type") || !parameters.ContainsKey("step"))
-                    throw new Exception("We could not obtain the type of your workflow from your " +
-                                        "input, try setting the type parameter when posting to this service");
     
                 var workflowContext = new WorkflowContext()
                 {
                     WorkflowId = parameters.ContainsKey("id") ? parameters["id"] : Guid.NewGuid().ToString(),
-                    WorkflowType = parameters["type"],
-                    WorkflowStep = parameters["step"],
+                    WorkflowType = type,
+                    WorkflowStep = step,
                     DataKey = parameters["Phone"].NormalizePhone(),
                     Parameters = parameters
                 };
                 
-                Logger.LogInformation("Return Phone hit");
+                Logger.LogInformation("Finished PhoneCall Workflow");
                 return Content(WorkflowEngine.Process(workflowContext), "text/xml");
              }
             catch(Exception ex)
@@ -65,34 +61,32 @@ namespace Damascus.Web.Controllers
         }
         
         [Route("api/workflow/sms")]
-        public ContentResult Sms(TwillioInput input)
+        public ContentResult Sms(string type, string step, TwillioInput input)
         {
             try
             {
-                Logger.LogInformation("Received an SMS Call hit ");
+                Logger.LogInformation("Received an inbound SMS");
                 
                 var parameters = FillParametersDict(input);
-                var workflowInfo = ReplyStore.GetWorkflowConfigFromReply(input.Body);
-                
+                                
                 Logger.LogInformation("Workflow Info: ");
-                Logger.LogInformation("Type: " + workflowInfo.WorkflowType);
-                Logger.LogInformation("Step: " + workflowInfo.WorkflowStep);
+                Logger.LogInformation("Type: " + type);
+                Logger.LogInformation("Step: " + step);
                 
                 var workflowContext = new WorkflowContext()
                 {
-                    WorkflowType = workflowInfo.WorkflowType,
-                    WorkflowStep = workflowInfo.WorkflowStep,
-                    DataKey = parameters["Phone"].NormalizePhone(),
+                    WorkflowType = type,
+                    WorkflowStep = step,
+                    DataKey = input.From.NormalizePhone(),
                     Parameters = parameters
                 };
                 
-                Logger.LogInformation("Return SMS hit");
+                Logger.LogInformation("Finished inbound SMS");
                 return Content(WorkflowEngine.Process(workflowContext), "text/xml");
              }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.LogError(ex.ToString());
                 
                 Context.Response.StatusCode = 500;
                 return Content(ex.Message, "text/xml");
@@ -100,7 +94,7 @@ namespace Damascus.Web.Controllers
         }
         
         [Route("api/workflow/email")]
-        public ContentResult Email(TwillioInput input)
+        public ContentResult Email(string type, string step, TwillioInput input)
         {
             try
             {
@@ -108,8 +102,8 @@ namespace Damascus.Web.Controllers
     
                 var workflowContext = new WorkflowContext()
                 {
-                    WorkflowType = parameters["type"],
-                    WorkflowStep = parameters["step"],
+                    WorkflowType = type,
+                    WorkflowStep = step,
                     DataKey = parameters["Email"],
                     Parameters = parameters
                 };
@@ -123,8 +117,7 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.LogError(ex.ToString());
                 
                 Context.Response.StatusCode = 500;
                 return Content(ex.Message, "text/xml");
