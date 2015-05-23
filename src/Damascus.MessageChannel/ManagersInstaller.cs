@@ -15,14 +15,14 @@ namespace Damascus.MessageChannel
                 throw new ArgumentNullException("container");
             
             var Settings = container.Resolve<ISettings>();
-            
-            container.Register(Types.FromAssemblyContaining(typeof(IMessageChannelManager))
+             
+            container.Register(AllTypes.FromAssemblyContaining(typeof(ISettings))
                 .Pick()
                 .If(Component.IsInNamespace("Damascus.Core"))
                 .If(t => t.Name.EndsWith("Manager", StringComparison.Ordinal) || t.Name.EndsWith("Sender", StringComparison.Ordinal))
                 .WithService.DefaultInterfaces()
                 .Configure(c => c.LifestyleSingleton()));
-
+    	   
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
                 

@@ -13,7 +13,6 @@ namespace Damascus.MessageChannel
         string baseDirectory;
         public Settings() {
             baseDirectory = Environment.CurrentDirectory + "/";
-            System.Console.WriteLine(baseDirectory);
         }
 
 		private static Config.Configuration _config;
