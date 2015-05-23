@@ -4,7 +4,7 @@ node_modules
 .settings
 config.local.json
 config_variables
-#
+##
 *.DS_Store*
 local.json
 prod.json
