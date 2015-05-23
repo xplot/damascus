@@ -10,28 +10,51 @@ using System.Threading.Tasks;
 using Damascus.Message;
 using Damascus.Message.Command;
 using RestSharp;
+using Microsoft.Framework.Logging;
+using ILogger = Microsoft.Framework.Logging.ILogger;
 
 namespace Damascus.Core
 {
    public class ApiSender : IApiSender
     {
+        public ILogger Logger { get; set; }
+        
+        public ApiSender(ILoggerFactory loggerFactory)
+        {
+            Logger = loggerFactory.CreateLogger(typeof(ApiSender).FullName);
+        }
+        
         public void CallApi(ServiceCallMessage serviceCallMessage)
         {
-            var client = new RestClient();
-            // client.Authenticator = new HttpBasicAuthenticator(username, password);
+            Logger.LogInformation("Calling the following URL: " + serviceCallMessage.Url);
+            
+            var client = new RestClient(serviceCallMessage.Url);
+			var request = new RestRequest();
+			request.Method = (serviceCallMessage.Method == "POST") ? Method.POST : Method.GET;
 
-            var request = new RestRequest(serviceCallMessage.Url, Method.POST);
-            request.RequestFormat = DataFormat.Json;
-
-            foreach (var x in serviceCallMessage.Headers)
+            foreach (var keyValue in serviceCallMessage.Headers) 
+			{
+				request.AddHeader(keyValue.Key, keyValue.Value);
+			}
+    	   
+           
+            if(serviceCallMessage.Format == "json")
             {
-                request.AddHeader(x.Key, x.Value); // adds to POST or URL querystring based on Method    
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(serviceCallMessage.Payload);
             }
-
-            request.AddBody(serviceCallMessage.Payload);
-
-            // execute the request
-            client.Execute(request);
+            else
+            {
+                foreach (var keyValue in serviceCallMessage.Payload) 
+    			{
+    				request.AddParameter(keyValue.Key, keyValue.Value);
+    			}    
+            }
+           
+			// execute the request
+			IRestResponse response = client.Execute(request);
+			
+            Logger.LogInformation(response.Content);
         }
 
     }

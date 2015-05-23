@@ -17,5 +17,7 @@ namespace Damascus.Message.Command
         public Dictionary<string, string> Payload { get; set; }
 
         public Dictionary<string, string> Headers { get; set; }
+        
+        public string Format { get; set; }
     }
 }

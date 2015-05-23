@@ -16,6 +16,8 @@
     "Twillio.SmsOutPhone":  "xxx",
     "Twillio.CallPhone":  "xxx",
     "Twillio.BaseUrl":  "xxx",
+    
+    "imeet.api.url": "http://imeet.io/api"
 
 }
 

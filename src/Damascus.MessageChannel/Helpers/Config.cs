@@ -4,10 +4,11 @@ using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Config = Microsoft.Framework.ConfigurationModel;
 using System.IO;
+using Damascus.Core;
 
 namespace Damascus.MessageChannel
 {
-	public class Settings
+	public class Settings: ISettings
 	{
         string baseDirectory;
         public Settings() {

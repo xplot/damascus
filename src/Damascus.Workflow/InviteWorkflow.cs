@@ -22,6 +22,7 @@ namespace Damascus.Workflow
         public IIvrXmlWriter XmlWriter { get; set; }
         public IBus Bus { get; set; }
         public TwillioConfig TwillioConfig { get; set; }
+        public ISettings Settings { get; set; }
 
         public const string START_STEP = "allout";
 
@@ -145,12 +146,14 @@ namespace Damascus.Workflow
             return new ServiceCallMessage()
             {
                 Url =
-                    "http://invite.voiceflows.com/api/invite/attendees/" + Data["unique_id"] + "/response",
+                    Settings.Get("imeet.api.url") + "/invite/attendees/" + Data["unique_id"] + "/response",
                 Method = "POST",
                 Headers = new Dictionary<string, string>()
                 {
                     {"Content-Type", "application/json"}
                 },
+                Format = "json",
+                
                 Payload = new Dictionary<string, string>()
                 {
                     {"channel", channel},

@@ -15,6 +15,7 @@ using NLog;
 using NLog.Targets;
 using NLog.Config;
 
+using Damascus.Core;
 using Damascus.Message;
 using Damascus.Message.Command;
 
@@ -48,7 +49,7 @@ namespace Damascus.MessageChannel
             var container = new WindsorContainer();
             
             container.Register(
-                Component.For<Settings>()
+                Component.For<ISettings>()
                         .ImplementedBy<Settings>()
             );
             
@@ -62,7 +63,7 @@ namespace Damascus.MessageChannel
         public BusConfiguration ConfigureNSB(IWindsorContainer container)
         {
             var configuration = new BusConfiguration();
-            var Settings = container.Resolve<Settings>();
+            var Settings = container.Resolve<ISettings>();
             
             var conventionsBuilder = configuration.Conventions();
 

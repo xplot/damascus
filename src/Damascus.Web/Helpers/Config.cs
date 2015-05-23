@@ -5,10 +5,11 @@ using Microsoft.Framework.Logging;
 using Config = Microsoft.Framework.ConfigurationModel;
 using System.IO;
 using Microsoft.AspNet.Hosting;
+using Damascus.Core;
 
 namespace Damascus.Web
 {
-	public class Settings
+	public class Settings: ISettings
 	{
         string baseDirectory;
         public Settings(IHostingEnvironment appEnvironment) {

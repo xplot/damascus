@@ -15,7 +15,7 @@ namespace Damascus.Web
             if (container == null)
                 throw new ArgumentNullException("container");
 
-            var Settings = container.Resolve<Settings>();
+            var Settings = container.Resolve<ISettings>();
 
             container.Register(AllTypes.FromAssemblyContaining(typeof(IMessageChannelManager))
                 .Pick()

@@ -93,7 +93,7 @@ namespace Damascus.Web
             container.Populate(services);
 
             this.container.Register(
-                Component.For<Settings>()
+                Component.For<ISettings>()
                         .ImplementedBy<Settings>()
             );
 
@@ -117,7 +117,7 @@ namespace Damascus.Web
         {
             var configuration = new BusConfiguration();
             var conventionsBuilder = configuration.Conventions();
-            var Settings = container.Resolve<Settings>();
+            var Settings = container.Resolve<ISettings>();
 
             conventionsBuilder.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Commands"));
             conventionsBuilder.DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Bus") && t.Namespace.EndsWith("Events"));

@@ -18,7 +18,7 @@ namespace Damascus.Web
             if (container == null)
                 throw new ArgumentNullException("container");
             
-            var Settings = container.Resolve<Settings>();
+            var Settings = container.Resolve<ISettings>();
             
             IDataSerializer serializer;
             if (Settings.Get("serializer") == "redis")
