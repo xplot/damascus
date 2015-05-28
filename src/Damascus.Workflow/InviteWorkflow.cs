@@ -96,7 +96,7 @@ namespace Damascus.Workflow
             {
                 XmlWriter.SayMessage("You have not been invited to this event, hang up");
             }
-
+            
             return XmlWriter.ToString();
         }
 

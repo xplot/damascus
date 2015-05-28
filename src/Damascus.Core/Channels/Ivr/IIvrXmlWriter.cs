@@ -65,7 +65,9 @@ namespace Damascus.Core
         {
             if (!baseUrl.Contains("?"))
                 baseUrl += "?";
-
+            
+            baseUrl += "IfMachine=Hangup&"; // We dont support voicemails for now.
+            
             if (parameters != null)
                 foreach (var x in parameters)
                 {
