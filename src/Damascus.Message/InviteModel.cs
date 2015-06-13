@@ -66,6 +66,10 @@ namespace Damascus.Message
         public DateTime Start { get; set; }
         public DateTime? End { get; set; }
         public string Where { get; set; }
+        
+        public int MaxParticipants { get; set; }
+        public int Confirmed { get; set; }
+        
         public Dictionary<string, string> ExtraContextData { get; set; }
         public SharingOptions SharingOptions { get; set; }
 
@@ -93,6 +97,8 @@ namespace Damascus.Message
                 {"email_template", (this.EmailTemplate!=null)?this.EmailTemplate.ToString():""},
                 {"response_email_template", (this.ResponseEmailTemplate!=null)?this.ResponseEmailTemplate.ToString():""},
                 {"sms_template", (this.SmsTemplate!=null)?this.SmsTemplate.ToString():""},
+                {"max_participants", this.MaxParticipants.ToString()},
+                {"confirmed_participants", this.Confirmed.ToString()},
             };
         }
 
@@ -109,6 +115,8 @@ namespace Damascus.Message
                 EmailTemplate = Message.EmailTemplate.FromString(value["email_template"]),
                 ResponseEmailTemplate = Message.EmailTemplate.FromString(value["response_email_template"]),
                 SmsTemplate = Message.BodyTemplate.FromString(value["sms_template"]),
+                MaxParticipants = int.Parse(value["max_participants"]),
+                Confirmed = int.Parse(value["confirmed_participants"])
             };
         }
     }

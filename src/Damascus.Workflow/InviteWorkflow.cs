@@ -39,106 +39,123 @@ namespace Damascus.Workflow
 
         private string InviteSmsReply(IStepInput input)
         {
-            if (Data["invite_unique_id"] != null)
+            var phoneNumber = input["Phone"].NormalizePhone();
+            
+            if(!IsAttendeeInvited())
             {
-                string message = (input["Body"].ToLower() == "yes")
-                    ? "I'm glad you coming!"
-                    : "Im so sorry to hear that you cannot come";
-
-                if (Data.ContainsKey("responded"))
-                    message = "You already responded to the invitation";
-
-                var phoneNumber = input["Phone"].NormalizePhone();
-
                 Bus.Send( "Damascus.MessageChannel", new CreateSmsMessage()
                 {
                     PhoneNumber = phoneNumber,
-                    Message = message,
+                    Message = "You havent been invited",
                     Id = Guid.NewGuid().ToString()
                 });
-
-                Bus.Send( "Damascus.MessageChannel", GetApiCall("sms",input["Body"]));
-
-                return "<response>Response To Confirmation sent succesfully</response>";
+                return "Success";
             }
-            else
+            
+            var invite = InviteInput.FromDict(this.Data);
+            var message = string.Empty;
+            
+            if (Data.ContainsKey("responded"))
+                message = "You already responded to the invitation!";
+            else if(input["Body"].ToLower() == "no")
             {
-                return "<Response>You havent been invited</Response>";
+                message = string.Format("Im so sorry to hear that you cannot come to {0}", invite.Title);
+                Bus.Send( "Damascus.MessageChannel", GetApiCall("sms", "no"));    
             }
+            else if(input["Body"].ToLower() == "yes")
+            {
+                if(InviteIsInThePast(invite))
+                    message = string.Format("I am sorry but you are late. {0} happened on {0}. You can no longer come. Good bye.", invite.Title, invite.Start);
+                else if(InviteIsFull(invite))
+                    message = string.Format("I am sorry but {0}, has reached full capacity. Please contact the host. Good bye", invite.Title, invite.Start);    
+                else
+                {
+                    message = string.Format("I am glad you coming to {0}. Remember we start at {1}", invite.Title, invite.Start);
+                    Bus.Send( "Damascus.MessageChannel", GetApiCall("sms", "yes"));
+                }
+            }   
+            else
+                message = string.Format("I am sorry but I didnt understand your response. Reply YES if you want to come, NO if not");
+            
+            Bus.Send( "Damascus.MessageChannel", new CreateSmsMessage()
+            {
+                PhoneNumber = phoneNumber,
+                Message = message,
+                Id = Guid.NewGuid().ToString()
+            });
+            
+            return "Success";
+            
         }
 
         private string InviteCallReply(IStepInput input)
         {
-            if (Data["invite_unique_id"] != null)
+            if(!IsAttendeeInvited())
             {
-                var invite = InviteInput.FromDict(this.Data);
-                var contact = Contact.FromDict(this.Data);
+                XmlWriter.SayMessage("You have not been invited to this event, hang up");
+                return XmlWriter.ToString();
+            }
+            
+            var invite = InviteInput.FromDict(this.Data);
+            var contact = Contact.FromDict(this.Data);
 
-                var message = "Hello {0}, You have been invited to {1} on {2}. Please press 1 if you want to come, 2 if not.";
-
-                message = string.Format(
-                    message, 
+            XmlWriter.EnterNumber(
+                string.Format("Hello {0}, You have been invited to {1} on {2}. Please press 1 if you want to come, 2 if not.",
                     contact.Name, 
                     invite.Title,
                     invite.Start.ToString()
-                );
-
-                XmlWriter.EnterNumber(
-                    message,
-                    new Dictionary<string, string>()
-                    {
-                        {"step", "callreply"},
-                        {"type", "invite"}
-                    }
-                );
-            }
-            else
-            {
-                XmlWriter.SayMessage("You have not been invited to this event, hang up");
-            }
+                ),
+                new Dictionary<string, string>()
+                {
+                    {"step", "callreply"},
+                    {"type", "invite"}
+                }
+            );
             
             return XmlWriter.ToString();
         }
 
         private string InviteCallReplyResult(IStepInput input)
         {
+            
             var message = string.Empty;
-            message = input["Body"] == "1" ? "I'm glad you comming!" : "I'm dissapointed";
-
-            Bus.Send( "Damascus.MessageChannel", GetApiCall("voice", (input["Body"] == "1")?"yes":"no"));
-
-            XmlWriter.SayMessage(message);
+            var invite = InviteInput.FromDict(this.Data);
+            
+            if(input["Body"] == "2")
+            {
+                XmlWriter.SayMessage("I am really sorry you can't come to " + invite.Title);
+                Bus.Send( "Damascus.MessageChannel", GetApiCall("voice", "no"));
+            }
+            else if(input["Body"] == "1")
+            {
+                if(InviteIsInThePast(invite))
+                    XmlWriter.SayMessage("I am sorry but you are late to the event. You can no longer come. Good bye.");
+                else if(InviteIsFull(invite))
+                    XmlWriter.SayMessage("I am sorry but this event, has reached full capacity. Please contact the host. Good bye");
+                else //This is when the invite is accepting people in
+                {
+                    XmlWriter.SayMessage("I am really glad, that you will be coming to " + invite.Title);
+                    Bus.Send( "Damascus.MessageChannel", GetApiCall("voice", "yes"));        
+                }
+            }
+            else
+            {
+                XmlWriter.EnterNumber(
+                    "I am sorry but I didnt understand your response, you pressed the wrong key. Please press 1 if you want to come. Press 2 if not coming",
+                    new Dictionary<string, string>()
+                    {
+                        {"step", "callreply"},
+                        {"type", "invite"}
+                    }
+                );
+                
+            }
             return XmlWriter.ToString();
         }
 
         private string InviteEmailReply(IStepInput input)
         {
-            if (Data["invite_unique_id"] != null)
-            {
-                var invite = InviteInput.FromDict(this.Data);
-                var contact = Contact.FromDict(this.Data);
-
-                Bus.Send( "Damascus.MessageChannel", new CreateEmailMessage()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Address = contact.Email,
-                    Sender = "invite@voiceflows.com",
-                    Subject = "Thanks for your Reply",
-                    BodyTemplate = invite.ResponseEmailTemplate
-                });
-
-                Bus.Send( "Damascus.MessageChannel", GetApiCall("email", "yes"));
-
-                if (invite.ResponseEmailTemplate != null && !string.IsNullOrEmpty(invite.ResponseEmailTemplate.RedirectUrl))
-                {
-                    var templateManager = new MemoryTemplateManager();
-                    return templateManager.Fill(invite.ResponseEmailTemplate.RedirectUrl, this.Data);
-                }
-                else
-                    return "<Response>Thank you for your response</Response>";
-            }
-            else
-                return "<Response>You havent been invited</Response>";
+            throw new NotImplementedException();
         }
 
         private ServiceCallMessage GetApiCall(string channel, string response)
@@ -160,6 +177,24 @@ namespace Damascus.Workflow
                     {"response", response},
                 }
             };
+        }
+        
+        private bool IsAttendeeInvited()
+        {
+            return Data["invite_unique_id"] != null;            
+        }
+        
+        private bool InviteIsInThePast(InviteInput invite)
+        {
+            return invite.Start <= DateTime.Now;            
+        }
+        
+        private bool InviteIsFull(InviteInput invite)
+        {
+            if(invite.MaxParticipants <= 0)
+                return false;
+            
+            return invite.MaxParticipants <= invite.Confirmed;  
         }
 
     }
