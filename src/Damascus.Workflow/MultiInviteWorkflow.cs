@@ -251,11 +251,7 @@ namespace Damascus.Workflow
         public Dictionary<string, string> GetTemplateContextData(InviteInput invite, Contact contact)
         {
             var template_data = invite.ToDict().Merge(contact.ToDict());
-            
-            template_data["ACKNOWLEDGE_LINK"] = TwillioConfig.EmailCallbackUrl + "?email=" + contact.Email +
-                    "&type=invite&step=emailin&contactId=" + contact.ContactId;
-            template_data["fullname"] = (string.IsNullOrEmpty(contact.Name)) ? " there" : contact.Name;
-
+            template_data["invite_attendee_id"] = contact.ContactId;
             return template_data;
         }
 

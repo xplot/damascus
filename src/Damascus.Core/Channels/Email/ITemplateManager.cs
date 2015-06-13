@@ -12,7 +12,7 @@ namespace Damascus.Core
 {
     public interface ITemplateManager
     {
-        string GetTemplate(BodyTemplate template);
+        string GetTemplate(BodyTemplate template, IDictionary<string, string> data);
 
         void SaveTemplate(string templateId);
 
@@ -24,7 +24,7 @@ namespace Damascus.Core
         public const string START_KEY_SEPARATOR = "{{";
         public const string END_KEY_SEPARATOR = "}}";
 
-        public abstract string GetTemplate(BodyTemplate template);
+        public abstract string GetTemplate(BodyTemplate template, IDictionary<string, string> data);
 
         public abstract void SaveTemplate(string templateId);
 
@@ -54,18 +54,14 @@ namespace Damascus.Core
         private Dictionary<string, string> cache = new Dictionary<string, string>();
         private const string template2 = "";
 
-        public override string GetTemplate(BodyTemplate template)
+        public override string GetTemplate(BodyTemplate template, IDictionary<string, string> data)
         {
             if (!string.IsNullOrEmpty(template.Body))
                 return template.Body;
             else if (template.Url != null)
             {
-                if (cache.ContainsKey(template.Url))
-                    return cache[template.Url];
-
-                var templateBody = GetTemplateFromUrl(template.Url);
-                cache[template.Url] = templateBody;
-                return templateBody;
+                var url = this.Fill(template.Url, data);
+                return GetTemplateFromUrl(url);
             }
 
             return string.Empty;

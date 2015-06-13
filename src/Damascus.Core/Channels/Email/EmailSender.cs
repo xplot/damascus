@@ -21,7 +21,7 @@ namespace Damascus.Core
         {
             try
             {
-                var body = TemplateManager.Fill(TemplateManager.GetTemplate(emailMessage.BodyTemplate), emailMessage.BodyData);
+                var body = TemplateManager.Fill(TemplateManager.GetTemplate(emailMessage.BodyTemplate, emailMessage.BodyData), emailMessage.BodyData);
 
                 MailMessage mailMsg = new MailMessage();
                 mailMsg.To.Add(emailMessage.Address);
