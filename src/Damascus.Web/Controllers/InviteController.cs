@@ -69,7 +69,7 @@ namespace Damascus.Web.Controllers
     	[Route("api/invite/attendees")]
         public string InviteAttendees([FromBody]InviteAttendeesInput input)
         {
-            Logger.LogInformation("Invite Attendees are posted");
+            Logger.LogInformation("Request to post invite Attendees");
             try
             {
                 
@@ -86,7 +86,6 @@ namespace Damascus.Web.Controllers
                     WorkflowId = input.InviteId,
                     Parameters = input,
                 };
-    
                 return WorkflowEngine.Process(workflowContext);
             }
             catch(Exception ex)

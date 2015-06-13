@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
+using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
@@ -11,6 +12,10 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.OptionsModel;
 using Microsoft.AspNet.Authorization;
+
+using Microsoft.AspNet.Mvc.ModelBinding;
+using Microsoft.AspNet.Mvc.ModelBinding.Validation;
+using Microsoft.Framework.OptionsModel;
 
 using Microsoft.Framework.Runtime;
 using Microsoft.Framework.ConfigurationModel.Json;
@@ -47,7 +52,16 @@ namespace Damascus.Web
         // Use this method to add services to the container
         public void ConfigureServices(DI.IServiceCollection services)
         {   
-            services.AddMvc();
+            services.AddMvc().Configure<MvcOptions>(options =>{
+                
+                var jsonInputFormatter = new JsonInputFormatter();
+                jsonInputFormatter.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
+                options.InputFormatters.Insert(0, jsonInputFormatter);
+                
+//                 options.OutputFormatters.RemoveAll(
+//                     formatter => formatter.Instance is XmlDataContractSerializerOutputFormatter
+//                 );
+            });
             services.AddOptions();
 
             //Please do not remove this line, it breaks Injection if not included

@@ -67,6 +67,7 @@ namespace Damascus.Message
         public DateTime? End { get; set; }
         public string Where { get; set; }
         
+        
         public int MaxParticipants { get; set; }
         public int Confirmed { get; set; }
         
