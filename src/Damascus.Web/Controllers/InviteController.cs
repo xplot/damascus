@@ -29,9 +29,11 @@ namespace Damascus.Web.Controllers
         }
         
         [Route("api/invite")]
-        public string CreateInvite([FromBody]InviteInput input)
+        public string CreateInvite(InviteInput input)
         {
             Logger.LogInformation("Creating an Invite");
+            Logger.LogInformation(this.Request.ToRaw());
+            
             try
             {
                 
@@ -67,9 +69,11 @@ namespace Damascus.Web.Controllers
         }
         
     	[Route("api/invite/attendees")]
-        public string InviteAttendees([FromBody]InviteAttendeesInput input)
+        public string InviteAttendees(InviteAttendeesInput input)
         {
             Logger.LogInformation("Request to post invite Attendees");
+            Logger.LogInformation(this.Request.ToRaw());
+            
             try
             {
                 

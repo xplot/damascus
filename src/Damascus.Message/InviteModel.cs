@@ -67,8 +67,9 @@ namespace Damascus.Message
         public DateTime? End { get; set; }
         public string Where { get; set; }
         
-        
+        [JsonIgnore]
         public int MaxParticipants { get; set; }
+        [JsonIgnore]
         public int Confirmed { get; set; }
         
         public Dictionary<string, string> ExtraContextData { get; set; }
