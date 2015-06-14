@@ -16,11 +16,9 @@ namespace Damascus.Web.Controllers
         public IDataSerializer DataSerializer { get; set; }
         public ILogger Logger { get; set; }
 
-        public InviteController(
-                                ILoggerFactory loggerFactory,
+        public InviteController(ILoggerFactory loggerFactory,
                                 WorkflowEngine engine,
-                                IDataSerializer serializer
-                                )
+                                IDataSerializer serializer)
         {   	
             
             Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
@@ -29,7 +27,7 @@ namespace Damascus.Web.Controllers
         }
         
         [Route("api/invite")]
-        public string CreateInvite(InviteInput input)
+        public string CreateInvite([FromBody]InviteInput input)
         {
             Logger.LogInformation("Creating an Invite");
             Logger.LogInformation(this.Request.ToRaw());
@@ -37,9 +35,11 @@ namespace Damascus.Web.Controllers
             try
             {
                 
-                if (input == null)
+                if (input == null || input.InviteId == null)
                     throw new Exception("Invite format is not valid");
-    
+                
+                Logger.LogInformation("InviteID: " + input.InviteId);
+                
                 var previous_invite = DataSerializer.DeserializeData(
                     WorkflowEngine.GetDataKey("multi_invite", input.InviteId)
                 );
@@ -69,7 +69,7 @@ namespace Damascus.Web.Controllers
         }
         
     	[Route("api/invite/attendees")]
-        public string InviteAttendees(InviteAttendeesInput input)
+        public string InviteAttendees([FromBody]InviteAttendeesInput input)
         {
             Logger.LogInformation("Request to post invite Attendees");
             Logger.LogInformation(this.Request.ToRaw());

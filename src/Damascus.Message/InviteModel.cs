@@ -135,7 +135,6 @@ namespace Damascus.Message
         [JsonProperty(PropertyName = "attendees")]
         public List<Contact> Attendees { get; set; }
         
-        
     }
 
     public class InviteCancelInput : StepInput
