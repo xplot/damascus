@@ -60,11 +60,8 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
-                
-                Context.Response.StatusCode = 500;
-                return ex.Message;
+                Logger.LogError(ex.ToString());
+                throw ex;
             }    
         }
         
@@ -94,11 +91,8 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
-                
-                Context.Response.StatusCode = 500;
-                return ex.Message;
+                Logger.LogError(ex.ToString());
+                throw ex;
             }    
         }
         

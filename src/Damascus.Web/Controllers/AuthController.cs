@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using Damascus.Core;
+using Castle.Windsor;
 
 namespace Damascus.Web.Controllers
 {
@@ -14,14 +15,14 @@ namespace Damascus.Web.Controllers
 	{
 		public ILogger Logger { get; set; }
 		public AuthenticationManager AuthenticationManager { get; set; }
-		
-		public AuthController(ILoggerFactory loggerFactory, AuthenticationManager authManager)
+		private IWindsorContainer container;
+		public AuthController(ILoggerFactory loggerFactory, IWindsorContainer container)
 		{
 			Logger = loggerFactory.CreateLogger(typeof(AuthController).FullName);
-			this.AuthenticationManager = authManager;
+			//this.AuthenticationManager = authManager;
+            this.container = container;
 		}
 		
-        
 	    public void Register([FromBody]User user)
 	    {
 	        Logger.LogInformation("Register a new user");
@@ -29,17 +30,18 @@ namespace Damascus.Web.Controllers
             
             try
             {
+                if(user == null)
+                    throw new Exception("User format is invalid");
+                    
+                AuthenticationManager = container.Resolve<AuthenticationManager>();
                 AuthenticationManager.Register(user);
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
-                
-                Context.Response.StatusCode = 500;
-            }    
+                Logger.LogError(ex.ToString());
+                throw ex;
+            }
 	    }
-        
         
         public Session Authenticate(string username, string password)
 	    {
@@ -52,15 +54,11 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
-                
-                Context.Response.StatusCode = 500;
-                return null;
+                Logger.LogError(ex.ToString());
+                throw ex;
             }    
 	    }
         
-       
         public Session Validate(string token)
 	    {
 	        Logger.LogInformation("Validating a Token");
@@ -72,11 +70,8 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
-                
-                Context.Response.StatusCode = 500;
-                return null;
+                Logger.LogError(ex.ToString());
+                throw ex;
             }    
 	    }
 	}

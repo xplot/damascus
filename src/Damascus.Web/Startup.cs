@@ -114,7 +114,8 @@ namespace Damascus.Web
             this.container.Install(
                 new ManagersInstaller(),
                 new ReplyStoreInstaller(),
-                new WorkflowEngineInstaller()
+                new WorkflowEngineInstaller(),
+                new DBInstaller()
             );
             
             
@@ -164,7 +165,6 @@ namespace Damascus.Web
             config.AddTarget("console", consoleTarget);
             config.LoggingRules.Add(new LoggingRule("*", NLog.LogLevel.Info, consoleTarget));
 
-            
             LogManager.Configuration = config;
             NServiceBus.Logging.LogManager.Use<NLogFactory>();
             

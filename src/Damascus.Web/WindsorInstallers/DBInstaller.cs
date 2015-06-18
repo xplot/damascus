@@ -22,7 +22,7 @@ namespace Damascus.Web
 					Component.For<AuthenticationStore>()
 					.ImplementedBy<AuthenticationStore>()
 					.OnCreate(auth => {
-						auth.Connection = new SqlConnection(Settings.Get("sqlConnection"));
+						auth.Connection = new SqlConnection(Settings.Get("connection"));
 						auth.Connection.Open();
 					}).OnDestroy(auth => auth.Dispose())
 					.LifestyleTransient()
