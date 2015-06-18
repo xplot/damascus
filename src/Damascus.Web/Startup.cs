@@ -46,6 +46,8 @@ namespace Damascus.Web
         {
             //var x = 2/0;
             this.environment = env;
+            this.container = new WindsorContainer();
+            ConfigureLogging();
         }
 
         // This method gets called by a runtime.
@@ -53,14 +55,20 @@ namespace Damascus.Web
         public void ConfigureServices(DI.IServiceCollection services)
         {   
             services.AddMvc().Configure<MvcOptions>(options =>{
+    	       	
+//                 options.Filters.Add(new ProducesAttribute("application/json"));   
+//                    
+//                 options.InputFormatters.Clear();
+//                 options.OutputFormatters.Clear();
+//                            
+//                 var jsonInputFormatter = new JsonInputFormatter();
+//                 jsonInputFormatter.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
+//                 options.InputFormatters.Add(jsonInputFormatter);
+//                 
+//                 var jsonOutputFormatter = new JsonOutputFormatter();
+//                 jsonOutputFormatter.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
+//                 options.OutputFormatters.Add(jsonOutputFormatter);
                 
-                var jsonInputFormatter = new JsonInputFormatter();
-                jsonInputFormatter.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
-                options.InputFormatters.Insert(0, jsonInputFormatter);
-                
-//                 options.OutputFormatters.RemoveAll(
-//                     formatter => formatter.Instance is XmlDataContractSerializerOutputFormatter
-//                 );
             });
             services.AddOptions();
 
@@ -68,14 +76,11 @@ namespace Damascus.Web
             services.Configure<AuthorizationOptions>(options =>
             {
             });
-
-            ConfigureContainer(services);
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
-            ConfigureLogging(container);
             
             app.UseDefaultFiles();
             // Configure the HTTP request pipeline.
@@ -90,21 +95,27 @@ namespace Damascus.Web
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
             
-            app.ApplicationServices =  container.Resolve<IServiceProvider>();
-
+            ConfigureContainer(app);
+            
+            app.ApplicationServices = this.container.Resolve<IServiceProvider>();
+           
             ConfigureBus();
         }
         
-        private void ConfigureContainer(DI.IServiceCollection services)
+        private void ConfigureContainer(IApplicationBuilder app)
         {
-            this.container = new WindsorContainer();
+            this.container.Register(Component.For<IWindsorContainer>().Instance(this.container));
+            this.container.Register(
+                Component.For<IServiceProvider>()
+                        .Instance(new MixedWindsorServiceProvider(app.ApplicationServices, this.container))
+            );
             
-             this.container.Register(
+            this.container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
+            
+            this.container.Register(
                 Component.For<IHostingEnvironment>()
                         .Instance(this.environment)
             );
-            
-            container.Populate(services);
 
             this.container.Register(
                 Component.For<ISettings>()
@@ -116,13 +127,6 @@ namespace Damascus.Web
                 new ReplyStoreInstaller(),
                 new WorkflowEngineInstaller(),
                 new DBInstaller()
-            );
-            
-            
-            //Huge Patch do not remove until we find out what's happenning here
-            container.Register(
-                Component.For(typeof(IEnumerable<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
-                        .ImplementedBy(typeof(List<Microsoft.AspNet.Mvc.Core.IActionDescriptorProvider>))
             );
 
             container.BeginScope();
@@ -155,7 +159,7 @@ namespace Damascus.Web
 
         }
         
-        private void ConfigureLogging(IWindsorContainer container)
+        private void ConfigureLogging()
         {
             LoggingConfiguration config = new LoggingConfiguration();
             ColoredConsoleTarget consoleTarget = new ColoredConsoleTarget
@@ -168,8 +172,8 @@ namespace Damascus.Web
             LogManager.Configuration = config;
             NServiceBus.Logging.LogManager.Use<NLogFactory>();
             
-            var factory = container.Resolve<ILoggerFactory>();
-            factory.AddNLog(new NLog.LogFactory(config));
+//             var factory = container.Resolve<ILoggerFactory>();
+//             factory.AddNLog(new NLog.LogFactory(config));
         }
 
     }

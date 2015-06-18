@@ -8,7 +8,7 @@ namespace Damascus.Web
 	public class AuthenticationStore: IDisposable
 	{
 		public SqlConnection Connection { get ; set ; }
-		public string user_tableName = "User";
+		public string user_tableName = "UserAccount";
 		public string session_tableName = "Session";
 
 		public User GetUser (Guid id)
@@ -33,10 +33,16 @@ namespace Damascus.Web
 			command.Parameters.AddWithValue("@username", username);
 			
 			SqlDataReader reader = command.ExecuteReader();
+			
 			if(!reader.Read ())
-				return null;
+			{
+				reader.Close();
+				return null;	
+			}
 
-			return GetUserFromReader(reader);
+			var user = GetUserFromReader(reader);
+			reader.Close();
+			return user;
 		}
 		
 		public Session GetSessionFromToken (string token)
@@ -48,20 +54,54 @@ namespace Damascus.Web
 			
 			SqlDataReader reader = command.ExecuteReader();
 			if(!reader.Read ())
-				return null;
+			{
+				reader.Close();
+				return null;	
+			}
 
-			return new Session{
+			var session = new Session{
 				Id = reader.GetGuid(0),
 				UserId = reader.GetGuid(1),
 				Token = reader.GetString(2),
 				ExpiresOn = reader.GetDateTime(3),
 				Status = reader.GetString(4),
 			};
+			
+			reader.Close();
+			return session;
+		}
+		
+		public Session GetUserActiveSession(User user)
+		{
+			var queryString = "SELECT * FROM " + session_tableName + " WHERE user_id = @userId and status=@status and expires_on > @expiresOn";
+
+			SqlCommand command = new SqlCommand(queryString, Connection);
+			command.Parameters.AddWithValue("@userId", user.Id);
+			command.Parameters.AddWithValue("@status", SessionStatus.VALID);
+			command.Parameters.AddWithValue("@expiresOn", DateTime.Now);
+			
+			SqlDataReader reader = command.ExecuteReader();
+			if(!reader.Read ())
+			{
+				reader.Close();
+				return null;	
+			}
+
+			var session = new Session{
+				Id = reader.GetGuid(0),
+				UserId = reader.GetGuid(1),
+				Token = reader.GetString(2),
+				ExpiresOn = reader.GetDateTime(3),
+				Status = reader.GetString(4),
+			};
+			
+			reader.Close();
+			return session;
 		}
 
 		public Guid CreateUser (User user)
 		{
-			if(user.Id != Guid.Empty)
+			if(user.Id == Guid.Empty)
 				user.Id = Guid.NewGuid();
 				
 			var queryString = "INSERT INTO " + user_tableName + " (id,name,last_name,username,password,super_user) VALUES (@id, @name, @lastName,@username,@password, @superUser)";
@@ -81,7 +121,7 @@ namespace Damascus.Web
 
 		public Guid CreateSession (Session session)
 		{
-			if(session.Id != Guid.Empty)
+			if(session.Id == Guid.Empty)
 				session.Id = Guid.NewGuid();
 				
 			var queryString = "INSERT INTO " + session_tableName + " (id,user_id,token,expires_on,status) VALUES (@id,@userId, @token, @expiresOn, @status)";
@@ -100,7 +140,7 @@ namespace Damascus.Web
 		
 		public void InvalidateAllUserSessions (User user)
 		{
-			var queryString = "UPDATE " + session_tableName + "SET status=@status where user_id=@id";
+			var queryString = "UPDATE " + session_tableName + " SET status=@status where user_id=@id";
 			SqlCommand command = new SqlCommand (queryString, this.Connection);	
 
 			command.Parameters.AddWithValue ("@id", user.Id);
@@ -112,8 +152,8 @@ namespace Damascus.Web
 		private User GetUserFromReader(SqlDataReader reader){
 			return new User{
 				Id = reader.GetGuid(0),
-				Name = reader.GetString(1),
-				LastName = reader.GetString(2),
+				Name = (!reader.IsDBNull(1))?reader.GetString(1): string.Empty,
+				LastName = (!reader.IsDBNull(2))?reader.GetString(2): string.Empty,
 				Username = reader.GetString(3),
 				Password = reader.GetString(4),
 				SuperUser = reader.GetBoolean(5),

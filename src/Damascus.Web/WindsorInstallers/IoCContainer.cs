@@ -10,107 +10,47 @@ using Castle.MicroKernel.Lifestyle;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Microsoft.Framework.DependencyInjection;
 using MDI = Microsoft.Framework.DependencyInjection;
-
+using NLog;
 namespace Damascus.Web
 {
-	public static class WindsorRegistration
-{
-    public static void Populate(
-            this IWindsorContainer container,
-            IEnumerable<MDI.ServiceDescriptor> descriptors)
-    {
-        container.Register(Component.For<IWindsorContainer>().Instance(container));
-        container.Register(Component.For<IServiceProvider>().ImplementedBy<WindsorServiceProvider>());
-        container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
-
-        container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel, true));
-
-        Register(container, descriptors);
-    }
-
-    private static void Register(
-            IWindsorContainer container,
-            IEnumerable<MDI.ServiceDescriptor> descriptors)
-    {
-        foreach (var descriptor in descriptors)
-        {
-            if (descriptor.ImplementationType != null)
-            {
-                // Test if the an open generic type is being registered
-                var serviceTypeInfo = descriptor.ServiceType.GetTypeInfo();
-                if (serviceTypeInfo.IsGenericTypeDefinition)
-                {
-                    container.Register(Component.For(descriptor.ServiceType)
-                                            .ImplementedBy(descriptor.ImplementationType)
-                                            .ConfigureLifecycle(descriptor.Lifetime)
-                                            .OnlyNewServices());
-                }
-                else
-                {
-                    container.Register(Component.For(descriptor.ServiceType)
-                                            .ImplementedBy(descriptor.ImplementationType)
-                                            .ConfigureLifecycle(descriptor.Lifetime)
-                                            .OnlyNewServices());
-                }
-            }
-            else if (descriptor.ImplementationFactory != null)
-            {
-                var service1 = descriptor;
-                container.Register(Component.For(descriptor.ServiceType)
-                        .UsingFactoryMethod<object>(c =>
-                        {
-                            var builderProvider = container.Resolve<IServiceProvider>();
-                            return
-                                service1.ImplementationFactory(builderProvider);
-                        })
-                        .ConfigureLifecycle(descriptor.Lifetime)
-                        .OnlyNewServices());
-            }
-            else
-            {
-                container.Register(Component.For(descriptor.ServiceType)
-                        .Instance(descriptor.ImplementationInstance)
-                        .ConfigureLifecycle(descriptor.Lifetime)
-                        .OnlyNewServices());
-            }
-        }
-    }
-
-    private static ComponentRegistration<object> ConfigureLifecycle(
-            this ComponentRegistration<object> registrationBuilder,
-            ServiceLifetime lifecycleKind)
-    {
-        switch (lifecycleKind)
-        {
-            case ServiceLifetime.Singleton:
-                registrationBuilder.LifestyleSingleton();
-                break;
-            case ServiceLifetime.Scoped:
-                registrationBuilder.LifestyleScoped();
-                break;
-            case ServiceLifetime.Transient:
-                registrationBuilder.LifestyleTransient();
-                break;
-        }
-
-        return registrationBuilder;
-    }
-
-    private class WindsorServiceProvider : IServiceProvider
+	
+    public class MixedWindsorServiceProvider : IServiceProvider
     {
         private readonly IWindsorContainer _container;
-
-        public WindsorServiceProvider(IWindsorContainer container)
+        private readonly IServiceProvider _fallback;
+    	
+        private Logger Logger;
+        
+        public MixedWindsorServiceProvider(IServiceProvider fallback, IWindsorContainer container)
         {
             _container = container;
+            _fallback = fallback;
+            this.Logger = LogManager.GetLogger(GetType().FullName);
         }
 
         public object GetService(Type serviceType)
         {
-            //if(IsIEnumerableOfT(serviceType))
-            //    return _container.ResolveAll(serviceType);
-            //else
-                return _container.Resolve(serviceType);
+            //Logger.Info("Resolving: " + serviceType.FullName);
+            
+            object serviceInstance = null;
+            try
+            {
+                serviceInstance = _container.Resolve(serviceType);    
+            }
+            catch(Exception ex)
+            {
+                //We silently go to the fallback
+                //Logger.Error(ex.ToString());
+            }
+            
+            //If we reached here it means, no resolution, then we go to the fallback
+            if(serviceInstance == null)
+                serviceInstance =  _fallback.GetService(serviceType);
+            
+            //Logger.Info("Resolved to: " + serviceInstance);
+            
+            return serviceInstance;
+            
         }
 
         public static bool IsIEnumerableOfT(Type type)
@@ -119,7 +59,7 @@ namespace Damascus.Web
         }
     }
 
-    private class WindsorServiceScopeFactory : IServiceScopeFactory
+    public class WindsorServiceScopeFactory : IServiceScopeFactory
     {
         private readonly IWindsorContainer _container;
 
@@ -134,7 +74,7 @@ namespace Damascus.Web
         }
     }
 
-    private class WindsorServiceScope : IServiceScope
+    public class WindsorServiceScope : IServiceScope
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IDisposable _scope;
@@ -155,5 +95,4 @@ namespace Damascus.Web
             _scope.Dispose();
         }
     }
-}
 }

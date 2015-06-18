@@ -7,70 +7,84 @@ using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using Damascus.Core;
 using Castle.Windsor;
-
+using Damascus.Web;
+using NLog;
 namespace Damascus.Web.Controllers
 {
     [Route("api/[controller]/[action]")]
     public class AuthController: Controller  
 	{
-		public ILogger Logger { get; set; }
+		public Logger Logger { get; set; }
 		public AuthenticationManager AuthenticationManager { get; set; }
-		private IWindsorContainer container;
-		public AuthController(ILoggerFactory loggerFactory, IWindsorContainer container)
+		
+		public AuthController(AuthenticationManager authManager)
 		{
-			Logger = loggerFactory.CreateLogger(typeof(AuthController).FullName);
-			//this.AuthenticationManager = authManager;
-            this.container = container;
+			this.Logger = LogManager.GetLogger(GetType().FullName);
+			this.AuthenticationManager = authManager;
 		}
 		
-	    public void Register([FromBody]User user)
+        [HttpPost]
+	    public void Register([FromBody]Damascus.Web.User user)
 	    {
-	        Logger.LogInformation("Register a new user");
-            Logger.LogInformation(this.Request.ToRaw());
+	        Logger.Info("Register a new user");
             
             try
             {
                 if(user == null)
                     throw new Exception("User format is invalid");
-                    
-                AuthenticationManager = container.Resolve<AuthenticationManager>();
+                
                 AuthenticationManager.Register(user);
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }
 	    }
         
-        public Session Authenticate(string username, string password)
+        [HttpPost]
+        public string Authenticate(string username, string password)
 	    {
-	        Logger.LogInformation("Authenticating a user");
-            Logger.LogInformation(this.Request.ToRaw());
+	        Logger.Info("Authenticating a user");
             
             try
             {
-                return AuthenticationManager.Authenticate(username, password);
+                var session = AuthenticationManager.Authenticate(username, password);
+                if(session != null)
+                    return session.Token;
+                else
+                {
+                    Context.Response.StatusCode = 401;
+                    return "Invalid username or password";    
+                }
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }    
 	    }
         
-        public Session Validate(string token)
+        public string Validate(string token)
 	    {
-	        Logger.LogInformation("Validating a Token");
-            Logger.LogInformation(this.Request.ToRaw());
-            
+	        Logger.Info("Validating a Token");
             try
             {
-                return AuthenticationManager.Validate(token);
+                var session = AuthenticationManager.Validate(token);
+                if(session != null)
+                    return session.Token;
+                else
+                {
+                    Context.Response.StatusCode = 401;
+                    return "Invalid token";    
+                }
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }    
 	    }

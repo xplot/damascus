@@ -3,8 +3,7 @@ using System.Diagnostics;
 using Microsoft.AspNet.Mvc;
 using Damascus.Core;
 using Damascus.Message;
-using Microsoft.Framework.Logging;
-using ILogger = Microsoft.Framework.Logging.ILogger;
+using NLog;
 using NServiceBus;
 
 namespace Damascus.Web.Controllers
@@ -14,14 +13,11 @@ namespace Damascus.Web.Controllers
     {
         public WorkflowEngine WorkflowEngine { get; set; }
         public IDataSerializer DataSerializer { get; set; }
-        public ILogger Logger { get; set; }
+        public Logger Logger { get; set; }
 
-        public InviteController(ILoggerFactory loggerFactory,
-                                WorkflowEngine engine,
-                                IDataSerializer serializer)
+        public InviteController(WorkflowEngine engine, IDataSerializer serializer)
         {   	
-            
-            Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            Logger = LogManager.GetLogger(GetType().FullName);
             DataSerializer = serializer;
             WorkflowEngine = engine;
         }
@@ -29,8 +25,7 @@ namespace Damascus.Web.Controllers
         [Route("api/invite")]
         public string CreateInvite([FromBody]InviteInput input)
         {
-            Logger.LogInformation("Creating an Invite");
-            Logger.LogInformation(this.Request.ToRaw());
+            Logger.Info("Creating an Invite");
             
             try
             {
@@ -38,7 +33,7 @@ namespace Damascus.Web.Controllers
                 if (input == null || input.InviteId == null)
                     throw new Exception("Invite format is not valid");
                 
-                Logger.LogInformation("InviteID: " + input.InviteId);
+                Logger.Info("InviteID: " + input.InviteId);
                 
                 var previous_invite = DataSerializer.DeserializeData(
                     WorkflowEngine.GetDataKey("multi_invite", input.InviteId)
@@ -60,16 +55,16 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
-                throw ex;
+                 Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
+                return null;
             }    
         }
         
     	[Route("api/invite/attendees")]
         public string InviteAttendees([FromBody]InviteAttendeesInput input)
         {
-            Logger.LogInformation("Request to post invite Attendees");
-            Logger.LogInformation(this.Request.ToRaw());
+            Logger.Info("Request to post invite Attendees");
             
             try
             {
@@ -77,7 +72,7 @@ namespace Damascus.Web.Controllers
                 if (input == null)
                     throw new Exception("Invite attendees format is not valid");
     
-                Logger.LogInformation("Invite " + input.InviteId);
+                Logger.Info("Invite " + input.InviteId);
     
                 var workflowContext = new WorkflowContext()
                 {
@@ -91,8 +86,9 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
-                throw ex;
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
+                return null;
             }    
         }
         

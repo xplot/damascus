@@ -34,6 +34,10 @@ namespace Damascus.Web
 			if(!CheckPassword(password, user.Password))
 				return null;
 			
+			var currentSession = AuthenticationStore.GetUserActiveSession(user);
+			if(currentSession != null)
+				return currentSession; 
+			
 			//Ensure there's only one session active per user
 			AuthenticationStore.InvalidateAllUserSessions(user);
 			
@@ -41,7 +45,8 @@ namespace Damascus.Web
 			{
 				Token = Guid.NewGuid().ToString(),
 				ExpiresOn = GetDurationFromUser(user),
-				UserId = user.Id
+				UserId = user.Id,
+				Status = SessionStatus.VALID
 			};
 			
 			AuthenticationStore.CreateSession(session);

@@ -9,7 +9,7 @@ using Damascus.Message;
 using Microsoft.Framework.Logging;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using NServiceBus;
-
+using NLog;
 
 namespace Damascus.Web.Controllers
 {
@@ -17,14 +17,11 @@ namespace Damascus.Web.Controllers
     {
         public WorkflowEngine WorkflowEngine { get; set; }
         public IReplyStore ReplyStore { get; set; }
-        public ILogger Logger { get; set; }
+        public Logger Logger { get; set; }
         
-        public WorkflowController(ILoggerFactory loggerFactory,
-                                    IReplyStore replyStore,
-                                    WorkflowEngine workflowEngine)
+        public WorkflowController(IReplyStore replyStore, WorkflowEngine workflowEngine)
         {   	
-            
-            Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            Logger = LogManager.GetLogger(GetType().FullName);
             ReplyStore = replyStore;
             WorkflowEngine = workflowEngine;
         }
@@ -34,7 +31,7 @@ namespace Damascus.Web.Controllers
         {
             try
             {
-                Logger.LogInformation("Received a PhoneCall Workflow");
+                Logger.Info("Received a PhoneCall Workflow");
                 
                 var parameters = FillParametersDict(input);
     
@@ -47,13 +44,12 @@ namespace Damascus.Web.Controllers
                     Parameters = parameters
                 };
                 
-                Logger.LogInformation("Finished PhoneCall Workflow");
+                Logger.Info("Finished PhoneCall Workflow");
                 return Content(WorkflowEngine.Process(workflowContext), "text/xml");
              }
             catch(Exception ex)
             {
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.Error(ex.ToString());
                 
                 Context.Response.StatusCode = 500;
                 return Content(ex.Message, "text/xml");
@@ -65,13 +61,13 @@ namespace Damascus.Web.Controllers
         {
             try
             {
-                Logger.LogInformation("Received an inbound SMS");
+                Logger.Info("Received an inbound SMS");
                 
                 var parameters = FillParametersDict(input);
                                 
-                Logger.LogInformation("Workflow Info: ");
-                Logger.LogInformation("Type: " + type);
-                Logger.LogInformation("Step: " + step);
+                Logger.Info("Workflow Info: ");
+                Logger.Info("Type: " + type);
+                Logger.Info("Step: " + step);
                 
                 var workflowContext = new WorkflowContext()
                 {
@@ -81,13 +77,12 @@ namespace Damascus.Web.Controllers
                     Parameters = parameters
                 };
                 
-                Logger.LogInformation("Finished inbound SMS");
+                Logger.Info("Finished inbound SMS");
                 return Content(WorkflowEngine.Process(workflowContext), "text/xml");
              }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
-                
+                Logger.Error(ex.ToString());
                 Context.Response.StatusCode = 500;
                 return Content(ex.Message, "text/xml");
             }
@@ -117,8 +112,7 @@ namespace Damascus.Web.Controllers
             }
             catch(Exception ex)
             {
-                Logger.LogError(ex.ToString());
-                
+                Logger.Error(ex.ToString());
                 Context.Response.StatusCode = 500;
                 return Content(ex.Message, "text/xml");
             }

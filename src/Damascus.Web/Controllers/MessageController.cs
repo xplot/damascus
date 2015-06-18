@@ -6,6 +6,7 @@ using Damascus.Message;
 using Damascus.Message.Command;
 using NServiceBus;
 using System;
+using NLog;
 
 namespace Damascus.Web.Controllers
 {
@@ -14,11 +15,11 @@ namespace Damascus.Web.Controllers
     {
         public IBus Bus { get; set; }
         public IMessageChannelManager MessageChannelManager { get; set; }
-        public ILogger Logger { get; set; }
+        public Logger Logger { get; set; }
         
         public MessageController(ILoggerFactory loggerFactory, IMessageChannelManager messageChannelManager)
         {
-            Logger = loggerFactory.CreateLogger(typeof(InviteController).FullName);
+            Logger = LogManager.GetLogger(GetType().FullName);
             this.MessageChannelManager = messageChannelManager;
         }
         
@@ -26,15 +27,15 @@ namespace Damascus.Web.Controllers
         public string Sms([FromBody]CreateSmsMessage createSmsMessage)
         {
             try{
-                Logger.LogInformation("Sms Message received");
-                Logger.LogInformation("Sms sent to: " + createSmsMessage.PhoneNumber);
-                Logger.LogInformation("Sms message: " + createSmsMessage.Message);
+                Logger.Info("Sms Message received");
+                Logger.Info("Sms sent to: " + createSmsMessage.PhoneNumber);
+                Logger.Info("Sms message: " + createSmsMessage.Message);
             
                 return MessageChannelManager.PostSms(createSmsMessage);
             }
             catch(Exception ex){
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }
         }
@@ -43,14 +44,14 @@ namespace Damascus.Web.Controllers
         public string Call([FromBody]CreateCallMessage createCallMessage)
         {
             try{
-                Logger.LogInformation("Phone Call message received");
-                Logger.LogInformation("Phone Call to: " + createCallMessage.PhoneNumber);
+                Logger.Info("Phone Call message received");
+                Logger.Info("Phone Call to: " + createCallMessage.PhoneNumber);
     
                 return MessageChannelManager.PostCall(createCallMessage);
             }
             catch(Exception ex){
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }
         }
@@ -59,15 +60,15 @@ namespace Damascus.Web.Controllers
         public string Email([FromBody]CreateEmailMessage createEmailMessage)
         {
             try{
-                Logger.LogInformation("CreateEmailMessage message received");
-                Logger.LogInformation("CreateEmailMessage to: " + createEmailMessage.Address);
-                Logger.LogInformation("CreateEmailMessage Subject: " + createEmailMessage.Address);
+                Logger.Info("CreateEmailMessage message received");
+                Logger.Info("CreateEmailMessage to: " + createEmailMessage.Address);
+                Logger.Info("CreateEmailMessage Subject: " + createEmailMessage.Address);
                 
                 return MessageChannelManager.PostEmail(createEmailMessage);
             }
             catch(Exception ex){
-                Logger.LogError(ex.Message);
-                Logger.LogError(ex.StackTrace);
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
                 throw ex;
             }
         }
