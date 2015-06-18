@@ -30,6 +30,8 @@ namespace Damascus.Web
                 .If(t => t.Name.EndsWith("Step", StringComparison.Ordinal))
                 .Configure(c => c.LifestyleTransient()));
 
+            container.Register(Component.For<AuthenticationManager>().ImplementedBy<AuthenticationManager>().LifestyleTransient());
+
             container.Register(Component.For<IIvrXmlWriter>().ImplementedBy<TwilioIvrWriter>().LifestyleTransient());
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
