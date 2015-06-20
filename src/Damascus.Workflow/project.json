@@ -14,6 +14,9 @@
         //NServiceBus
         "NServiceBus": "5.2.0",
         
+        //NLog
+        "NLog": "3.2.1",
+        
     },
 
     "frameworks": {

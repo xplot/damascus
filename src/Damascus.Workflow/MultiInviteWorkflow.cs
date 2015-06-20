@@ -18,9 +18,12 @@ namespace Damascus.Workflow
         public TwillioConfig TwillioConfig { get; set; }
         public SmtpConfig SmtpConfig { get; set; }
         public IBus Bus { get; set; }
-
+        public Logger Logger { get; set; }
+        
         public MultiInviteWorkflow()
         {
+            this.Logger = LogManager.GetLogger(GetType().FullName);
+            
             this.Steps = new Dictionary<string, IStep>(){
                 { "create", new FunctionStep(CreateInvite) },
                 { "invite_contacts", new FunctionStep(InviteAttendees) },
@@ -95,9 +98,19 @@ namespace Damascus.Workflow
 
         private void InviteAttendeeEmail(InviteInput invite, Contact contact)
         {
+            Logger.Info("InviteAttendee START");
+            Logger.Info("Inviting attendee via email");
+            
             if (string.IsNullOrEmpty(contact.Email))
+            {
+                Logger.Info("Contact will be dismissed");
                 return;
-
+            }
+                
+            Logger.Info("Posting EmailMessage to Damascus.MessageChannel");
+            Logger.Info("Sending email to: " + contact.Email);
+            
+            
             var templateManager = new MemoryTemplateManager();
             var bodyData = GetTemplateContextData(invite, contact);
 
@@ -110,6 +123,7 @@ namespace Damascus.Workflow
                 BodyTemplate = invite.EmailTemplate,
                 BodyData = bodyData,
             });
+            Logger.Info("InviteAttendee FINISHED");
         }
 
         private void CancelAttendeeEmail(InviteInput invite, Contact contact)
@@ -133,9 +147,17 @@ namespace Damascus.Workflow
 
         private void InviteAttendeeSms(InviteInput invite, Contact contact)
         {
+            Logger.Info("InviteAttendee START");
+            Logger.Info("Inviting attendee via SMS");
             if (string.IsNullOrEmpty(contact.Phone))
+            {
+                Logger.Info("Contact will be dismissed");
                 return;
-
+            }
+                
+            Logger.Info("Posting SMSMessage to Damascus.MessageChannel");
+            Logger.Info("Sending sms to: " + contact.Phone);
+            
             var date = invite.Start.ToString();
             if (invite.End != null)
                 date += "to " + invite.End.ToString();
@@ -146,6 +168,8 @@ namespace Damascus.Workflow
                 Message = string.Format("You are hereby invited to {0} event on {1}, want to go? YES/NO", invite.Title, date),
                 Id = Guid.NewGuid().ToString()
             });
+            
+            Logger.Info("InviteAttendee FINISHED");
         }
 
         private void CancelAttendeeSms(InviteInput invite, Contact contact)
@@ -162,9 +186,18 @@ namespace Damascus.Workflow
 
         private void InviteAttendeePhone(InviteInput invite, Contact contact)
         {
+            Logger.Info("InviteAttendee START");
+            Logger.Info("Inviting attendee via PhoneCall");
             if (string.IsNullOrEmpty(contact.Phone))
+            {
+                Logger.Info("Contact will be dismissed");
                 return;
-
+            }
+            
+            Logger.Info("Posting CallMessage to Damascus.MessageChannel");
+            Logger.Info("Sending PhoneCall to: " + contact.Phone);
+            
+            
             Bus.Send( "Damascus.MessageChannel", new CreateCallMessage()
             {
                 PhoneNumber = contact.Phone,
@@ -174,6 +207,8 @@ namespace Damascus.Workflow
                     {"type", "invite"},
                 }
             });
+            
+            Logger.Info("InviteAttendee Finished");
         }
 
         private void CancelAttendeePhone(InviteInput invite, Contact contact)
