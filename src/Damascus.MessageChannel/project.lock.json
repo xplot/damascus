@@ -93,7 +93,7 @@
           "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll": {}
         }
       },
-      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11396": {
+      "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta6-11506": {
         "frameworkAssemblies": [
           "mscorlib",
           "System",
@@ -107,10 +107,10 @@
           "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Framework.Logging/1.0.0-beta5-11388": {
+      "Microsoft.Framework.Logging/1.0.0-beta6-11496": {
         "dependencies": {
-          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta5-11396",
-          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta5-11388"
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta6-11506",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta6-11496"
         },
         "frameworkAssemblies": [
           "System.Collections.Concurrent",
@@ -126,7 +126,7 @@
           "lib/dnx451/Microsoft.Framework.Logging.dll": {}
         }
       },
-      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11388": {
+      "Microsoft.Framework.Logging.Abstractions/1.0.0-beta6-11496": {
         "frameworkAssemblies": [
           "mscorlib",
           "System",
@@ -451,55 +451,49 @@
         "lib/net45/Microsoft.Framework.ConfigurationModel.Json.xml"
       ]
     },
-    "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta5-11396": {
+    "Microsoft.Framework.DependencyInjection.Abstractions/1.0.0-beta6-11506": {
       "serviceable": true,
-      "sha512": "03mrcJRX9zUiXbNZPjXyurf+OTDo177T/wWVVUqFBEKF0BthjU5g3oy8bh73LVlkKD0AylPW7fb7Jk0pYiMePg==",
+      "sha512": "vZqGp+oGaPZ9J/FrwF7xl9bZ5miIsKhjQ3VesS2PU6lPZo6ToTOtnYaTUHF2rx6NZw4Y1A8LnlbDuZuhFsfivA==",
       "files": [
-        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11396.nupkg",
-        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta5-11396.nupkg.sha512",
+        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta6-11506.nupkg",
+        "Microsoft.Framework.DependencyInjection.Abstractions.1.0.0-beta6-11506.nupkg.sha512",
         "Microsoft.Framework.DependencyInjection.Abstractions.nuspec",
         "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.dll",
         "lib/dnx451/Microsoft.Framework.DependencyInjection.Abstractions.xml",
-        "lib/dnxcore50/Microsoft.Framework.DependencyInjection.Abstractions.dll",
-        "lib/dnxcore50/Microsoft.Framework.DependencyInjection.Abstractions.xml",
+        "lib/dotnet/Microsoft.Framework.DependencyInjection.Abstractions.dll",
+        "lib/dotnet/Microsoft.Framework.DependencyInjection.Abstractions.xml",
         "lib/net45/Microsoft.Framework.DependencyInjection.Abstractions.dll",
-        "lib/net45/Microsoft.Framework.DependencyInjection.Abstractions.xml",
-        "lib/portable-net45+win/Microsoft.Framework.DependencyInjection.Abstractions.dll",
-        "lib/portable-net45+win/Microsoft.Framework.DependencyInjection.Abstractions.xml"
+        "lib/net45/Microsoft.Framework.DependencyInjection.Abstractions.xml"
       ]
     },
-    "Microsoft.Framework.Logging/1.0.0-beta5-11388": {
+    "Microsoft.Framework.Logging/1.0.0-beta6-11496": {
       "serviceable": true,
-      "sha512": "836NWVQI83B1A8vkX03KgKUJBdAhegLwHHn0Cb2KA5H8DZNx2EKwIleZs4jTv3VqHgxxooS2s/+i5QQTUcLNHw==",
+      "sha512": "9rIoajy2Zjevd3COWcGfnCOY8228Wg2y+4tLLpxNZyhaBrEgwYm+WgGCHWuNSq9WJGHRuK2x1fGcC5PkIoOtsA==",
       "files": [
-        "Microsoft.Framework.Logging.1.0.0-beta5-11388.nupkg",
-        "Microsoft.Framework.Logging.1.0.0-beta5-11388.nupkg.sha512",
+        "Microsoft.Framework.Logging.1.0.0-beta6-11496.nupkg",
+        "Microsoft.Framework.Logging.1.0.0-beta6-11496.nupkg.sha512",
         "Microsoft.Framework.Logging.nuspec",
         "lib/dnx451/Microsoft.Framework.Logging.dll",
         "lib/dnx451/Microsoft.Framework.Logging.xml",
-        "lib/dnxcore50/Microsoft.Framework.Logging.dll",
-        "lib/dnxcore50/Microsoft.Framework.Logging.xml",
+        "lib/dotnet/Microsoft.Framework.Logging.dll",
+        "lib/dotnet/Microsoft.Framework.Logging.xml",
         "lib/net45/Microsoft.Framework.Logging.dll",
-        "lib/net45/Microsoft.Framework.Logging.xml",
-        "lib/portable-net45+win/Microsoft.Framework.Logging.dll",
-        "lib/portable-net45+win/Microsoft.Framework.Logging.xml"
+        "lib/net45/Microsoft.Framework.Logging.xml"
       ]
     },
-    "Microsoft.Framework.Logging.Abstractions/1.0.0-beta5-11388": {
+    "Microsoft.Framework.Logging.Abstractions/1.0.0-beta6-11496": {
       "serviceable": true,
-      "sha512": "M6BqVdHQPEaAEgAEjhX68t7ip6ROxo5jDZSpZYleMLoVpsQ1kvY3zitDtso3DUWpq3tH73ZA5mgWaOd1nFMZcA==",
+      "sha512": "DZqVLFdy+KH9LLyG64pEMKTgOZIqWya0W6M4sh7YncTB5a2VdIIDWhz2bIlhCkVgshPRgDm42xi3X2ebKiqXIQ==",
       "files": [
-        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11388.nupkg",
-        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta5-11388.nupkg.sha512",
+        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta6-11496.nupkg",
+        "Microsoft.Framework.Logging.Abstractions.1.0.0-beta6-11496.nupkg.sha512",
         "Microsoft.Framework.Logging.Abstractions.nuspec",
         "lib/dnx451/Microsoft.Framework.Logging.Abstractions.dll",
         "lib/dnx451/Microsoft.Framework.Logging.Abstractions.xml",
-        "lib/dnxcore50/Microsoft.Framework.Logging.Abstractions.dll",
-        "lib/dnxcore50/Microsoft.Framework.Logging.Abstractions.xml",
+        "lib/dotnet/Microsoft.Framework.Logging.Abstractions.dll",
+        "lib/dotnet/Microsoft.Framework.Logging.Abstractions.xml",
         "lib/net45/Microsoft.Framework.Logging.Abstractions.dll",
-        "lib/net45/Microsoft.Framework.Logging.Abstractions.xml",
-        "lib/portable-net45+win/Microsoft.Framework.Logging.Abstractions.dll",
-        "lib/portable-net45+win/Microsoft.Framework.Logging.Abstractions.xml"
+        "lib/net45/Microsoft.Framework.Logging.Abstractions.xml"
       ]
     },
     "Newtonsoft.Json/6.0.1": {

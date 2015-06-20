@@ -32,7 +32,7 @@ namespace Damascus.MessageChannel
                 CallPhone = Settings.Get("Twillio.CallPhone"),
                 VoiceCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/call", 
                 EmailCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/email", 
-                
+                VoiceflowsAuthToken = Settings.Get("Voiceflows.AuthToken")
             }));
 
             container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()
