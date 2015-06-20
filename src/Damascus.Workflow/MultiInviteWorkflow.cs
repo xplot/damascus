@@ -9,6 +9,7 @@ using Damascus.Core;
 using Damascus.Message;
 using Damascus.Message.Command;
 using NServiceBus;
+using NLog;
 
 namespace Damascus.Workflow
 {
