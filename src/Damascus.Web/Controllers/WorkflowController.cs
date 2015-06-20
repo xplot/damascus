@@ -13,6 +13,7 @@ using NLog;
 
 namespace Damascus.Web.Controllers
 {
+    [Authenticate]
     public class WorkflowController : Controller
     {
         public WorkflowEngine WorkflowEngine { get; set; }

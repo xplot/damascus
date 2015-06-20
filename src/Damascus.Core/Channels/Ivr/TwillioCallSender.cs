@@ -20,7 +20,7 @@ namespace Damascus.Core
         {
             var twilio = new TwilioRestClient(TwillioConfig.AccountSid, TwillioConfig.AuthToken);
             var options = new CallOptions();
-            options.Url = TwilioIvrWriter.GetCallbackUrl(TwillioConfig.VoiceCallbackUrl, callMessage.Parameters);
+            options.Url = TwilioIvrWriter.GetCallbackUrl(TwillioConfig, callMessage.Parameters);
             options.To = callMessage.PhoneNumber;
             options.From = TwillioConfig.CallPhone;
             var call = twilio.InitiateOutboundCall(options);

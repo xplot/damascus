@@ -38,7 +38,7 @@ namespace Damascus.Core
         {
             response.BeginGather(new
             {
-                action = GetCallbackUrl(TwillioConfig.VoiceCallbackUrl, urlParameters), 
+                action = GetCallbackUrl(TwillioConfig, urlParameters), 
                 numDigits = amountOfDigis
             });
             response.Say(message);
@@ -61,17 +61,24 @@ namespace Damascus.Core
             return response.ToString();
         }
 
-        public static string GetCallbackUrl(string baseUrl, Dictionary<string, string> parameters)
+        public static string GetCallbackUrl(TwillioConfig config, Dictionary<string, string> parameters)
         {
+            var baseUrl = config.VoiceCallbackUrl;
+            
             if (!baseUrl.Contains("?"))
                 baseUrl += "?";
             
+            //Authentication
+            baseUrl += "session_token=" + config.VoiceflowsAuthToken + "&";
+            
+            //No voicemails
             baseUrl += "IfMachine=Hangup&"; // We dont support voicemails for now.
             
             if (parameters != null)
                 foreach (var x in parameters)
                 {
-                    baseUrl += string.Format("{0}={1}&", x.Key, x.Value);
+                    if(!baseUrl.Contains(x.Key))
+                        baseUrl += string.Format("{0}={1}&", x.Key, x.Value);
                 }
             return baseUrl;
         }

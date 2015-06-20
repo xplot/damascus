@@ -9,13 +9,14 @@
     "Smtp.Username":  "xx",
     "Smtp.Password":  "xx",
     "Smtp.SenderAddress":  "xxx",
-
+    
     //Twillio
     "Twillio.AccountSid":  "xxx",
     "Twillio.AuthToken":  "xxx",
     "Twillio.SmsOutPhone":  "xxx",
     "Twillio.CallPhone":  "xxx",
     "Twillio.BaseUrl":  "xxx",
+    "Voiceflows.AuthToken": "xxx",
     
     "imeet.api.url": "http://imeet.io/api"
 

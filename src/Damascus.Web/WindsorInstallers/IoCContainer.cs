@@ -37,7 +37,7 @@ namespace Damascus.Web
             {
                 serviceInstance = _container.Resolve(serviceType);    
             }
-            catch(Exception ex)
+            catch
             {
                 //We silently go to the fallback
                 //Logger.Error(ex.ToString());

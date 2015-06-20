@@ -36,14 +36,13 @@ namespace Damascus.Web
 
             container.Register(Component.For<TwillioConfig>().Instance(new TwillioConfig()
             {
-                
                 AccountSid = Settings.Get("Twillio.AccountSid"),
                 AuthToken = Settings.Get("Twillio.AuthToken"),
                 SmsOutPhone = Settings.Get("Twillio.SmsOutPhone"),
                 CallPhone = Settings.Get("Twillio.CallPhone"),
                 VoiceCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/call", 
                 EmailCallbackUrl = Settings.Get("Twillio.BaseUrl") + "/email", 
-                
+                VoiceflowsAuthToken = Settings.Get("Voiceflows.AuthToken")
             }));
             
             container.Register(Component.For<SmtpConfig>().Instance(new SmtpConfig()

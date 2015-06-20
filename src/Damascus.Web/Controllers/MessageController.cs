@@ -10,7 +10,7 @@ using NLog;
 
 namespace Damascus.Web.Controllers
 {
-    //[RequireAuthorization]
+    [Authenticate]
     public class MessageController : Controller
     {
         public IBus Bus { get; set; }

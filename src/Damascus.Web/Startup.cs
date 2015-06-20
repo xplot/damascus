@@ -15,7 +15,6 @@ using Microsoft.AspNet.Authorization;
 
 using Microsoft.AspNet.Mvc.ModelBinding;
 using Microsoft.AspNet.Mvc.ModelBinding.Validation;
-using Microsoft.Framework.OptionsModel;
 
 using Microsoft.Framework.Runtime;
 using Microsoft.Framework.ConfigurationModel.Json;
@@ -39,14 +38,14 @@ namespace Damascus.Web
 {
     public class Startup
     {
-        private WindsorContainer container;
+        public static WindsorContainer container;
         private IHostingEnvironment environment;
         
         public Startup(IHostingEnvironment env)
         {
             //var x = 2/0;
             this.environment = env;
-            this.container = new WindsorContainer();
+            container = new WindsorContainer();
             ConfigureLogging();
         }
 
@@ -71,11 +70,6 @@ namespace Damascus.Web
                 
             });
             services.AddOptions();
-
-            //Please do not remove this line, it breaks Injection if not included
-            services.Configure<AuthorizationOptions>(options =>
-            {
-            });
         }
 
         // Configure is called after ConfigureServices is called.
@@ -97,32 +91,32 @@ namespace Damascus.Web
             
             ConfigureContainer(app);
             
-            app.ApplicationServices = this.container.Resolve<IServiceProvider>();
+            app.ApplicationServices = container.Resolve<IServiceProvider>();
            
             ConfigureBus();
         }
         
         private void ConfigureContainer(IApplicationBuilder app)
         {
-            this.container.Register(Component.For<IWindsorContainer>().Instance(this.container));
-            this.container.Register(
+            container.Register(Component.For<IWindsorContainer>().Instance(container));
+            container.Register(
                 Component.For<IServiceProvider>()
-                        .Instance(new MixedWindsorServiceProvider(app.ApplicationServices, this.container))
+                        .Instance(new MixedWindsorServiceProvider(app.ApplicationServices, container))
             );
             
-            this.container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
+            container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
             
-            this.container.Register(
+            container.Register(
                 Component.For<IHostingEnvironment>()
                         .Instance(this.environment)
             );
 
-            this.container.Register(
+            container.Register(
                 Component.For<ISettings>()
                         .ImplementedBy<Settings>()
             );
 
-            this.container.Install(
+            container.Install(
                 new ManagersInstaller(),
                 new ReplyStoreInstaller(),
                 new WorkflowEngineInstaller(),
@@ -152,7 +146,7 @@ namespace Damascus.Web
             configuration.EnableInstallers();
             
             // Castle with a container instance
-            configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(this.container));
+            configuration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
             var bus = Bus.Create(configuration);
             bus.Start();

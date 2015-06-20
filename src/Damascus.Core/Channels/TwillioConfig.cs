@@ -14,6 +14,8 @@ namespace Damascus.Core
         public string CallPhone { get; set; }
         public string VoiceCallbackUrl { get; set; }
         public string EmailCallbackUrl { get; set; }
+        
+        public string VoiceflowsAuthToken { get; set; }
     }
 
     public class SmtpConfig

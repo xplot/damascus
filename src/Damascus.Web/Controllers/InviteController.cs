@@ -9,6 +9,7 @@ using NServiceBus;
 namespace Damascus.Web.Controllers
 {
     
+    [Authenticate]
     public class InviteController : Controller
     {
         public WorkflowEngine WorkflowEngine { get; set; }
