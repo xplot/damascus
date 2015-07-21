@@ -25,7 +25,7 @@ namespace Damascus.Web
 						auth.Connection = new SqlConnection(Settings.Get("connection"));
 						auth.Connection.Open();
 					}).OnDestroy(auth => auth.Dispose())
-					.LifestyleTransient()
+					.LifestylePerWebRequest()
 				);
         }
     }
