@@ -1,5 +1,6 @@
 using System;
 using BCrypt.Net;
+using NLog;
 
 namespace Damascus.Web
 {
@@ -8,7 +9,7 @@ namespace Damascus.Web
 		public AuthenticationStore AuthenticationStore { get; set; }
 		
 		public AuthenticationManager(AuthenticationStore authStore)
-		{
+		{	
 			this.AuthenticationStore = authStore;
 		}
 		

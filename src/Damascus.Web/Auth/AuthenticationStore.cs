@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
+using NLog;
 
 namespace Damascus.Web
 {
@@ -10,7 +11,13 @@ namespace Damascus.Web
 		public SqlConnection Connection { get ; set ; }
 		public string user_tableName = "UserAccount";
 		public string session_tableName = "Session";
-
+		public Logger Logger { get; set; }
+		
+		public AuthenticationStore()
+		{
+			this.Logger = LogManager.GetLogger(GetType().FullName);
+		}
+		
 		public User GetUser (Guid id)
 		{
 			var queryString = "SELECT * FROM " + user_tableName + " WHERE id = @id";
@@ -163,11 +170,17 @@ namespace Damascus.Web
 		bool disposed = false;
 		public void Dispose()
 		{
+			Logger.Info("AuthenticationStore.Dispose");
+			
+			/*
 			if(disposed)
 				return;
+			
+			Logger.Info("AuthenticationStore.Dispose");
 				
 			this.Connection.Dispose();
 			disposed = true;
+			*/
 		}
 	}
 }

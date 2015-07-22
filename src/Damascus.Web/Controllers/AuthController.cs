@@ -12,7 +12,6 @@ using NLog;
 namespace Damascus.Web.Controllers
 {
     [Route("api/[controller]/[action]")]
-    
     public class AuthController: Controller  
 	{
 		public Logger Logger { get; set; }
@@ -22,6 +21,7 @@ namespace Damascus.Web.Controllers
 		{
 			this.Logger = LogManager.GetLogger(GetType().FullName);
 			this.AuthenticationManager = authManager;
+            
 		}
 		
         [HttpPost]

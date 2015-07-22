@@ -6,6 +6,7 @@ using System.Configuration;
 using Damascus.Core;
 using Damascus.Message;
 using System.Data.SqlClient;
+using NLog;
 
 namespace Damascus.Web
 {
@@ -17,16 +18,28 @@ namespace Damascus.Web
                 throw new ArgumentNullException("container");
 
             var Settings = container.Resolve<ISettings>();
-
+            
             container.Register(
-					Component.For<AuthenticationStore>()
-					.ImplementedBy<AuthenticationStore>()
-					.OnCreate(auth => {
-						auth.Connection = new SqlConnection(Settings.Get("connection"));
-						auth.Connection.Open();
-					}).OnDestroy(auth => auth.Dispose())
-					.LifestylePerWebRequest()
-				);
+                Component.For<SqlConnection>()
+                .UsingFactoryMethod(
+                    () => {
+                        var connection = new SqlConnection(Settings.Get("connection"));
+                        connection.Open();
+                        return connection; 
+                    }
+                )
+                .OnDestroy(
+                    x=> x.Dispose()
+                )
+                .LifestyleScoped()   
+            );
+            
+            
+            container.Register(
+				Component.For<AuthenticationStore>()
+				.ImplementedBy<AuthenticationStore>()
+                .LifestyleScoped()
+			);
         }
     }
 }
