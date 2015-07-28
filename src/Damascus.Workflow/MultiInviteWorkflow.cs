@@ -29,6 +29,7 @@ namespace Damascus.Workflow
                 { "create", new FunctionStep(CreateInvite) },
                 { "invite_contacts", new FunctionStep(InviteAttendees) },
                 { "cancel", new FunctionStep(CancelInvite) },
+                { "update_invite", new FunctionStep(UpdateInvite) },
             };
         }
 
@@ -49,7 +50,17 @@ namespace Damascus.Workflow
 
             return "<response>Invite sent succesfully</response>";
         }
+        
+        private string UpdateInvite(IStepInput input)
+        {
+            var invite = input as InviteInput;
+            var inviteId = invite.InviteId;
 
+            Trace.WriteLine("Starting to Update invite with Id: " + inviteId);
+            this.Data.Update(invite.ToDict());
+
+            return "<response>Invite updated succesfully</response>";
+        }
 
         private string CancelInvite(IStepInput input)
         {
@@ -286,8 +297,9 @@ namespace Damascus.Workflow
 
         public Dictionary<string, string> GetTemplateContextData(InviteInput invite, Contact contact)
         {
-            var template_data = invite.ToDict().Merge(contact.ToDict());
+            var template_data = contact.ToDict();
             template_data["invite_attendee_id"] = contact.ContactId;
+            template_data["invite_id"] = invite.InviteId;
             return template_data;
         }
 

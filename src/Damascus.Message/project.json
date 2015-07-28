@@ -2,17 +2,12 @@
     "version": "1.0.0-*",
     "dependencies": {
          
-        //JSON.NET
         "Newtonsoft.Json": "6.0.1",
-        
-        //NServiceBus
         "NServiceBus": "5.2.0",
         
     },
 
     "frameworks": {
-        "dnx451": {
-            "dependencies": {}
-        }
+        
     }
 }

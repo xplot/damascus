@@ -1,6 +1,6 @@
 {
   "locked": false,
-  "version": -9996,
+  "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
       "Newtonsoft.Json/6.0.1": {
@@ -29,9 +29,6 @@
     "Newtonsoft.Json/6.0.1": {
       "sha512": "tZ4TnfiXc3CUDZSZxXWcFOq5nDHxYY05qSDfZEJ654YOYzrPPOBgvSwJzr4jkTxeK5uoXmFG93Fq1lWDeLSmmA==",
       "files": [
-        "Newtonsoft.Json.6.0.1.nupkg",
-        "Newtonsoft.Json.6.0.1.nupkg.sha512",
-        "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -46,21 +43,24 @@
         "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.xml",
         "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8/Newtonsoft.Json.xml",
+        "Newtonsoft.Json.6.0.1.nupkg",
+        "Newtonsoft.Json.6.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
         "tools/install.ps1"
       ]
     },
     "NServiceBus/5.2.0": {
       "sha512": "2Hx4r0wXqizhJO9J/USAldYuMt2wuMjSc+BXIJTwE5e6T8tKd+q6IxsMHOhe3racjPYgmGgCB+prX7NT9S6aBg==",
       "files": [
-        "NServiceBus.5.2.0.nupkg",
-        "NServiceBus.5.2.0.nupkg.sha512",
-        "NServiceBus.nuspec",
         "lib/net45/NServiceBus.Core.dll",
         "lib/net45/NServiceBus.Core.pdb",
         "lib/net45/NServiceBus.Core.xml",
-        "tools/NServiceBus.PowerShell.Development.dll",
+        "NServiceBus.5.2.0.nupkg",
+        "NServiceBus.5.2.0.nupkg.sha512",
+        "NServiceBus.nuspec",
         "tools/about_NServiceBus.help.txt",
-        "tools/init.ps1"
+        "tools/init.ps1",
+        "tools/NServiceBus.PowerShell.Development.dll"
       ]
     }
   },
@@ -68,7 +68,6 @@
     "": [
       "Newtonsoft.Json >= 6.0.1",
       "NServiceBus >= 5.2.0"
-    ],
-    "DNX,Version=v4.5.1": []
+    ]
   }
 }

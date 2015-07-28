@@ -67,8 +67,9 @@ namespace Damascus.Message
         public DateTime? End { get; set; }
         public string Where { get; set; }
         
-        [JsonIgnore]
-        public int MaxParticipants { get; set; }
+        [JsonProperty(PropertyName = "max_attendees")]
+        public int MaxAttendees { get; set; }
+        
         [JsonIgnore]
         public int Confirmed { get; set; }
         
@@ -99,8 +100,8 @@ namespace Damascus.Message
                 {"email_template", (this.EmailTemplate!=null)?this.EmailTemplate.ToString():""},
                 {"response_email_template", (this.ResponseEmailTemplate!=null)?this.ResponseEmailTemplate.ToString():""},
                 {"sms_template", (this.SmsTemplate!=null)?this.SmsTemplate.ToString():""},
-                {"max_participants", this.MaxParticipants.ToString()},
-                {"confirmed_participants", this.Confirmed.ToString()},
+                {"max_attendees", this.MaxAttendees.ToString()},
+                {"confirmed_attendees", this.Confirmed.ToString()},
             };
         }
 
@@ -117,8 +118,8 @@ namespace Damascus.Message
                 EmailTemplate = Message.EmailTemplate.FromString(value["email_template"]),
                 ResponseEmailTemplate = Message.EmailTemplate.FromString(value["response_email_template"]),
                 SmsTemplate = Message.BodyTemplate.FromString(value["sms_template"]),
-                MaxParticipants = int.Parse(value["max_participants"]),
-                Confirmed = int.Parse(value["confirmed_participants"])
+                MaxAttendees = int.Parse(value["max_attendees"]),
+                Confirmed = int.Parse(value["confirmed_attendees"])
             };
         }
     }

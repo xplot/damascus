@@ -7,7 +7,6 @@
         "Damascus.Workflow": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
 
-        //Framework
         "Microsoft.AspNet.Mvc": "6.0.0-*",
         "Microsoft.AspNet.Authorization": "1.0.0-*",
         "Microsoft.AspNet.Server.IIS": "1.0.0-*",
@@ -16,10 +15,8 @@
         "Microsoft.AspNet.WebApi.Client": "5.2.3",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
         
-        //Dependency Injection
         "Castle.Windsor": "3.3.0",
 
-        //NServiceBus
         "NServiceBus": "5.2.0",
         "NServiceBus.SqlServer": "2.1.2",
         "NServiceBus.CastleWindsor": "5.0.0",
@@ -27,16 +24,9 @@
 
         "Kestrel": "1.0.0-*",
         
-        //Redis
         "ServiceStack.Redis": "4.0.40",
-        
-        //Logging
         "NLog": "3.2.1",
-        
-        //SQL
         "System.Data.SqlClient": "4.0.0-*",
-        
-        //Encryption
         "BCrypt-Official": "0.1.109",
 
     },
@@ -47,7 +37,7 @@
     },
 
     "frameworks": {
-        "dnx451": {},
+        
 
     },
 

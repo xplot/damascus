@@ -93,6 +93,36 @@ namespace Damascus.Web.Controllers
             }    
         }
         
+        [Route("api/invite/update")]
+        public string UpdateInvite([FromBody]InviteInput input)
+        {
+            Logger.Info("Request to Update invite");
+            
+            try
+            {
+                if (input == null || input.InviteId == null)
+                    throw new Exception("Invite format is not valid");
+            
+                Logger.Info("Invite " + input.InviteId);
+            
+                var workflowContext = new WorkflowContext()
+                {
+                    WorkflowStep = "update_invite",
+                    DataKey = input.InviteId,
+                    WorkflowType = "multi_invite",
+                    WorkflowId = input.InviteId,
+                    Parameters = input,
+                };
+                return WorkflowEngine.Process(workflowContext);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                Context.Response.StatusCode = 500;
+                return null;
+            }    
+        }
+        
         [Route("api/invite/cancel")]
         public string CancelInvite(InviteAttendeesInput input)
         {

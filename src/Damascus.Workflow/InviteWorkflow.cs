@@ -36,6 +36,17 @@ namespace Damascus.Workflow
                 {"emailin", new FunctionStep(InviteEmailReply)},
             };
         }
+        
+        private InviteInput GetInvite()
+        {
+            var inviteId = Data["invite_id"];
+            
+            Trace.WriteLine("Trying to find invite by id: " + inviteId);
+            
+            return InviteInput.FromDict(DataSerializer.DeserializeData(
+                WorkflowEngine.GetDataKey("multi_invite", inviteId)
+            ));
+        }
 
         private string InviteSmsReply(IStepInput input)
         {
@@ -52,7 +63,7 @@ namespace Damascus.Workflow
                 return "Success";
             }
             
-            var invite = InviteInput.FromDict(this.Data);
+            var invite = GetInvite();
             var message = string.Empty;
             
             if (Data.ContainsKey("responded"))
@@ -96,7 +107,7 @@ namespace Damascus.Workflow
                 return XmlWriter.ToString();
             }
             
-            var invite = InviteInput.FromDict(this.Data);
+            var invite = GetInvite();
             var contact = Contact.FromDict(this.Data);
 
             XmlWriter.EnterNumber(
@@ -119,7 +130,7 @@ namespace Damascus.Workflow
         {
             
             var message = string.Empty;
-            var invite = InviteInput.FromDict(this.Data);
+            var invite = GetInvite();
             
             if(input["Body"] == "2")
             {
@@ -191,10 +202,10 @@ namespace Damascus.Workflow
         
         private bool InviteIsFull(InviteInput invite)
         {
-            if(invite.MaxParticipants <= 0)
+            if(invite.MaxAttendees <= 0)
                 return false;
             
-            return invite.MaxParticipants <= invite.Confirmed;  
+            return invite.MaxAttendees <= invite.Confirmed;  
         }
 
     }
