@@ -65,7 +65,7 @@ namespace Damascus.Web
             var auth = GetHeader("Authorization", actionContext.HttpContext.Request.Headers);
             if (!string.IsNullOrEmpty(auth) && auth.StartsWith("Basic")) {
                 var credentials = auth.Replace("Basic ", "");
-                credentials = Encoding.UTF8.GetString(Convert.FromBase64String(credentials));
+                credentials = Encoding.UTF8.GetString(System.Convert.FromBase64String(credentials));
                 
                 int separatorIndex = credentials.IndexOf(':');
                 if (separatorIndex >= 0) {

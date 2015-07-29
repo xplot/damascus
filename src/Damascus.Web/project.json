@@ -6,7 +6,10 @@
         "Damascus.Core": "1.0.0-*",
         "Damascus.Workflow": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
-
+    	
+        "System.Collections": "4.0.0-*",
+        "System.Runtime.Extensions": "4.0.0-*",
+        
         "Microsoft.AspNet.Mvc": "6.0.0-*",
         "Microsoft.AspNet.Authorization": "1.0.0-*",
         "Microsoft.AspNet.Server.IIS": "1.0.0-*",

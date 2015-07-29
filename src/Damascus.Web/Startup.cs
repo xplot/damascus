@@ -89,11 +89,11 @@ namespace Damascus.Web
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
             
-            ConfigureContainer(app);
+            //ConfigureContainer(app);
             
-            app.ApplicationServices = container.Resolve<IServiceProvider>();
+            //app.ApplicationServices = container.Resolve<IServiceProvider>();
            
-            ConfigureBus();
+            //ConfigureBus();
         }
         
         private void ConfigureContainer(IApplicationBuilder app)
