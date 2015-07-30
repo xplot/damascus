@@ -16,7 +16,7 @@ using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc.ModelBinding;
 using Microsoft.AspNet.Mvc.ModelBinding.Validation;
 
-using Microsoft.Framework.Runtime;
+//using Microsoft.Framework.Runtime;
 using Microsoft.Framework.ConfigurationModel.Json;
 using Microsoft.Framework.ConfigurationModel;
 using ILogger = Microsoft.Framework.Logging.ILogger;
@@ -43,7 +43,6 @@ namespace Damascus.Web
         
         public Startup(IHostingEnvironment env)
         {
-            //var x = 2/0;
             this.environment = env;
             container = new WindsorContainer();
             ConfigureLogging();
@@ -87,13 +86,13 @@ namespace Damascus.Web
             app.UseMvc();
 
             // Add the following route for porting Web API 2 controllers.
-            // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");   
+            // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             
-            //ConfigureContainer(app);
-            
-            //app.ApplicationServices = container.Resolve<IServiceProvider>();
+            ConfigureContainer(app);    
+                
+            app.ApplicationServices = container.Resolve<IServiceProvider>();
            
-            //ConfigureBus();
+            ConfigureBus();        
         }
         
         private void ConfigureContainer(IApplicationBuilder app)
@@ -166,8 +165,6 @@ namespace Damascus.Web
             LogManager.Configuration = config;
             NServiceBus.Logging.LogManager.Use<NLogFactory>();
             
-//             var factory = container.Resolve<ILoggerFactory>();
-//             factory.AddNLog(new NLog.LogFactory(config));
         }
 
     }

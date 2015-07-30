@@ -18,22 +18,34 @@ namespace Damascus.Web
                 throw new ArgumentNullException("container");
 
             var Settings = container.Resolve<ISettings>();
+            var Logger = LogManager.GetLogger("Startup");
+            var xconnection = new SqlConnection(Settings.Get("connection"));
             
-            container.Register(
-                Component.For<SqlConnection>()
-                .UsingFactoryMethod(
-                    () => {
-                        var connection = new SqlConnection(Settings.Get("connection"));
-                        connection.Open();
-                        return connection; 
-                    }
-                )
-                .OnDestroy(
-                    x=> x.Dispose()
-                )
-                .LifestyleScoped()   
-            );
+            Logger.Info("FIrst connection created");
             
+//             container.Register(
+//                 Component.For<SqlConnection>()
+//                 .UsingFactoryMethod(
+//                     () => {
+//                         try{
+//                             var connection = new SqlConnection(Settings.Get("connection"));
+//                             connection.Open();
+//                             return connection;    
+//                         }
+//                         catch(Exception ex)
+//                         {
+//                             Logger.Error(ex.ToString());
+//                             return null;
+//                         }
+//                         
+//                     }
+//                 )
+//                 .OnDestroy(
+//                     x=> x.Dispose()
+//                 )
+//                 .LifestyleScoped()   
+//             );
+//             
             
             container.Register(
 				Component.For<AuthenticationStore>()
