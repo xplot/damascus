@@ -1,6 +1,6 @@
 {
   "locked": false,
-  "version": 1,
+  "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
       "Newtonsoft.Json/6.0.1": {
@@ -23,6 +23,17 @@
           "lib/net45/NServiceBus.Core.dll": {}
         }
       }
+    },
+    "DNXCore,Version=v5.0": {
+      "Newtonsoft.Json/6.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NServiceBus/5.2.0": {}
     }
   },
   "libraries": {
@@ -68,6 +79,8 @@
     "": [
       "Newtonsoft.Json >= 6.0.1",
       "NServiceBus >= 5.2.0"
-    ]
+    ],
+    "DNX,Version=v4.5.1": [],
+    "DNXCore,Version=v5.0": []
   }
 }
