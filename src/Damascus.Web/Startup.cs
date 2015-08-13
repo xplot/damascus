@@ -17,8 +17,6 @@ using Microsoft.AspNet.Mvc.ModelBinding;
 using Microsoft.AspNet.Mvc.ModelBinding.Validation;
 
 //using Microsoft.Framework.Runtime;
-using Microsoft.Framework.ConfigurationModel.Json;
-using Microsoft.Framework.ConfigurationModel;
 using ILogger = Microsoft.Framework.Logging.ILogger;
 using DI = Microsoft.Framework.DependencyInjection;
 using Damascus.Core;

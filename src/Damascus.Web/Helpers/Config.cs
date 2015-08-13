@@ -1,8 +1,7 @@
 using System;
-using Microsoft.Framework.ConfigurationModel.Json;
-using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
-using Config = Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Configuration;
+using Microsoft.Framework.Configuration.Json;
 using System.IO;
 using Microsoft.AspNet.Hosting;
 using Damascus.Core;
@@ -16,29 +15,20 @@ namespace Damascus.Web
             baseDirectory = appEnvironment.WebRootPath + "/../";
         }
 
-		private static Config.Configuration _config;
-        private Config.Configuration Configuration
+		private static IConfiguration _config;
+        private IConfiguration Configuration
         {
             get
             {
                 if (_config == null)
                 {
-                    try{
-                       
-                    _config = new Config.Configuration();
+                    var configurationBuilder = new ConfigurationBuilder(baseDirectory);
+                    
                     if (File.Exists(baseDirectory + "config.local.json"))
-                        _config.AddJsonFile(baseDirectory + "config.local.json");    
+                        configurationBuilder.AddJsonFile("config.local.json");    
                     else    
-                        _config.AddJsonFile(baseDirectory + "config.json");
-                    }
-                    catch(Exception ex){
-                        Console.WriteLine(_config);
-                        Console.WriteLine(baseDirectory + "config.local.json");
-                        Console.WriteLine(File.Exists(baseDirectory + "/config.local.json"));
-                        Console.WriteLine("Exception");
-                        Console.WriteLine(ex);
-                        throw;
-                    }
+                        configurationBuilder.AddJsonFile("config.json");
+                    _config = configurationBuilder.Build();
                 }
                 return _config;
             }
