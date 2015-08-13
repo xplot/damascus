@@ -23,12 +23,22 @@ namespace Damascus.Web
             {
                 if (_config == null)
                 {
-                    
+                    try{
+                       
                     _config = new Config.Configuration();
-                    if (File.Exists(baseDirectory + "/config.local.json"))
+                    if (File.Exists(baseDirectory + "config.local.json"))
                         _config.AddJsonFile(baseDirectory + "config.local.json");    
                     else    
                         _config.AddJsonFile(baseDirectory + "config.json");
+                    }
+                    catch(Exception ex){
+                        Console.WriteLine(_config);
+                        Console.WriteLine(baseDirectory + "config.local.json");
+                        Console.WriteLine(File.Exists(baseDirectory + "/config.local.json"));
+                        Console.WriteLine("Exception");
+                        Console.WriteLine(ex);
+                        throw;
+                    }
                 }
                 return _config;
             }

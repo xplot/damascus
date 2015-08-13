@@ -7,14 +7,15 @@
         "Damascus.Workflow": "1.0.0-*",
         "Damascus.Message": "1.0.0-*",
     	
-        "System.Collections": "4.0.0-beta6",
-        "System.Runtime.Extensions": "4.0.0-beta6",
+        "System.Collections": "4.0.0-*",
         
-        "Microsoft.AspNet.Mvc": "6.0.0-beta6",
-        "Microsoft.AspNet.Authorization": "1.0.0-beta6",
-        "Microsoft.AspNet.Server.IIS": "1.0.0-beta6",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6",
-        "Microsoft.AspNet.StaticFiles": "1.0.0-beta6",
+        "System.Runtime.Extensions": "4.0.0-*",
+        
+        "Microsoft.AspNet.Mvc": "6.0.0-*",
+        "Microsoft.AspNet.Authorization": "1.0.0-*",
+        "Microsoft.AspNet.Server.IIS": "1.0.0-*",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
+        "Microsoft.AspNet.StaticFiles": "1.0.0-*",
         "Microsoft.AspNet.WebApi.Client": "5.2.3",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
         
@@ -25,12 +26,12 @@
         "NServiceBus.CastleWindsor": "5.0.0",
         "NServiceBus.NLog": "1.0.0",
 
-        "Kestrel": "1.0.0-beta6",
+        "Kestrel": "1.0.0-*",
         
         "ServiceStack.Redis": "4.0.40",
         "NLog": "3.2.1",
         "System.Data.SqlClient": "4.0.0-*",
-        "BCrypt-Official": "0.1.109",
+        "BCrypt-Official": "0.1.109"
 
     },
 
@@ -40,8 +41,7 @@
     },
 
     "frameworks": {
-         "dnx451": { },
-         "dnxcore50": { }
+         "dnx451": { }
     },
 
     "exclude": [
