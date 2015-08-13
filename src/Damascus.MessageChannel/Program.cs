@@ -6,11 +6,7 @@ using Castle.MicroKernel.Registration;
 
 using NServiceBus;
 
-using Microsoft.Framework.ConfigurationModel.Json;
-using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
-using Config = Microsoft.Framework.ConfigurationModel;
-
 using NLog;
 using NLog.Targets;
 using NLog.Config;

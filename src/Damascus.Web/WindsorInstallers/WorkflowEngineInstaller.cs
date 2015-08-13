@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Web;
-using Castle.Windsor;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using System;
 using System.Configuration;
 using Damascus.Core;

@@ -25,7 +25,7 @@ namespace Damascus.Web.Controllers
 		}
 		
         [HttpPost]
-        [Authenticate]
+        
 	    public void Register([FromBody]Damascus.Web.User user)
 	    {
 	        Logger.Info("Register a new user");

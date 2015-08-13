@@ -16,7 +16,8 @@
         "Newtonsoft.Json": "6.0.1",
         "RestSharp": "105.0.1",
         
-        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
+        "Microsoft.Framework.Configuration": "1.0.0-*",
+        "Microsoft.Framework.Configuration.Json": "1.0.0-*",
 
         "NServiceBus": "5.2.0",
         "NServiceBus.Host": "5.2.0",

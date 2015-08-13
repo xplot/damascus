@@ -31,7 +31,7 @@
         
         "ServiceStack.Redis": "4.0.40",
         "NLog": "3.2.1",
-        "System.Data.SqlClient": "4.0.0-*",
+        
         "BCrypt-Official": "0.1.109"
 
     },
@@ -42,7 +42,11 @@
     },
 
     "frameworks": {
-         "dnx451": { }
+         "dnx451": { 
+             "frameworkAssemblies": {
+              "System.Data": ""
+            }
+         }
     },
 
     "exclude": [
