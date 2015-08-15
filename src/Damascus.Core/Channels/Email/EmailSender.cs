@@ -22,13 +22,14 @@ namespace Damascus.Core
             try
             {
                 var body = TemplateManager.Fill(TemplateManager.GetTemplate(emailMessage.BodyTemplate, emailMessage.BodyData), emailMessage.BodyData);
-
+    	        var subject = TemplateManager.Fill(emailMessage.Subject, emailMessage.BodyData);
+                    
                 MailMessage mailMsg = new MailMessage();
                 mailMsg.To.Add(emailMessage.Address);
                 mailMsg.From = new MailAddress(emailMessage.Sender);
 
                 // Subject and multipart/alternative Body
-                mailMsg.Subject = emailMessage.Subject;
+                mailMsg.Subject = subject;
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(body, null, MediaTypeNames.Text.Html));
 
                 // Init SmtpClient and send

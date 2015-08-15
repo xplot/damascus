@@ -300,6 +300,8 @@ namespace Damascus.Workflow
             var template_data = contact.ToDict();
             template_data["invite_attendee_id"] = contact.ContactId;
             template_data["invite_id"] = invite.InviteId;
+            template_data["invite_unique_id"] = invite.InviteId; //Backwards compatibility
+            template_data["title"] = invite.Title;
             return template_data;
         }
 
